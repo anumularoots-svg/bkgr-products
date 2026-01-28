@@ -39,7 +39,7 @@ const PRODUCT_IMAGES = {
   },
   // Karam Powder Images - Only products with actual images
   karam: {
-    category: 'https://i.ibb.co/rKdW0zXz/pappula.png',
+    category: 'https://i.ibb.co/0p3gT5ZF/all-mix.png',
     vepudu: 'https://i.ibb.co/0RRS4sf7/vepudu.png',
     pappula: 'https://i.ibb.co/rKdW0zXz/pappula.png',
     nuvvula: 'https://i.ibb.co/5XWt8my5/nvula.png',
