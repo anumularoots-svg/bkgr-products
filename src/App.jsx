@@ -9,10 +9,10 @@ import React, { useState, useEffect } from 'react';
 const PRODUCT_IMAGES = {
   // Rice Images
   rice: {
-    category: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop',
-    brown: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=300&h=300&fit=crop',
-    semi: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&h=300&fit=crop',
-    full: 'https://images.unsplash.com/photo-1594069758873-e81de8f5e6c2?w=300&h=300&fit=crop',
+    category: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
+    brown: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
+    semi: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
+    full: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
   },
   // Urad Dal Images
   urad: {
