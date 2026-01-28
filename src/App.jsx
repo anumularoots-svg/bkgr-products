@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 // ===========================================
 // 📸 PRODUCT IMAGES CONFIGURATION
 // ===========================================
-// Replace these placeholder URLs with your actual product images
-// Recommended: Upload images to Firebase Storage, Cloudinary, or your hosting
+// All your actual product images from ImgBB
 
 const PRODUCT_IMAGES = {
   // Rice Images
@@ -20,18 +19,33 @@ const PRODUCT_IMAGES = {
     split: 'https://i.ibb.co/jNtB0qz/Urad-Dal-Split.png',
     whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
-  // Pickle Images - Replace with your actual pickle jar photos
+  // Pickle Images
   pickles: {
     category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
     lemon: 'https://i.ibb.co/8nkpcBC2/lemon.png',
-    chicken: 'https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=300&h=300&fit=crop',
-    default: 'https://images.unsplash.com/photo-1589135716294-6b11e3e76a44?w=300&h=300&fit=crop',
+    gongura: 'https://i.ibb.co/yFG8wSz1/gongura.png',
+    tomato: 'https://i.ibb.co/tTQGtVP3/tomato.png',
+    brinjal: 'https://i.ibb.co/99XFpDSC/Brinjal.png',
+    redchilli: 'https://i.ibb.co/RpFkNTJ3/redchilli.png',
+    drumstick: 'https://i.ibb.co/HLDbsG3N/drumstick.png',
+    chicken: 'https://i.ibb.co/jvwcsGmJ/chicken.png',
+    mutton: 'https://i.ibb.co/1t8DMnq7/mutton.png',
+    fish: 'https://i.ibb.co/MDczFFB5/fish.png',
+    prawn: 'https://i.ibb.co/LhBG59n6/prawn.png',
+    default: 'https://i.ibb.co/B5vxvhvC/mixed.png',
   },
   // Karam Powder Images
   karam: {
-    category: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=400&fit=crop',
-    default: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=300&h=300&fit=crop',
+    category: 'https://i.ibb.co/rKdW0zXz/pappula.png',
+    vepudu: 'https://i.ibb.co/0RRS4sf7/vepudu.png',
+    pappula: 'https://i.ibb.co/rKdW0zXz/pappula.png',
+    nuvvula: 'https://i.ibb.co/5XWt8my5/nvula.png',
+    kobbari: 'https://i.ibb.co/SHTHJg2/kobbari.png',
+    karivepaku: 'https://i.ibb.co/Vp9nny5h/karivepaku.png',
+    munagaku: 'https://i.ibb.co/hJQrdwsv/mungaku.png',
+    gongura: 'https://i.ibb.co/LhzXN19X/gongura-podi.png',
+    default: 'https://i.ibb.co/rKdW0zXz/pappula.png',
   },
   // Microgreens Images
   microgreens: {
@@ -143,16 +157,16 @@ const productsData = {
         items: [
           { id: 'pickle-lemon', name: 'Lemon Pickle', description: 'Tangy lemon pickle with traditional spices', tag: 'CLASSIC', tagColor: '#FFEB3B', image: PRODUCT_IMAGES.pickles.lemon },
           { id: 'pickle-gooseberry', name: 'Gooseberry Pickle', description: 'Healthy amla pickle rich in Vitamin C', tag: 'HEALTHY', tagColor: '#8BC34A', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-tomato', name: 'Tomato Pickle', description: 'Tangy tomato pickle with garlic', tag: 'TANGY', tagColor: '#F44336', image: PRODUCT_IMAGES.pickles.default },
+          { id: 'pickle-tomato', name: 'Tomato Pickle', description: 'Tangy tomato pickle with garlic', tag: 'TANGY', tagColor: '#F44336', image: PRODUCT_IMAGES.pickles.tomato },
           { id: 'pickle-ridgegourd', name: 'Ridge Gourd Pickle', description: 'Crispy ridge gourd in spicy oil', tag: 'CRUNCHY', tagColor: '#4CAF50', image: PRODUCT_IMAGES.pickles.default },
           { id: 'pickle-ivygourd', name: 'Ivy Gourd Pickle', description: 'Tender ivy gourd with mustard', tag: 'SPECIAL', tagColor: '#009688', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-gongura', name: 'Gongura Pickle', description: 'Tangy sorrel leaves pickle', tag: 'TELUGU SPECIAL', tagColor: '#4CAF50', image: PRODUCT_IMAGES.pickles.default },
+          { id: 'pickle-gongura', name: 'Gongura Pickle', description: 'Tangy sorrel leaves pickle', tag: 'TELUGU SPECIAL', tagColor: '#4CAF50', image: PRODUCT_IMAGES.pickles.gongura },
           { id: 'pickle-curryleaves', name: 'Curry Leaves Pickle', description: 'Aromatic curry leaves pickle', tag: 'AROMATIC', tagColor: '#2E7D32', image: PRODUCT_IMAGES.pickles.default },
           { id: 'pickle-radish', name: 'Radish Pickle', description: 'Crunchy radish in spicy marinade', tag: 'CRUNCHY', tagColor: '#E91E63', image: PRODUCT_IMAGES.pickles.default },
           { id: 'pickle-bittergourd', name: 'Bitter Gourd Pickle', description: 'Healthy bitter gourd pickle', tag: 'HEALTHY', tagColor: '#689F38', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-brinjal', name: 'Brinjal Pickle', description: 'Roasted brinjal with spices', tag: 'SMOKY', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-redchilli', name: 'Red Chilli Pickle', description: 'Spicy stuffed red chilli pickle', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-drumstick', name: 'Drumstick Pickle', description: 'Tender drumstick in tangy masala', tag: 'NUTRITIOUS', tagColor: '#558B2F', image: PRODUCT_IMAGES.pickles.default },
+          { id: 'pickle-brinjal', name: 'Brinjal Pickle', description: 'Roasted brinjal with spices', tag: 'SMOKY', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.brinjal },
+          { id: 'pickle-redchilli', name: 'Red Chilli Pickle', description: 'Spicy stuffed red chilli pickle', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.pickles.redchilli },
+          { id: 'pickle-drumstick', name: 'Drumstick Pickle', description: 'Tender drumstick in tangy masala', tag: 'NUTRITIOUS', tagColor: '#558B2F', image: PRODUCT_IMAGES.pickles.drumstick },
         ]
       },
       {
@@ -162,13 +176,13 @@ const productsData = {
           { id: 'pickle-chicken', name: 'Chicken Pickle', description: 'Spicy boneless chicken pickle', tag: 'POPULAR', tagColor: '#E91E63', image: PRODUCT_IMAGES.pickles.chicken },
           { id: 'pickle-countrychicken', name: 'Country Chicken Pickle', description: 'Desi chicken with country spices', tag: 'DESI', tagColor: '#C2185B', image: PRODUCT_IMAGES.pickles.chicken },
           { id: 'pickle-chickenfry', name: 'Chicken Fry Pickle', description: 'Crispy fried chicken pickle', tag: 'CRISPY', tagColor: '#AD1457', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-mutton', name: 'Mutton Pickle', description: 'Premium goat meat pickle', tag: 'PREMIUM', tagColor: '#9C27B0', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-countrymutton', name: 'Country Mutton Pickle', description: 'Desi goat with traditional spices', tag: 'DESI', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-fish', name: 'Fish Pickle', description: 'Fresh fish in spicy marinade', tag: 'SEAFOOD', tagColor: '#00BCD4', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-countryfish', name: 'Country Fish Pickle', description: 'River fish with village spices', tag: 'SPECIAL', tagColor: '#0097A7', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-fishfry', name: 'Fish Fry Pickle', description: 'Crispy fried fish pickle', tag: 'CRISPY', tagColor: '#00838F', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-prawn', name: 'Prawn Pickle', description: 'Fresh prawns in traditional spices', tag: 'PREMIUM', tagColor: '#FF5722', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-saltedprawn', name: 'Salted Prawn Pickle', description: 'Dry salted prawn pickle', tag: 'DRY', tagColor: '#E64A19', image: PRODUCT_IMAGES.pickles.chicken },
+          { id: 'pickle-mutton', name: 'Mutton Pickle', description: 'Premium goat meat pickle', tag: 'PREMIUM', tagColor: '#9C27B0', image: PRODUCT_IMAGES.pickles.mutton },
+          { id: 'pickle-countrymutton', name: 'Country Mutton Pickle', description: 'Desi goat with traditional spices', tag: 'DESI', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.mutton },
+          { id: 'pickle-fish', name: 'Fish Pickle', description: 'Fresh fish in spicy marinade', tag: 'SEAFOOD', tagColor: '#00BCD4', image: PRODUCT_IMAGES.pickles.fish },
+          { id: 'pickle-countryfish', name: 'Country Fish Pickle', description: 'River fish with village spices', tag: 'SPECIAL', tagColor: '#0097A7', image: PRODUCT_IMAGES.pickles.fish },
+          { id: 'pickle-fishfry', name: 'Fish Fry Pickle', description: 'Crispy fried fish pickle', tag: 'CRISPY', tagColor: '#00838F', image: PRODUCT_IMAGES.pickles.fish },
+          { id: 'pickle-prawn', name: 'Prawn Pickle', description: 'Fresh prawns in traditional spices', tag: 'PREMIUM', tagColor: '#FF5722', image: PRODUCT_IMAGES.pickles.prawn },
+          { id: 'pickle-saltedprawn', name: 'Salted Prawn Pickle', description: 'Dry salted prawn pickle', tag: 'DRY', tagColor: '#E64A19', image: PRODUCT_IMAGES.pickles.prawn },
         ]
       }
     ],
@@ -189,14 +203,14 @@ const productsData = {
     description: "Traditional spice powders made with premium ingredients",
     image: PRODUCT_IMAGES.karam.category,
     items: [
-      { id: 'karam-vepudu', name: 'Vepudu Karam', description: 'Spicy fry powder for rice', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-kandi', name: 'Kandi Podi', description: 'Aromatic toor dal powder', tag: 'CLASSIC', tagColor: '#FF9800', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-pappula', name: 'Pappula Podi', description: 'Mixed lentils spice powder', tag: 'PROTEIN', tagColor: '#FFC107', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-nuvvula', name: 'Nuvvula Karam', description: 'Sesame seeds powder with chilies', tag: 'NUTRITIOUS', tagColor: '#795548', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-kobbari', name: 'Kobbari Karam', description: 'Coconut chutney powder', tag: 'SOUTH INDIAN', tagColor: '#8D6E63', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-karivepaku', name: 'Karivepaku Podi', description: 'Curry leaves powder rich in iron', tag: 'HEALTHY', tagColor: '#4CAF50', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-munagaku', name: 'Munagaku Podi', description: 'Moringa leaves powder', tag: 'SUPERFOOD', tagColor: '#8BC34A', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-gongura', name: 'Gongura Karam', description: 'Tangy sorrel leaves powder', tag: 'TANGY', tagColor: '#689F38', image: PRODUCT_IMAGES.karam.default },
+      { id: 'karam-vepudu', name: 'Vepudu Karam', description: 'Spicy fry powder for rice', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.karam.vepudu },
+      { id: 'karam-kandi', name: 'Kandi Podi', description: 'Aromatic toor dal powder', tag: 'CLASSIC', tagColor: '#FF9800', image: PRODUCT_IMAGES.karam.pappula },
+      { id: 'karam-pappula', name: 'Pappula Podi', description: 'Mixed lentils spice powder', tag: 'PROTEIN', tagColor: '#FFC107', image: PRODUCT_IMAGES.karam.pappula },
+      { id: 'karam-nuvvula', name: 'Nuvvula Karam', description: 'Sesame seeds powder with chilies', tag: 'NUTRITIOUS', tagColor: '#795548', image: PRODUCT_IMAGES.karam.nuvvula },
+      { id: 'karam-kobbari', name: 'Kobbari Karam', description: 'Coconut chutney powder', tag: 'SOUTH INDIAN', tagColor: '#8D6E63', image: PRODUCT_IMAGES.karam.kobbari },
+      { id: 'karam-karivepaku', name: 'Karivepaku Podi', description: 'Curry leaves powder rich in iron', tag: 'HEALTHY', tagColor: '#4CAF50', image: PRODUCT_IMAGES.karam.karivepaku },
+      { id: 'karam-munagaku', name: 'Munagaku Podi', description: 'Moringa leaves powder', tag: 'SUPERFOOD', tagColor: '#8BC34A', image: PRODUCT_IMAGES.karam.munagaku },
+      { id: 'karam-gongura', name: 'Gongura Karam', description: 'Tangy sorrel leaves powder', tag: 'TANGY', tagColor: '#689F38', image: PRODUCT_IMAGES.karam.gongura },
       { id: 'karam-pudina', name: 'Pudina Karam', description: 'Fresh mint leaves powder', tag: 'REFRESHING', tagColor: '#00C853', image: PRODUCT_IMAGES.karam.default },
       { id: 'karam-kothimeera', name: 'Kothimeera Karam', description: 'Coriander leaves powder', tag: 'AROMATIC', tagColor: '#76FF03', image: PRODUCT_IMAGES.karam.default },
     ],
