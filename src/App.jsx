@@ -16,9 +16,9 @@ const PRODUCT_IMAGES = {
   },
   // Urad Dal Images
   urad: {
-    category: 'https://images.unsplash.com/photo-1612257416648-ee7a6c533b4f?w=400&h=400&fit=crop',
-    split: 'https://images.unsplash.com/photo-1612257416648-ee7a6c533b4f?w=300&h=300&fit=crop',
-    whole: 'https://images.unsplash.com/photo-1585996904142-54dc6d99cad6?w=300&h=300&fit=crop',
+    category: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
+    split: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
+    whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
   // Pickle Images - Replace with your actual pickle jar photos
   pickles: {
