@@ -3,26 +3,21 @@ import React, { useState, useEffect } from 'react';
 // ===========================================
 // 📸 PRODUCT IMAGES CONFIGURATION
 // ===========================================
-// Only actual product images - no defaults
 
-// 🔴 IMPORTANT: Upload your logo to ImgBB and replace this URL
-const LOGO_URL = 'https://i.ibb.co/ymtC805y/logo.jpg'; // <-- Replace with your logo URL
+const LOGO_URL = 'https://i.ibb.co/ymtC805y/logo.jpg';
 
 const PRODUCT_IMAGES = {
-  // Rice Images
   rice: {
     category: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
     brown: 'https://i.ibb.co/zDm822J/brow.png',
     semi: 'https://i.ibb.co/JWx6g5fD/smibr.png',
     full: 'https://i.ibb.co/RpW7Z8FZ/fullw.png',
   },
-  // Urad Dal Images
   urad: {
     category: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
     split: 'https://i.ibb.co/jNtB0qz/Urad-Dal-Split.png',
     whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
-  // Pickle Images - Only products with actual images
   pickles: {
     category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
@@ -37,7 +32,6 @@ const PRODUCT_IMAGES = {
     fish: 'https://i.ibb.co/MDczFFB5/fish.png',
     prawn: 'https://i.ibb.co/LhBG59n6/prawn.png',
   },
-  // Karam Powder Images - Only products with actual images
   karam: {
     category: 'https://i.ibb.co/0p3gT5ZF/all-mix.png',
     vepudu: 'https://i.ibb.co/0RRS4sf7/vepudu.png',
@@ -50,7 +44,10 @@ const PRODUCT_IMAGES = {
   },
 };
 
-// Complete Product Data - Only products with actual images
+// ===========================================
+// 📦 PRODUCT DATA WITH PROFESSIONAL DESCRIPTIONS
+// ===========================================
+
 const productsData = {
   rice: {
     title: "Premium BPT Sannalu Rice",
@@ -61,9 +58,9 @@ const productsData = {
       {
         id: 'rice-brown',
         name: 'Brown Rice',
-        description: 'Whole grain with bran intact. Rich in fiber & vitamins.',
+        description: 'Unpolished whole grain rice with natural bran layer intact. Rich in fiber, vitamins & minerals. Handpicked from our organic fields for your healthy lifestyle.',
         tag: 'HEALTHY',
-        tagColor: '#4CAF50',
+        tagColor: '#059669',
         image: PRODUCT_IMAGES.rice.brown,
         variants: [
           { size: '5 KG', ourPrice: 375, marketPrice: 450 },
@@ -74,9 +71,9 @@ const productsData = {
       {
         id: 'rice-semi',
         name: 'Semi Polished Rice',
-        description: 'Retains bran for nutrition with softer texture.',
+        description: 'Perfectly balanced rice that retains natural bran for nutrition with softer texture. Traditional stone-ground process preserves authentic taste and aroma.',
         tag: 'BESTSELLER',
-        tagColor: '#FF9800',
+        tagColor: '#D97706',
         image: PRODUCT_IMAGES.rice.semi,
         variants: [
           { size: '5 KG', ourPrice: 350, marketPrice: 420 },
@@ -87,9 +84,9 @@ const productsData = {
       {
         id: 'rice-full',
         name: 'Full Polished Rice',
-        description: 'Completely polished, pure white. Perfect for biryanis.',
+        description: 'Premium quality pure white rice, completely polished for perfect texture. Ideal for biryanis, pulao & special occasions. Long grain, non-sticky finish.',
         tag: 'PREMIUM',
-        tagColor: '#9C27B0',
+        tagColor: '#7C3AED',
         image: PRODUCT_IMAGES.rice.full,
         variants: [
           { size: '5 KG', ourPrice: 400, marketPrice: 480 },
@@ -108,9 +105,9 @@ const productsData = {
       {
         id: 'urad-split',
         name: 'Urad Dal Split',
-        description: 'Premium split urad for soft idlis and crispy dosas.',
+        description: 'Premium quality split urad dal, hand-sorted for uniform size. Makes the softest idlis and crispiest dosas. Stone-ground fresh for authentic South Indian taste.',
         tag: 'IDLI & DOSA',
-        tagColor: '#2196F3',
+        tagColor: '#2563EB',
         image: PRODUCT_IMAGES.urad.split,
         variants: [
           { size: '1 KG', ourPrice: 180, marketPrice: 220 },
@@ -121,9 +118,9 @@ const productsData = {
       {
         id: 'urad-whole',
         name: 'Urad Whole Black',
-        description: 'Whole black urad. Perfect for crispy vadas.',
+        description: 'Whole black urad dal with skin intact. Perfect for crispy medu vadas and dal makhani. High protein content, naturally grown without chemicals.',
         tag: 'FOR VADA',
-        tagColor: '#795548',
+        tagColor: '#78716C',
         image: PRODUCT_IMAGES.urad.whole,
         variants: [
           { size: '1 KG', ourPrice: 165, marketPrice: 200 },
@@ -135,7 +132,7 @@ const productsData = {
   },
   pickles: {
     title: "Homemade Pickles",
-    subtitle: "Authentic traditional recipes from grandmother's kitchen",
+    subtitle: "Authentic recipes from grandmother's kitchen",
     description: "Traditional Telugu pickles made with pure ingredients",
     image: PRODUCT_IMAGES.pickles.category,
     subcategories: [
@@ -143,36 +140,114 @@ const productsData = {
         name: "Mango Pickles",
         icon: "🥭",
         items: [
-          { id: 'pickle-avakaya', name: 'Avakaya', description: 'Traditional spicy raw mango pickle', tag: 'SIGNATURE', tagColor: '#FF5722', image: PRODUCT_IMAGES.pickles.mango },
-          { id: 'pickle-magaya', name: 'Magaya', description: 'Sweet and tangy tender mango pickle', tag: 'POPULAR', tagColor: '#FFC107', image: PRODUCT_IMAGES.pickles.mango },
+          { 
+            id: 'pickle-avakaya', 
+            name: 'Avakaya', 
+            description: 'Traditional Andhra-style raw mango pickle made with hand-pounded spices, cold-pressed mustard oil & rock salt. Aged to perfection for authentic tangy-spicy taste. 100% homemade with pure quality ingredients.', 
+            tag: 'SIGNATURE', 
+            tagColor: '#DC2626', 
+            image: PRODUCT_IMAGES.pickles.mango 
+          },
+          { 
+            id: 'pickle-magaya', 
+            name: 'Magaya', 
+            description: 'Sweet and tangy tender mango pickle prepared with jaggery, tamarind & aromatic spices. A delightful blend of traditional flavors, handcrafted in small batches for premium quality.', 
+            tag: 'SWEET & TANGY', 
+            tagColor: '#F59E0B', 
+            image: PRODUCT_IMAGES.pickles.mango 
+          },
         ]
       },
       {
         name: "Vegetable Pickles",
         icon: "🥬",
         items: [
-          { id: 'pickle-lemon', name: 'Lemon Pickle', description: 'Tangy lemon pickle with traditional spices', tag: 'CLASSIC', tagColor: '#FFC107', image: PRODUCT_IMAGES.pickles.lemon },
-          { id: 'pickle-tomato', name: 'Tomato Pickle', description: 'Tangy tomato pickle with garlic', tag: 'TANGY', tagColor: '#F44336', image: PRODUCT_IMAGES.pickles.tomato },
-          { id: 'pickle-gongura', name: 'Gongura Pickle', description: 'Tangy sorrel leaves pickle', tag: 'TELUGU SPECIAL', tagColor: '#4CAF50', image: PRODUCT_IMAGES.pickles.gongura },
-          { id: 'pickle-brinjal', name: 'Brinjal Pickle', description: 'Roasted brinjal with spices', tag: 'SMOKY', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.brinjal },
-          { id: 'pickle-redchilli', name: 'Red Chilli Pickle', description: 'Spicy stuffed red chilli pickle', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.pickles.redchilli },
-          { id: 'pickle-drumstick', name: 'Drumstick Pickle', description: 'Tender drumstick in tangy masala', tag: 'NUTRITIOUS', tagColor: '#558B2F', image: PRODUCT_IMAGES.pickles.drumstick },
+          { 
+            id: 'pickle-lemon', 
+            name: 'Lemon Pickle', 
+            description: 'Fresh lemons marinated in aromatic spices & cold-pressed oil. Sun-dried for 15 days to develop rich tangy flavor. Natural immunity booster with Vitamin C. Pure homemade quality.', 
+            tag: 'CLASSIC', 
+            tagColor: '#FBBF24', 
+            image: PRODUCT_IMAGES.pickles.lemon 
+          },
+          { 
+            id: 'pickle-tomato', 
+            name: 'Tomato Pickle', 
+            description: 'Ripe tomatoes cooked with garlic, red chilies & traditional spices. Sweet, tangy & mildly spicy. Made fresh without preservatives, perfect for all ages. Homemade with love.', 
+            tag: 'TANGY', 
+            tagColor: '#EF4444', 
+            image: PRODUCT_IMAGES.pickles.tomato 
+          },
+          { 
+            id: 'pickle-gongura', 
+            name: 'Gongura Pickle', 
+            description: 'Authentic Telugu gongura (sorrel leaves) pickle with garlic & green chilies. Distinctive sour taste, rich in iron & vitamins. A true Andhra delicacy, 100% pure & homemade.', 
+            tag: 'TELUGU SPECIAL', 
+            tagColor: '#10B981', 
+            image: PRODUCT_IMAGES.pickles.gongura 
+          },
+          { 
+            id: 'pickle-brinjal', 
+            name: 'Brinjal Pickle', 
+            description: 'Tender brinjals roasted over wood fire, mixed with aromatic spices & sesame. Smoky flavor with homemade masala. A village-style recipe passed down generations.', 
+            tag: 'SMOKY', 
+            tagColor: '#8B5CF6', 
+            image: PRODUCT_IMAGES.pickles.brinjal 
+          },
+          { 
+            id: 'pickle-redchilli', 
+            name: 'Red Chilli Pickle', 
+            description: 'Large red chilies stuffed with aromatic spice mix & preserved in mustard oil. Bold, fiery taste for spice lovers. Handmade with premium Guntur chilies, pure quality guaranteed.', 
+            tag: 'EXTRA SPICY', 
+            tagColor: '#B91C1C', 
+            image: PRODUCT_IMAGES.pickles.redchilli 
+          },
+          { 
+            id: 'pickle-drumstick', 
+            name: 'Drumstick Pickle', 
+            description: 'Fresh tender drumsticks marinated in tangy tamarind masala. Rich in calcium & nutrients. Traditional village recipe with no artificial ingredients. Pure homemade goodness.', 
+            tag: 'NUTRITIOUS', 
+            tagColor: '#65A30D', 
+            image: PRODUCT_IMAGES.pickles.drumstick 
+          },
         ]
       },
       {
         name: "Non-Veg Pickles",
         icon: "🍗",
         items: [
-          { id: 'pickle-chicken', name: 'Chicken Pickle', description: 'Spicy boneless chicken pickle', tag: 'POPULAR', tagColor: '#E91E63', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-countrychicken', name: 'Country Chicken Pickle', description: 'Desi chicken with country spices', tag: 'DESI', tagColor: '#C2185B', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-chickenfry', name: 'Chicken Fry Pickle', description: 'Crispy fried chicken pickle', tag: 'CRISPY', tagColor: '#AD1457', image: PRODUCT_IMAGES.pickles.chicken },
-          { id: 'pickle-mutton', name: 'Mutton Pickle', description: 'Premium goat meat pickle', tag: 'PREMIUM', tagColor: '#9C27B0', image: PRODUCT_IMAGES.pickles.mutton },
-          { id: 'pickle-countrymutton', name: 'Country Mutton Pickle', description: 'Desi goat with traditional spices', tag: 'DESI', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.mutton },
-          { id: 'pickle-fish', name: 'Fish Pickle', description: 'Fresh fish in spicy marinade', tag: 'SEAFOOD', tagColor: '#00BCD4', image: PRODUCT_IMAGES.pickles.fish },
-          { id: 'pickle-countryfish', name: 'Country Fish Pickle', description: 'River fish with village spices', tag: 'SPECIAL', tagColor: '#0097A7', image: PRODUCT_IMAGES.pickles.fish },
-          { id: 'pickle-fishfry', name: 'Fish Fry Pickle', description: 'Crispy fried fish pickle', tag: 'CRISPY', tagColor: '#00838F', image: PRODUCT_IMAGES.pickles.fish },
-          { id: 'pickle-prawn', name: 'Prawn Pickle', description: 'Fresh prawns in traditional spices', tag: 'PREMIUM', tagColor: '#FF5722', image: PRODUCT_IMAGES.pickles.prawn },
-          { id: 'pickle-saltedprawn', name: 'Salted Prawn Pickle', description: 'Dry salted prawn pickle', tag: 'DRY', tagColor: '#E64A19', image: PRODUCT_IMAGES.pickles.prawn },
+          { 
+            id: 'pickle-chicken', 
+            name: 'Chicken Pickle', 
+            description: 'Tender boneless chicken pieces cooked in aromatic spices & preserved in pure gingelly oil. Made with fresh farm chicken, slow-cooked for rich flavor. 100% homemade quality.', 
+            tag: 'BESTSELLER', 
+            tagColor: '#EC4899', 
+            image: PRODUCT_IMAGES.pickles.chicken 
+          },
+          { 
+            id: 'pickle-mutton', 
+            name: 'Mutton Pickle', 
+            description: 'Premium goat meat pickle prepared with traditional Andhra spices. Tender pieces marinated for 48 hours, cooked to perfection in pure gingelly oil. Authentic homemade recipe.', 
+            tag: 'PREMIUM', 
+            tagColor: '#9333EA', 
+            image: PRODUCT_IMAGES.pickles.mutton 
+          },
+          { 
+            id: 'pickle-fish', 
+            name: 'Fish Pickle', 
+            description: 'Fresh river fish marinated in tangy tamarind & spicy masala. Boneless pieces fried golden, preserved in aromatic gingelly oil. Coastal recipe, pure homemade quality.', 
+            tag: 'SEAFOOD', 
+            tagColor: '#0891B2', 
+            image: PRODUCT_IMAGES.pickles.fish 
+          },
+          { 
+            id: 'pickle-prawn', 
+            name: 'Prawn Pickle', 
+            description: 'Fresh prawns cleaned & cooked with aromatic spices in traditional style. Crunchy texture with bold spicy flavor. Made with premium quality prawns, 100% homemade.', 
+            tag: 'PREMIUM', 
+            tagColor: '#EA580C', 
+            image: PRODUCT_IMAGES.pickles.prawn 
+          },
         ]
       }
     ],
@@ -193,14 +268,70 @@ const productsData = {
     description: "Traditional spice powders made with premium ingredients",
     image: PRODUCT_IMAGES.karam.category,
     items: [
-      { id: 'karam-vepudu', name: 'Vepudu Karam', description: 'Spicy fry powder for rice', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.karam.vepudu },
-      { id: 'karam-kandi', name: 'Kandi Podi', description: 'Aromatic toor dal powder', tag: 'CLASSIC', tagColor: '#FF9800', image: PRODUCT_IMAGES.karam.pappula },
-      { id: 'karam-pappula', name: 'Pappula Podi', description: 'Mixed lentils spice powder', tag: 'PROTEIN', tagColor: '#FFC107', image: PRODUCT_IMAGES.karam.pappula },
-      { id: 'karam-nuvvula', name: 'Nuvvula Karam', description: 'Sesame seeds powder with chilies', tag: 'NUTRITIOUS', tagColor: '#795548', image: PRODUCT_IMAGES.karam.nuvvula },
-      { id: 'karam-kobbari', name: 'Kobbari Karam', description: 'Coconut chutney powder', tag: 'SOUTH INDIAN', tagColor: '#8D6E63', image: PRODUCT_IMAGES.karam.kobbari },
-      { id: 'karam-karivepaku', name: 'Karivepaku Podi', description: 'Curry leaves powder rich in iron', tag: 'HEALTHY', tagColor: '#4CAF50', image: PRODUCT_IMAGES.karam.karivepaku },
-      { id: 'karam-munagaku', name: 'Munagaku Podi', description: 'Moringa leaves powder', tag: 'SUPERFOOD', tagColor: '#8BC34A', image: PRODUCT_IMAGES.karam.munagaku },
-      { id: 'karam-gongura', name: 'Gongura Karam', description: 'Tangy sorrel leaves powder', tag: 'TANGY', tagColor: '#689F38', image: PRODUCT_IMAGES.karam.gongura },
+      { 
+        id: 'karam-vepudu', 
+        name: 'Vepudu Karam', 
+        description: 'Spicy fry powder blend made with premium red chilies & aromatic spices. Perfect for rice, curries & stir-fries. Stone-ground fresh for authentic taste. 100% homemade & pure.', 
+        tag: 'SPICY', 
+        tagColor: '#DC2626', 
+        image: PRODUCT_IMAGES.karam.vepudu 
+      },
+      { 
+        id: 'karam-kandi', 
+        name: 'Kandi Podi', 
+        description: 'Aromatic toor dal powder roasted with red chilies & cumin. Classic Andhra podi for ghee rice & idli. Made with hand-picked dal, no additives. Pure homemade quality.', 
+        tag: 'CLASSIC', 
+        tagColor: '#F59E0B', 
+        image: PRODUCT_IMAGES.karam.pappula 
+      },
+      { 
+        id: 'karam-pappula', 
+        name: 'Pappula Podi', 
+        description: 'Mixed lentils spice powder with chana, urad & moong dal. Protein-rich, perfect for hot rice with ghee. Traditional recipe, roasted to perfection. Homemade with love.', 
+        tag: 'HIGH PROTEIN', 
+        tagColor: '#D97706', 
+        image: PRODUCT_IMAGES.karam.pappula 
+      },
+      { 
+        id: 'karam-nuvvula', 
+        name: 'Nuvvula Karam', 
+        description: 'Nutritious sesame seeds powder with red chilies & garlic. Rich in calcium & healthy fats. Perfect for idli, dosa & rice. Stone-ground fresh, 100% pure quality.', 
+        tag: 'NUTRITIOUS', 
+        tagColor: '#92400E', 
+        image: PRODUCT_IMAGES.karam.nuvvula 
+      },
+      { 
+        id: 'karam-kobbari', 
+        name: 'Kobbari Karam', 
+        description: 'Dry coconut chutney powder with aromatic spices. South Indian specialty, perfect for idli & dosa. Made with fresh copra, roasted golden brown. Pure homemade goodness.', 
+        tag: 'SOUTH INDIAN', 
+        tagColor: '#A16207', 
+        image: PRODUCT_IMAGES.karam.kobbari 
+      },
+      { 
+        id: 'karam-karivepaku', 
+        name: 'Karivepaku Podi', 
+        description: 'Fresh curry leaves powder rich in iron & antioxidants. Promotes hair growth & digestion. Sun-dried leaves ground with premium spices. 100% natural & homemade.', 
+        tag: 'HEALTHY', 
+        tagColor: '#059669', 
+        image: PRODUCT_IMAGES.karam.karivepaku 
+      },
+      { 
+        id: 'karam-munagaku', 
+        name: 'Munagaku Podi', 
+        description: 'Moringa leaves powder - a superfood rich in vitamins, minerals & protein. Boosts immunity & energy. Farm-fresh leaves, traditionally prepared. Pure homemade quality.', 
+        tag: 'SUPERFOOD', 
+        tagColor: '#16A34A', 
+        image: PRODUCT_IMAGES.karam.munagaku 
+      },
+      { 
+        id: 'karam-gongura', 
+        name: 'Gongura Karam', 
+        description: 'Tangy sorrel leaves powder with distinctive sour taste. Rich in iron & folic acid. Authentic Telugu recipe, perfect for rice & snacks. 100% homemade with pure ingredients.', 
+        tag: 'TANGY', 
+        tagColor: '#65A30D', 
+        image: PRODUCT_IMAGES.karam.gongura 
+      },
     ],
     variants: [
       { size: '100 G', ourPrice: 65, marketPrice: 85 },
@@ -208,7 +339,6 @@ const productsData = {
       { size: '500 G', ourPrice: 280, marketPrice: 370 },
     ]
   }
-  // Microgreens REMOVED as requested
 };
 
 const deliveryAreas = [
@@ -217,14 +347,33 @@ const deliveryAreas = [
   'Nizampet', 'Bachupally'
 ];
 
-// Product Image Component with fallback
+// ===========================================
+// 🎨 PREMIUM COLOR THEME
+// ===========================================
+const theme = {
+  primary: '#1B4332',      // Deep Forest Green
+  primaryLight: '#2D6A4F', // Medium Forest Green
+  primaryDark: '#081C15',  // Dark Forest
+  accent: '#D4A853',       // Golden Yellow
+  accentLight: '#E9C46A',  // Light Gold
+  success: '#40916C',      // Fresh Green
+  background: '#FEFDFB',   // Warm White
+  surface: '#FFFFFF',
+  text: '#1A1A1A',
+  textSecondary: '#5C5C5C',
+  textMuted: '#8A8A8A',
+  border: '#E8E4E0',
+  cardShadow: '0 4px 20px rgba(27, 67, 50, 0.08)',
+};
+
+// Product Image Component
 const ProductImage = ({ src, alt, className }) => {
   const [error, setError] = useState(false);
   
   if (error || !src) {
     return (
-      <div className={`${className} bg-gray-100 flex items-center justify-center`}>
-        <span className="text-3xl">📦</span>
+      <div className={`${className} bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center`}>
+        <span className="text-4xl">📦</span>
       </div>
     );
   }
@@ -245,7 +394,7 @@ const Logo = ({ className }) => {
   
   if (error || !LOGO_URL || LOGO_URL.includes('XXXXXXX')) {
     return (
-      <div className={`${className} bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg`}>
+      <div className={`${className} bg-gradient-to-br from-amber-400 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg`}>
         <span className="text-3xl">🌾</span>
       </div>
     );
@@ -255,7 +404,7 @@ const Logo = ({ className }) => {
     <img 
       src={LOGO_URL} 
       alt="BKGR Logo" 
-      className={`${className} object-contain rounded-2xl shadow-lg`}
+      className={`${className} object-cover rounded-2xl shadow-lg`}
       onError={() => setError(true)}
     />
   );
@@ -273,7 +422,7 @@ export default function BKGRApp() {
 
   useEffect(() => {
     if (currentScreen === 'splash') {
-      const timer = setTimeout(() => setCurrentScreen('home'), 2500);
+      const timer = setTimeout(() => setCurrentScreen('home'), 2800);
       return () => clearTimeout(timer);
     }
   }, [currentScreen]);
@@ -308,38 +457,59 @@ export default function BKGRApp() {
   const getCartItemCount = () => cart.reduce((total, item) => total + item.quantity, 0);
   const getDiscount = (our, market) => Math.round(((market - our) / market) * 100);
 
-  // Splash Screen - Professional Design with Logo
+  // ===========================================
+  // 🌟 SPLASH SCREEN
+  // ===========================================
   if (currentScreen === 'splash') {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-green-700 via-green-600 to-green-500 flex items-center justify-center font-sans">
-        <div className="text-center text-white animate-fade-in">
-          <Logo className="w-32 h-32 mx-auto mb-6" />
-          <h1 className="text-2xl font-bold tracking-wide mb-2">BIYAM KRISHNA GARI</h1>
-          <p className="text-lg font-medium opacity-90 mb-2">PRODUCTS</p>
-          <p className="text-sm opacity-80 mb-8">Pure. Honest. From Our Family to Yours.</p>
-          <div className="w-48 h-1.5 bg-white/30 rounded-full mx-auto overflow-hidden">
-            <div className="h-full w-1/3 bg-white rounded-full animate-loading"></div>
+      <div className="min-h-screen flex items-center justify-center font-sans relative overflow-hidden" 
+           style={{background: `linear-gradient(145deg, ${theme.primary} 0%, ${theme.primaryLight} 50%, ${theme.primary} 100%)`}}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-40 h-40 border-2 border-white/30 rounded-full"></div>
+          <div className="absolute bottom-32 right-8 w-56 h-56 border border-white/20 rounded-full"></div>
+          <div className="absolute top-1/3 right-1/4 w-28 h-28 border border-white/15 rounded-full"></div>
+        </div>
+        
+        <div className="text-center text-white z-10 animate-fade-in px-8">
+          <Logo className="w-32 h-32 mx-auto mb-8 border-4 border-white/20" />
+          <h1 className="text-3xl font-bold tracking-wide mb-2" style={{fontFamily: 'Georgia, serif'}}>
+            BIYAM KRISHNA GARI
+          </h1>
+          <p className="text-xl font-semibold mb-1" style={{color: theme.accent}}>PRODUCTS</p>
+          <p className="text-sm opacity-80 mb-12 tracking-widest">Farm to Home • Pure Quality</p>
+          
+          <div className="w-64 h-1.5 bg-white/20 rounded-full mx-auto overflow-hidden">
+            <div className="h-full w-1/3 rounded-full animate-loading" style={{background: `linear-gradient(90deg, ${theme.accent}, ${theme.accentLight})`}}></div>
           </div>
-          <p className="text-xs mt-6 tracking-widest opacity-70">Farm to Home • No Middlemen</p>
+          
+          <p className="text-xs mt-10 tracking-widest opacity-60">100% Homemade • No Preservatives • Pure Ingredients</p>
         </div>
       </div>
     );
   }
 
-  // Order Success
+  // ===========================================
+  // ✅ ORDER SUCCESS
+  // ===========================================
   if (orderPlaced) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-5 font-sans">
+      <div className="min-h-screen flex items-center justify-center p-6 font-sans" style={{background: theme.background}}>
         <div className="text-center max-w-sm">
-          <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-5xl shadow-xl">✓</div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">Order Placed Successfully!</h2>
-          <p className="text-gray-600 mb-6">Your fresh products will be prepared and delivered soon.</p>
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-4">
-            <p className="text-green-800 font-bold">📅 Made Fresh For You</p>
-            <p className="text-green-700 text-sm">Manufacturing starts from your order date</p>
+          <div className="w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-8 text-white text-5xl shadow-2xl"
+               style={{background: `linear-gradient(135deg, ${theme.success}, ${theme.primaryLight})`}}>
+            ✓
           </div>
+          <h2 className="text-2xl font-bold mb-3" style={{color: theme.text}}>Order Placed Successfully!</h2>
+          <p className="mb-8" style={{color: theme.textSecondary}}>Your fresh products will be prepared and delivered soon.</p>
+          
+          <div className="rounded-2xl p-5 mb-6 border-2" style={{background: '#F0FDF4', borderColor: '#86EFAC'}}>
+            <p className="font-bold text-lg" style={{color: theme.success}}>📅 Made Fresh For You</p>
+            <p className="text-sm mt-1" style={{color: '#166534'}}>Manufacturing starts from your order date</p>
+          </div>
+          
           <button onClick={() => { setOrderPlaced(false); setShowCheckout(false); setCart([]); setSelectedCategory(null); }} 
-                  className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg">
+                  className="w-full text-white py-4 rounded-2xl font-bold text-lg shadow-xl transition-all active:scale-98"
+                  style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
             Continue Shopping
           </button>
         </div>
@@ -347,63 +517,70 @@ export default function BKGRApp() {
     );
   }
 
-  // Checkout Screen
+  // ===========================================
+  // 🛒 CHECKOUT
+  // ===========================================
   if (showCheckout) {
     return (
-      <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center gap-4 border-b sticky top-0 z-50">
-          <button onClick={() => setShowCheckout(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold flex-1 text-gray-800">Checkout</h1>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="p-4 flex items-center gap-4 border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+          <button onClick={() => setShowCheckout(false)} 
+                  className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                  style={{background: theme.background}}>←</button>
+          <h1 className="text-lg font-bold flex-1" style={{color: theme.text}}>Checkout</h1>
         </div>
         
         <div className="p-4 pb-32">
-          {/* Order Summary */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm mb-4 border border-gray-100">
-            <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2 text-lg">📦 Order Summary</h3>
+          <div className="rounded-2xl p-5 shadow-lg mb-4" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
+            <h3 className="font-bold mb-4 flex items-center gap-2 text-lg" style={{color: theme.text}}>📦 Order Summary</h3>
             {cart.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-3 py-3 border-b border-gray-100 last:border-0">
-                <ProductImage src={item.product.image} alt={item.product.name} className="w-14 h-14 rounded-xl bg-gray-50" />
+              <div key={idx} className="flex items-center gap-3 py-3 border-b last:border-0" style={{borderColor: theme.border}}>
+                <ProductImage src={item.product.image} alt={item.product.name} className="w-14 h-14 rounded-xl" />
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-800">{item.product.name}</p>
-                  <p className="text-sm text-gray-500">{item.variant.size} × {item.quantity}</p>
+                  <p className="font-semibold" style={{color: theme.text}}>{item.product.name}</p>
+                  <p className="text-sm" style={{color: theme.textSecondary}}>{item.variant.size} × {item.quantity}</p>
                 </div>
-                <p className="font-bold text-lg text-gray-800">₹{item.variant.ourPrice * item.quantity}</p>
+                <p className="font-bold text-lg" style={{color: theme.text}}>₹{item.variant.ourPrice * item.quantity}</p>
               </div>
             ))}
-            <div className="mt-4 pt-4 border-t border-gray-200 space-y-2">
-              <div className="flex justify-between text-gray-600"><span>Subtotal</span><span>₹{getCartTotal()}</span></div>
-              <div className="flex justify-between text-green-600 font-semibold"><span>You Save</span><span>₹{getCartSavings()}</span></div>
-              <div className="flex justify-between text-gray-600"><span>Delivery</span><span className="text-green-600 font-medium">FREE</span></div>
-              <div className="flex justify-between text-xl font-bold text-gray-900 pt-3 border-t"><span>Total</span><span>₹{getCartTotal()}</span></div>
+            <div className="mt-4 pt-4 border-t space-y-2" style={{borderColor: theme.border}}>
+              <div className="flex justify-between" style={{color: theme.textSecondary}}><span>Subtotal</span><span>₹{getCartTotal()}</span></div>
+              <div className="flex justify-between font-semibold" style={{color: theme.success}}><span>You Save</span><span>₹{getCartSavings()}</span></div>
+              <div className="flex justify-between" style={{color: theme.textSecondary}}><span>Delivery</span><span className="font-medium" style={{color: theme.success}}>FREE</span></div>
+              <div className="flex justify-between text-xl font-bold pt-3 border-t" style={{color: theme.text, borderColor: theme.border}}><span>Total</span><span>₹{getCartTotal()}</span></div>
             </div>
           </div>
 
-          {/* Delivery Form */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm mb-4 border border-gray-100">
-            <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2 text-lg">📍 Delivery Details</h3>
-            <input type="text" placeholder="Full Name *" className="w-full p-4 border border-gray-200 rounded-xl mb-3 focus:border-green-500 focus:outline-none" />
-            <input type="tel" placeholder="Phone Number *" className="w-full p-4 border border-gray-200 rounded-xl mb-3 focus:border-green-500 focus:outline-none" />
-            <select className="w-full p-4 border border-gray-200 rounded-xl mb-3 bg-white focus:border-green-500 focus:outline-none">
+          <div className="rounded-2xl p-5 shadow-lg mb-4" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
+            <h3 className="font-bold mb-4 flex items-center gap-2 text-lg" style={{color: theme.text}}>📍 Delivery Details</h3>
+            <input type="text" placeholder="Full Name *" className="w-full p-4 border rounded-xl mb-3 focus:outline-none transition-all" 
+                   style={{borderColor: theme.border, background: theme.background}} />
+            <input type="tel" placeholder="Phone Number *" className="w-full p-4 border rounded-xl mb-3 focus:outline-none" 
+                   style={{borderColor: theme.border, background: theme.background}} />
+            <select className="w-full p-4 border rounded-xl mb-3 focus:outline-none" style={{borderColor: theme.border, background: theme.background}}>
               <option value="">Select Delivery Area *</option>
               {deliveryAreas.map(area => <option key={area} value={area}>{area}</option>)}
             </select>
-            <textarea placeholder="Full Address *" className="w-full p-4 border border-gray-200 rounded-xl resize-none focus:border-green-500 focus:outline-none" rows={3}></textarea>
+            <textarea placeholder="Full Address *" className="w-full p-4 border rounded-xl resize-none focus:outline-none" 
+                      style={{borderColor: theme.border, background: theme.background}} rows={3}></textarea>
           </div>
 
-          {/* Fresh Badge */}
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 flex items-center gap-4">
-            <div className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center text-white text-2xl">⏰</div>
+          <div className="rounded-2xl p-5 mb-6 flex items-center gap-4" style={{background: `linear-gradient(135deg, ${theme.accent}15, ${theme.accentLight}20)`, border: `2px solid ${theme.accent}40`}}>
+            <div className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl" style={{background: theme.accent}}>⏰</div>
             <div>
-              <p className="font-bold text-green-800">Made Fresh On Order</p>
-              <p className="text-green-700 text-sm">Manufacturing date = Your order date</p>
+              <p className="font-bold" style={{color: '#92400E'}}>Made Fresh On Order</p>
+              <p className="text-sm" style={{color: '#A16207'}}>Manufacturing date = Your order date</p>
             </div>
           </div>
 
-          <button onClick={() => setOrderPlaced(true)} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg mb-3">
+          <button onClick={() => setOrderPlaced(true)} 
+                  className="w-full text-white py-4 rounded-2xl font-bold text-lg shadow-xl mb-3 transition-all active:scale-98"
+                  style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
             Place Order • ₹{getCartTotal()}
           </button>
           <a href={`https://wa.me/917993822600?text=New Order:%0A${cart.map(i => `${i.product.name} - ${i.variant.size} x ${i.quantity}`).join('%0A')}%0ATotal: ₹${getCartTotal()}`} 
-             className="flex items-center justify-center gap-2 w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg">
+             className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-bold text-lg text-white"
+             style={{background: '#25D366'}}>
             💬 Order via WhatsApp
           </a>
         </div>
@@ -411,66 +588,77 @@ export default function BKGRApp() {
     );
   }
 
-  // Cart Screen
+  // ===========================================
+  // 🛒 CART
+  // ===========================================
   if (showCart) {
     return (
-      <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center gap-4 border-b sticky top-0 z-50">
-          <button onClick={() => setShowCart(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold flex-1 text-gray-800">Your Cart ({getCartItemCount()})</h1>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="p-4 flex items-center gap-4 border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+          <button onClick={() => setShowCart(false)} 
+                  className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                  style={{background: theme.background}}>←</button>
+          <h1 className="text-lg font-bold flex-1" style={{color: theme.text}}>Your Cart ({getCartItemCount()})</h1>
         </div>
         
         {cart.length === 0 ? (
           <div className="text-center py-20 px-5">
-            <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6" style={{background: theme.background}}>
               <span className="text-6xl opacity-40">🛒</span>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Your cart is empty</h3>
-            <p className="text-gray-500 mb-6">Add fresh farm products!</p>
-            <button onClick={() => setShowCart(false)} className="bg-green-600 text-white px-8 py-3 rounded-xl font-bold">
+            <h3 className="text-xl font-bold mb-2" style={{color: theme.text}}>Your cart is empty</h3>
+            <p className="mb-6" style={{color: theme.textSecondary}}>Add fresh farm products!</p>
+            <button onClick={() => setShowCart(false)} 
+                    className="text-white px-8 py-3 rounded-xl font-bold"
+                    style={{background: theme.primary}}>
               Start Shopping
             </button>
           </div>
         ) : (
           <div className="p-4 pb-44">
             {cart.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-4 mb-3 shadow-sm border border-gray-100">
+              <div key={idx} className="rounded-2xl p-4 mb-3 shadow-lg" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
                 <div className="flex gap-4">
-                  <ProductImage src={item.product.image} alt={item.product.name} className="w-20 h-20 rounded-xl bg-gray-50" />
+                  <ProductImage src={item.product.image} alt={item.product.name} className="w-20 h-20 rounded-xl" />
                   <div className="flex-1">
-                    <h4 className="font-bold text-gray-800">{item.product.name}</h4>
-                    <p className="text-sm text-gray-500 mb-2">{item.variant.size}</p>
+                    <h4 className="font-bold" style={{color: theme.text}}>{item.product.name}</h4>
+                    <p className="text-sm mb-2" style={{color: theme.textSecondary}}>{item.variant.size}</p>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-green-600 text-lg">₹{item.variant.ourPrice}</span>
-                      <span className="text-sm text-gray-400 line-through">₹{item.variant.marketPrice}</span>
-                      <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full font-bold">{getDiscount(item.variant.ourPrice, item.variant.marketPrice)}% OFF</span>
+                      <span className="font-bold text-lg" style={{color: theme.success}}>₹{item.variant.ourPrice}</span>
+                      <span className="text-sm line-through" style={{color: theme.textMuted}}>₹{item.variant.marketPrice}</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full font-bold text-white" style={{background: theme.success}}>
+                        {getDiscount(item.variant.ourPrice, item.variant.marketPrice)}% OFF
+                      </span>
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                  <div className="flex items-center bg-green-600 rounded-xl overflow-hidden">
-                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, -1)} className="w-10 h-10 text-white font-bold text-xl">−</button>
+                <div className="flex items-center justify-between mt-4 pt-4 border-t" style={{borderColor: theme.border}}>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{background: theme.primary}}>
+                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, -1)} 
+                            className="w-10 h-10 text-white font-bold text-xl">−</button>
                     <span className="w-12 text-center text-white font-bold text-lg">{item.quantity}</span>
-                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, 1)} className="w-10 h-10 text-white font-bold text-xl">+</button>
+                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, 1)} 
+                            className="w-10 h-10 text-white font-bold text-xl">+</button>
                   </div>
-                  <p className="font-bold text-xl text-gray-800">₹{item.variant.ourPrice * item.quantity}</p>
+                  <p className="font-bold text-xl" style={{color: theme.text}}>₹{item.variant.ourPrice * item.quantity}</p>
                 </div>
               </div>
             ))}
             
-            {/* Summary */}
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-5 mt-4">
-              <div className="flex justify-between mb-2 text-gray-600"><span>Items ({getCartItemCount()})</span><span>₹{getCartTotal()}</span></div>
-              <div className="flex justify-between mb-2"><span className="text-gray-600">Delivery</span><span className="text-green-600 font-semibold">FREE</span></div>
-              <div className="flex justify-between text-green-600 font-semibold mb-3"><span>You Save</span><span>₹{getCartSavings()}</span></div>
-              <div className="flex justify-between text-xl font-bold pt-3 border-t border-green-200"><span>Grand Total</span><span>₹{getCartTotal()}</span></div>
+            <div className="rounded-2xl p-5 mt-4" style={{background: `linear-gradient(135deg, ${theme.accent}15, ${theme.accentLight}20)`, border: `2px solid ${theme.accent}40`}}>
+              <div className="flex justify-between mb-2" style={{color: theme.textSecondary}}><span>Items ({getCartItemCount()})</span><span>₹{getCartTotal()}</span></div>
+              <div className="flex justify-between mb-2"><span style={{color: theme.textSecondary}}>Delivery</span><span className="font-semibold" style={{color: theme.success}}>FREE</span></div>
+              <div className="flex justify-between font-semibold mb-3" style={{color: theme.success}}><span>You Save</span><span>₹{getCartSavings()}</span></div>
+              <div className="flex justify-between text-xl font-bold pt-3 border-t" style={{borderColor: theme.accent}}><span>Grand Total</span><span>₹{getCartTotal()}</span></div>
             </div>
           </div>
         )}
 
         {cart.length > 0 && (
-          <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 max-w-md mx-auto">
-            <button onClick={() => setShowCheckout(true)} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg">
+          <div className="fixed bottom-0 left-0 right-0 border-t p-4 max-w-md mx-auto" style={{background: theme.surface, borderColor: theme.border}}>
+            <button onClick={() => setShowCheckout(true)} 
+                    className="w-full text-white py-4 rounded-2xl font-bold text-lg shadow-xl transition-all active:scale-98"
+                    style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
               Proceed to Checkout • ₹{getCartTotal()}
             </button>
           </div>
@@ -479,7 +667,9 @@ export default function BKGRApp() {
     );
   }
 
-  // Product Detail Modal
+  // ===========================================
+  // 📦 PRODUCT DETAIL
+  // ===========================================
   if (selectedProduct) {
     const variants = selectedCategory === 'pickles' 
       ? (['chicken', 'mutton', 'fish', 'prawn'].some(m => selectedProduct.id.includes(m)) 
@@ -490,57 +680,64 @@ export default function BKGRApp() {
         : selectedProduct.variants;
 
     return (
-      <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
-          <button onClick={() => setSelectedProduct(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold text-gray-800">Product Details</h1>
-          <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+          <button onClick={() => setSelectedProduct(null)} 
+                  className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                  style={{background: theme.background}}>←</button>
+          <h1 className="text-lg font-bold" style={{color: theme.text}}>Product Details</h1>
+          <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
             <span className="text-2xl">🛒</span>
-            {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+            {getCartItemCount() > 0 && (
+              <span className="absolute -top-1 -right-1 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                    style={{background: theme.primary}}>{getCartItemCount()}</span>
+            )}
           </button>
         </div>
         
-        {/* Product Image */}
-        <div className="bg-white p-8 flex items-center justify-center relative">
-          <div className="absolute top-4 left-4 bg-green-600 text-white text-sm px-3 py-1 rounded-full font-bold">
+        <div className="p-8 flex items-center justify-center relative" style={{background: theme.surface}}>
+          <div className="absolute top-4 left-4 text-white text-sm px-3 py-1.5 rounded-full font-bold" style={{background: theme.success}}>
             {getDiscount(variants[0].ourPrice, variants[0].marketPrice)}% OFF
           </div>
-          <div className="w-48 h-48 bg-gray-50 rounded-3xl flex items-center justify-center overflow-hidden border border-gray-100">
+          <div className="w-48 h-48 rounded-3xl flex items-center justify-center overflow-hidden" 
+               style={{background: theme.background, border: `2px solid ${theme.border}`}}>
             <ProductImage src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full" />
           </div>
         </div>
         
-        {/* Product Info */}
-        <div className="bg-white p-6 pb-36 border-t border-gray-100">
-          <div className="flex items-start justify-between mb-3">
-            <h2 className="text-2xl font-bold text-gray-800 flex-1 pr-4">{selectedProduct.name}</h2>
+        <div className="p-6 pb-36 border-t" style={{background: theme.surface, borderColor: theme.border}}>
+          <div className="flex items-start justify-between mb-4">
+            <h2 className="text-2xl font-bold flex-1 pr-4" style={{color: theme.text}}>{selectedProduct.name}</h2>
             <span className="px-3 py-1.5 rounded-full text-xs font-bold text-white" style={{backgroundColor: selectedProduct.tagColor}}>{selectedProduct.tag}</span>
           </div>
-          <p className="text-gray-600 mb-5 leading-relaxed">{selectedProduct.description}</p>
+          <p className="mb-6 leading-relaxed" style={{color: theme.textSecondary}}>{selectedProduct.description}</p>
           
-          {/* Fresh Badge */}
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white text-xl">🌿</div>
+          <div className="rounded-2xl p-4 mb-6 flex items-center gap-4" style={{background: '#F0FDF4', border: '2px solid #86EFAC'}}>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl" style={{background: theme.success}}>🌿</div>
             <div>
-              <p className="font-bold text-green-800">Made Fresh On Order</p>
-              <p className="text-green-700 text-sm">Manufacturing date = Your order date</p>
+              <p className="font-bold" style={{color: theme.success}}>Made Fresh On Order</p>
+              <p className="text-sm" style={{color: '#166534'}}>Manufacturing date = Your order date</p>
             </div>
           </div>
 
-          <h3 className="font-bold text-gray-800 mb-4 text-lg">Select Size</h3>
+          <h3 className="font-bold mb-4 text-lg" style={{color: theme.text}}>Select Size</h3>
           
           {variants.map((variant, idx) => (
-            <div key={idx} className="border-2 border-gray-100 rounded-2xl p-4 mb-3 flex items-center justify-between hover:border-green-500 transition-all cursor-pointer">
+            <div key={idx} className="rounded-2xl p-4 mb-3 flex items-center justify-between transition-all cursor-pointer hover:shadow-lg"
+                 style={{border: `2px solid ${theme.border}`, background: theme.surface}}>
               <div>
-                <p className="font-bold text-gray-800 text-lg">{variant.size}</p>
+                <p className="font-bold text-lg" style={{color: theme.text}}>{variant.size}</p>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-2xl font-bold text-green-600">₹{variant.ourPrice}</span>
-                  <span className="text-gray-400 line-through">₹{variant.marketPrice}</span>
-                  <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-bold">{getDiscount(variant.ourPrice, variant.marketPrice)}% OFF</span>
+                  <span className="text-2xl font-bold" style={{color: theme.success}}>₹{variant.ourPrice}</span>
+                  <span className="line-through" style={{color: theme.textMuted}}>₹{variant.marketPrice}</span>
+                  <span className="text-xs px-2 py-1 rounded-full font-bold text-white" style={{background: theme.success}}>
+                    {getDiscount(variant.ourPrice, variant.marketPrice)}% OFF
+                  </span>
                 </div>
               </div>
               <button onClick={() => addToCart(selectedProduct, variant, selectedCategory)} 
-                      className="bg-green-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg">
+                      className="text-white px-6 py-3 rounded-xl font-bold shadow-lg transition-all active:scale-95"
+                      style={{background: theme.primary}}>
                 ADD
               </button>
             </div>
@@ -548,30 +745,39 @@ export default function BKGRApp() {
         </div>
 
         {getCartItemCount() > 0 && (
-          <div onClick={() => setShowCart(true)} className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md bg-green-600 rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50">
+          <div onClick={() => setShowCart(true)} 
+               className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
+               style={{background: theme.primary}}>
             <div>
               <span className="text-white font-bold">{getCartItemCount()} items</span>
-              <span className="block text-green-200 text-sm">₹{getCartTotal()}</span>
+              <span className="block text-sm" style={{color: theme.accentLight}}>₹{getCartTotal()}</span>
             </div>
-            <span className="text-white font-bold bg-green-700 px-4 py-2 rounded-xl">View Cart →</span>
+            <span className="text-white font-bold px-4 py-2 rounded-xl" style={{background: theme.primaryLight}}>View Cart →</span>
           </div>
         )}
       </div>
     );
   }
 
-  // Pickle Subcategory View
+  // ===========================================
+  // 🥒 PICKLE SUBCATEGORY
+  // ===========================================
   if (selectedCategory === 'pickles' && selectedSubcategory) {
     const subcat = productsData.pickles.subcategories.find(s => s.name === selectedSubcategory);
     
     return (
-      <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
-          <button onClick={() => setSelectedSubcategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold text-gray-800">{subcat.icon} {subcat.name}</h1>
-          <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+          <button onClick={() => setSelectedSubcategory(null)} 
+                  className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                  style={{background: theme.background}}>←</button>
+          <h1 className="text-lg font-bold" style={{color: theme.text}}>{subcat.icon} {subcat.name}</h1>
+          <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
             <span className="text-2xl">🛒</span>
-            {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+            {getCartItemCount() > 0 && (
+              <span className="absolute -top-1 -right-1 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                    style={{background: theme.primary}}>{getCartItemCount()}</span>
+            )}
           </button>
         </div>
 
@@ -581,25 +787,27 @@ export default function BKGRApp() {
               const variants = subcat.name === 'Non-Veg Pickles' ? productsData.pickles.nonVegVariants : productsData.pickles.defaultVariants;
               return (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                     className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                     className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
+                     style={{background: theme.surface, boxShadow: theme.cardShadow}}>
                   <div className="relative">
-                    <div className="bg-gray-50 h-36 flex items-center justify-center p-4">
+                    <div className="h-36 flex items-center justify-center p-4" style={{background: theme.background}}>
                       <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
                     </div>
-                    <span className="absolute top-2 left-2 bg-green-600 text-white text-[11px] px-2 py-1 rounded-lg font-bold">
+                    <span className="absolute top-2 left-2 text-white text-[11px] px-2 py-1 rounded-lg font-bold" style={{background: theme.success}}>
                       {getDiscount(variants[0].ourPrice, variants[0].marketPrice)}% OFF
                     </span>
                   </div>
                   <div className="p-3">
-                    <h4 className="font-bold text-gray-800 text-sm mb-1">{product.name}</h4>
-                    <p className="text-gray-500 text-xs mb-2">250g / 500g / 1kg</p>
+                    <h4 className="font-bold text-sm mb-1" style={{color: theme.text}}>{product.name}</h4>
+                    <p className="text-xs mb-2" style={{color: theme.textMuted}}>250g / 500g / 1kg</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-green-600">₹{variants[0].ourPrice}</span>
-                        <span className="text-gray-400 line-through text-xs ml-1">₹{variants[0].marketPrice}</span>
+                        <span className="font-bold" style={{color: theme.success}}>₹{variants[0].ourPrice}</span>
+                        <span className="line-through text-xs ml-1" style={{color: theme.textMuted}}>₹{variants[0].marketPrice}</span>
                       </div>
                       <button onClick={(e) => { e.stopPropagation(); addToCart(product, variants[0], 'pickles'); }} 
-                              className="border-2 border-green-600 text-green-600 px-3 py-1.5 rounded-lg text-sm font-bold">
+                              className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all"
+                              style={{border: `2px solid ${theme.primary}`, color: theme.primary}}>
                         ADD
                       </button>
                     </div>
@@ -611,32 +819,41 @@ export default function BKGRApp() {
         </div>
 
         {getCartItemCount() > 0 && (
-          <div onClick={() => setShowCart(true)} className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md bg-green-600 rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50">
+          <div onClick={() => setShowCart(true)} 
+               className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
+               style={{background: theme.primary}}>
             <div>
               <span className="text-white font-bold">{getCartItemCount()} items</span>
-              <span className="block text-green-200 text-sm">₹{getCartTotal()}</span>
+              <span className="block text-sm" style={{color: theme.accentLight}}>₹{getCartTotal()}</span>
             </div>
-            <span className="text-white font-bold bg-green-700 px-4 py-2 rounded-xl">View Cart →</span>
+            <span className="text-white font-bold px-4 py-2 rounded-xl" style={{background: theme.primaryLight}}>View Cart →</span>
           </div>
         )}
       </div>
     );
   }
 
-  // Category Views
+  // ===========================================
+  // 📂 CATEGORY VIEWS
+  // ===========================================
   if (selectedCategory) {
     const category = productsData[selectedCategory];
     
-    // Pickles with Subcategories
+    // Pickles
     if (selectedCategory === 'pickles') {
       return (
-        <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-          <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
-            <button onClick={() => setSelectedCategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-            <h1 className="text-lg font-bold text-gray-800">🥒 Homemade Pickles</h1>
-            <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
+        <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+          <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+            <button onClick={() => setSelectedCategory(null)} 
+                    className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                    style={{background: theme.background}}>←</button>
+            <h1 className="text-lg font-bold" style={{color: theme.text}}>🥒 Homemade Pickles</h1>
+            <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
               <span className="text-2xl">🛒</span>
-              {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+              {getCartItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                      style={{background: theme.primary}}>{getCartItemCount()}</span>
+              )}
             </button>
           </div>
 
@@ -644,22 +861,24 @@ export default function BKGRApp() {
             {category.subcategories.map((subcat, idx) => (
               <div key={idx} className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl">{subcat.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-800">{subcat.name}</h3>
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style={{background: `${theme.accent}20`}}>{subcat.icon}</div>
+                  <h3 className="text-lg font-bold" style={{color: theme.text}}>{subcat.name}</h3>
+                  <span className="text-sm ml-auto" style={{color: theme.textMuted}}>{subcat.items.length} items</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {subcat.items.slice(0, 4).map(product => {
                     const variants = subcat.name === 'Non-Veg Pickles' ? category.nonVegVariants : category.defaultVariants;
                     return (
                       <div key={product.id} onClick={() => { setSelectedSubcategory(subcat.name); setSelectedProduct(product); }} 
-                           className="bg-white rounded-xl p-3 shadow-sm border border-gray-100 cursor-pointer">
-                        <div className="bg-gray-50 w-full h-20 rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+                           className="rounded-xl p-3 shadow-lg cursor-pointer transition-all hover:shadow-xl"
+                           style={{background: theme.surface, boxShadow: theme.cardShadow}}>
+                        <div className="w-full h-20 rounded-lg flex items-center justify-center mb-2 overflow-hidden" style={{background: theme.background}}>
                           <ProductImage src={product.image} alt={product.name} className="w-16 h-16 rounded-lg" />
                         </div>
-                        <h4 className="font-bold text-gray-800 text-sm truncate">{product.name}</h4>
+                        <h4 className="font-bold text-sm truncate" style={{color: theme.text}}>{product.name}</h4>
                         <div className="flex items-center gap-1 mt-1">
-                          <span className="font-bold text-green-600 text-sm">₹{variants[0].ourPrice}</span>
-                          <span className="text-gray-400 line-through text-xs">₹{variants[0].marketPrice}</span>
+                          <span className="font-bold text-sm" style={{color: theme.success}}>₹{variants[0].ourPrice}</span>
+                          <span className="line-through text-xs" style={{color: theme.textMuted}}>₹{variants[0].marketPrice}</span>
                         </div>
                       </div>
                     );
@@ -667,7 +886,8 @@ export default function BKGRApp() {
                 </div>
                 {subcat.items.length > 4 && (
                   <button onClick={() => setSelectedSubcategory(subcat.name)} 
-                          className="w-full mt-3 text-green-600 font-bold text-sm py-3 border-2 border-green-200 rounded-xl bg-green-50">
+                          className="w-full mt-3 font-bold text-sm py-3 rounded-xl transition-all"
+                          style={{color: theme.primary, border: `2px solid ${theme.primary}`, background: `${theme.primary}08`}}>
                     View All {subcat.items.length} {subcat.name} →
                   </button>
                 )}
@@ -676,58 +896,67 @@ export default function BKGRApp() {
           </div>
 
           {getCartItemCount() > 0 && (
-            <div onClick={() => setShowCart(true)} className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md bg-green-600 rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50">
+            <div onClick={() => setShowCart(true)} 
+                 className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
+                 style={{background: theme.primary}}>
               <div>
                 <span className="text-white font-bold">{getCartItemCount()} items</span>
-                <span className="block text-green-200 text-sm">₹{getCartTotal()}</span>
+                <span className="block text-sm" style={{color: theme.accentLight}}>₹{getCartTotal()}</span>
               </div>
-              <span className="text-white font-bold bg-green-700 px-4 py-2 rounded-xl">View Cart →</span>
+              <span className="text-white font-bold px-4 py-2 rounded-xl" style={{background: theme.primaryLight}}>View Cart →</span>
             </div>
           )}
         </div>
       );
     }
 
-    // Karam Grid
+    // Karam
     if (selectedCategory === 'karam') {
       return (
-        <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-          <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
-            <button onClick={() => setSelectedCategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-            <h1 className="text-lg font-bold text-gray-800">{category.title}</h1>
-            <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
+        <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+          <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+            <button onClick={() => setSelectedCategory(null)} 
+                    className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                    style={{background: theme.background}}>←</button>
+            <h1 className="text-lg font-bold" style={{color: theme.text}}>🌶️ {category.title}</h1>
+            <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
               <span className="text-2xl">🛒</span>
-              {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+              {getCartItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                      style={{background: theme.primary}}>{getCartItemCount()}</span>
+              )}
             </button>
           </div>
 
-          <div className="bg-green-600 p-5">
-            <p className="text-green-100 text-center">{category.subtitle}</p>
+          <div className="p-5" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
+            <p className="text-center" style={{color: theme.accentLight}}>{category.subtitle}</p>
           </div>
 
           <div className="p-4 pb-28">
             <div className="grid grid-cols-2 gap-4">
               {category.items.map(product => (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                     className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                     className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
+                     style={{background: theme.surface, boxShadow: theme.cardShadow}}>
                   <div className="relative">
-                    <div className="bg-gray-50 h-28 flex items-center justify-center">
+                    <div className="h-28 flex items-center justify-center" style={{background: theme.background}}>
                       <ProductImage src={product.image} alt={product.name} className="w-20 h-20 rounded-xl" />
                     </div>
-                    <span className="absolute top-2 left-2 bg-green-600 text-white text-[11px] px-2 py-1 rounded-lg font-bold">
+                    <span className="absolute top-2 left-2 text-white text-[11px] px-2 py-1 rounded-lg font-bold" style={{background: theme.success}}>
                       {getDiscount(category.variants[0].ourPrice, category.variants[0].marketPrice)}% OFF
                     </span>
                   </div>
                   <div className="p-3">
-                    <h4 className="font-bold text-gray-800 text-sm mb-1">{product.name}</h4>
-                    <p className="text-gray-500 text-xs mb-2">{category.variants.map(v => v.size).join(' / ')}</p>
+                    <h4 className="font-bold text-sm mb-1" style={{color: theme.text}}>{product.name}</h4>
+                    <p className="text-xs mb-2" style={{color: theme.textMuted}}>{category.variants.map(v => v.size).join(' / ')}</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-green-600">₹{category.variants[0].ourPrice}</span>
-                        <span className="text-gray-400 line-through text-xs ml-1">₹{category.variants[0].marketPrice}</span>
+                        <span className="font-bold" style={{color: theme.success}}>₹{category.variants[0].ourPrice}</span>
+                        <span className="line-through text-xs ml-1" style={{color: theme.textMuted}}>₹{category.variants[0].marketPrice}</span>
                       </div>
                       <button onClick={(e) => { e.stopPropagation(); addToCart(product, category.variants[0], selectedCategory); }} 
-                              className="border-2 border-green-600 text-green-600 px-3 py-1.5 rounded-lg text-sm font-bold">
+                              className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all"
+                              style={{border: `2px solid ${theme.primary}`, color: theme.primary}}>
                         ADD
                       </button>
                     </div>
@@ -738,60 +967,69 @@ export default function BKGRApp() {
           </div>
 
           {getCartItemCount() > 0 && (
-            <div onClick={() => setShowCart(true)} className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md bg-green-600 rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50">
+            <div onClick={() => setShowCart(true)} 
+                 className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
+                 style={{background: theme.primary}}>
               <div>
                 <span className="text-white font-bold">{getCartItemCount()} items</span>
-                <span className="block text-green-200 text-sm">₹{getCartTotal()}</span>
+                <span className="block text-sm" style={{color: theme.accentLight}}>₹{getCartTotal()}</span>
               </div>
-              <span className="text-white font-bold bg-green-700 px-4 py-2 rounded-xl">View Cart →</span>
+              <span className="text-white font-bold px-4 py-2 rounded-xl" style={{background: theme.primaryLight}}>View Cart →</span>
             </div>
           )}
         </div>
       );
     }
 
-    // Rice & Urad List View
+    // Rice & Urad
     return (
-      <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
-          <button onClick={() => setSelectedCategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold text-gray-800">{category.title}</h1>
-          <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
+          <button onClick={() => setSelectedCategory(null)} 
+                  className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
+                  style={{background: theme.background}}>←</button>
+          <h1 className="text-lg font-bold" style={{color: theme.text}}>{category.title}</h1>
+          <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
             <span className="text-2xl">🛒</span>
-            {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+            {getCartItemCount() > 0 && (
+              <span className="absolute -top-1 -right-1 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                    style={{background: theme.primary}}>{getCartItemCount()}</span>
+            )}
           </button>
         </div>
 
-        <div className="bg-green-600 p-6">
+        <div className="p-6" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
           <h2 className="text-white font-bold text-xl">{category.title}</h2>
-          <p className="text-green-100">{category.subtitle}</p>
+          <p style={{color: theme.accentLight}}>{category.subtitle}</p>
         </div>
 
         <div className="p-4 pb-28">
           {category.items.map(product => (
             <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                 className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4 border border-gray-100 cursor-pointer">
+                 className="rounded-2xl overflow-hidden shadow-lg mb-4 cursor-pointer transition-all hover:shadow-xl"
+                 style={{background: theme.surface, boxShadow: theme.cardShadow}}>
               <div className="flex">
-                <div className="w-32 bg-gray-50 flex items-center justify-center p-4 relative">
+                <div className="w-32 flex items-center justify-center p-4 relative" style={{background: theme.background}}>
                   <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
-                  <span className="absolute top-2 left-2 bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-lg font-bold">
+                  <span className="absolute top-2 left-2 text-white text-[10px] px-2 py-0.5 rounded-lg font-bold" style={{background: theme.success}}>
                     {getDiscount(product.variants[0].ourPrice, product.variants[0].marketPrice)}% OFF
                   </span>
                 </div>
                 <div className="flex-1 p-4">
                   <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-bold text-gray-800 text-lg">{product.name}</h4>
+                    <h4 className="font-bold text-lg" style={{color: theme.text}}>{product.name}</h4>
                     <span className="text-[10px] px-2 py-1 rounded-full text-white font-bold" style={{backgroundColor: product.tagColor}}>{product.tag}</span>
                   </div>
-                  <p className="text-gray-500 text-sm mb-2">{product.description}</p>
-                  <p className="text-gray-400 text-xs mb-3">{product.variants.map(v => v.size).join(' • ')}</p>
+                  <p className="text-sm mb-2 line-clamp-2" style={{color: theme.textSecondary}}>{product.description}</p>
+                  <p className="text-xs mb-3" style={{color: theme.textMuted}}>{product.variants.map(v => v.size).join(' • ')}</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="font-bold text-green-600 text-xl">₹{product.variants[0].ourPrice}</span>
-                      <span className="text-gray-400 line-through text-sm ml-2">₹{product.variants[0].marketPrice}</span>
+                      <span className="font-bold text-xl" style={{color: theme.success}}>₹{product.variants[0].ourPrice}</span>
+                      <span className="text-sm line-through ml-2" style={{color: theme.textMuted}}>₹{product.variants[0].marketPrice}</span>
                     </div>
                     <button onClick={(e) => { e.stopPropagation(); addToCart(product, product.variants[0], selectedCategory); }} 
-                            className="border-2 border-green-600 text-green-600 px-4 py-2 rounded-xl font-bold">
+                            className="px-4 py-2 rounded-xl font-bold transition-all"
+                            style={{border: `2px solid ${theme.primary}`, color: theme.primary}}>
                       ADD
                     </button>
                   </div>
@@ -802,81 +1040,92 @@ export default function BKGRApp() {
         </div>
 
         {getCartItemCount() > 0 && (
-          <div onClick={() => setShowCart(true)} className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md bg-green-600 rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50">
+          <div onClick={() => setShowCart(true)} 
+               className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
+               style={{background: theme.primary}}>
             <div>
               <span className="text-white font-bold">{getCartItemCount()} items</span>
-              <span className="block text-green-200 text-sm">₹{getCartTotal()}</span>
+              <span className="block text-sm" style={{color: theme.accentLight}}>₹{getCartTotal()}</span>
             </div>
-            <span className="text-white font-bold bg-green-700 px-4 py-2 rounded-xl">View Cart →</span>
+            <span className="text-white font-bold px-4 py-2 rounded-xl" style={{background: theme.primaryLight}}>View Cart →</span>
           </div>
         )}
       </div>
     );
   }
 
-  // Home Screen - Professional Design
+  // ===========================================
+  // 🏠 HOME SCREEN
+  // ===========================================
   return (
-    <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto pb-28">
-      {/* Header with Logo */}
-      <div className="bg-green-600 p-4 flex items-center justify-between">
+    <div className="min-h-screen font-sans max-w-md mx-auto pb-28" style={{background: theme.background}}>
+      {/* Header */}
+      <div className="p-4 flex items-center justify-between" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
         <div className="flex items-center gap-3">
-          <Logo className="w-14 h-14" />
+          <Logo className="w-14 h-14 border-2 border-white/20" />
           <div className="text-white">
-            <h1 className="font-bold text-lg leading-tight">BIYAM KRISHNA GARI</h1>
-            <p className="text-xs text-green-200">Pure. Honest. From Our Family to Yours.</p>
+            <h1 className="font-bold text-lg leading-tight" style={{fontFamily: 'Georgia, serif'}}>BIYAM KRISHNA GARI</h1>
+            <p className="text-xs" style={{color: theme.accentLight}}>Farm to Home • Pure Quality</p>
           </div>
         </div>
-        <button onClick={() => setShowCart(true)} className="relative w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+        <button onClick={() => setShowCart(true)} 
+                className="relative w-12 h-12 rounded-xl flex items-center justify-center"
+                style={{background: 'rgba(255,255,255,0.15)'}}>
           <span className="text-2xl">🛒</span>
-          {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+          {getCartItemCount() > 0 && (
+            <span className="absolute -top-1 -right-1 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold"
+                  style={{background: '#EF4444'}}>{getCartItemCount()}</span>
+          )}
         </button>
       </div>
 
-      {/* Hero Banner - Clean Design */}
+      {/* Hero */}
       <div className="p-4">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-          <span className="inline-block bg-green-100 text-green-700 text-xs px-4 py-1.5 rounded-full font-bold mb-3">🎉 FRESH PROMISE</span>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Made Fresh On Order</h2>
-          <p className="text-gray-600 mb-4">Manufacturing date = Your order date</p>
+        <div className="rounded-2xl p-6 shadow-lg relative overflow-hidden" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
+          <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10" style={{background: theme.accent, transform: 'translate(30%, -30%)'}}></div>
+          <span className="inline-block text-xs px-4 py-1.5 rounded-full font-bold mb-3" style={{background: `${theme.accent}20`, color: '#92400E'}}>🎉 FRESH PROMISE</span>
+          <h2 className="text-2xl font-bold mb-2" style={{color: theme.text}}>Made Fresh On Order</h2>
+          <p className="mb-4" style={{color: theme.textSecondary}}>Manufacturing date = Your order date</p>
           <div className="flex flex-wrap gap-2 text-xs font-semibold">
-            <span className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">✓ No Middlemen</span>
-            <span className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">✓ Free Delivery</span>
-            <span className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">✓ Pure Quality</span>
+            <span className="px-3 py-1.5 rounded-full" style={{background: theme.background, color: theme.text}}>✓ 100% Homemade</span>
+            <span className="px-3 py-1.5 rounded-full" style={{background: theme.background, color: theme.text}}>✓ Free Delivery</span>
+            <span className="px-3 py-1.5 rounded-full" style={{background: theme.background, color: theme.text}}>✓ Pure Quality</span>
           </div>
         </div>
       </div>
 
-      {/* USP Bar */}
-      <div className="flex justify-around py-5 bg-white mx-4 rounded-2xl shadow-sm border border-gray-100">
+      {/* USP */}
+      <div className="flex justify-around py-5 mx-4 rounded-2xl shadow-lg" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
         {[{icon: '🌿', text: '100% Pure'}, {icon: '🚫', text: 'No Chemicals'}, {icon: '🚚', text: 'Free Delivery'}, {icon: '💰', text: 'Best Price'}].map((item, i) => (
           <div key={i} className="text-center">
             <span className="text-2xl block mb-1">{item.icon}</span>
-            <p className="text-[11px] text-gray-600 font-semibold">{item.text}</p>
+            <p className="text-[11px] font-semibold" style={{color: theme.textSecondary}}>{item.text}</p>
           </div>
         ))}
       </div>
 
-      {/* Categories - Only 4 now (no microgreens) */}
+      {/* Categories */}
       <div className="p-4">
-        <h2 className="text-xl font-bold text-gray-800 mb-1">Shop by Category</h2>
-        <p className="text-gray-500 text-sm mb-4">Fresh from our farm to your home</p>
+        <h2 className="text-xl font-bold mb-1" style={{color: theme.text}}>Shop by Category</h2>
+        <p className="text-sm mb-4" style={{color: theme.textSecondary}}>Fresh from our farm to your home</p>
         
         <div className="space-y-4">
           {Object.entries(productsData).map(([key, cat]) => (
             <div key={key} onClick={() => setSelectedCategory(key)} 
-                 className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                 className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
+                 style={{background: theme.surface, boxShadow: theme.cardShadow}}>
               <div className="flex items-center">
-                <div className="w-28 h-28 bg-gray-50 flex items-center justify-center">
+                <div className="w-28 h-28 flex items-center justify-center" style={{background: theme.background}}>
                   <ProductImage src={cat.image} alt={cat.title} className="w-20 h-20 rounded-xl" />
                 </div>
                 <div className="flex-1 p-4">
-                  <h3 className="font-bold text-gray-800 text-lg">{cat.title}</h3>
-                  <p className="text-gray-500 text-sm mb-2">{cat.subtitle}</p>
+                  <h3 className="font-bold text-lg" style={{color: theme.text}}>{cat.title}</h3>
+                  <p className="text-sm mb-2" style={{color: theme.textSecondary}}>{cat.subtitle}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-green-600 text-sm font-semibold">
+                    <span className="text-sm font-semibold" style={{color: theme.success}}>
                       {cat.items?.length || cat.subcategories?.reduce((a, s) => a + s.items.length, 0)} products
                     </span>
-                    <span className="bg-green-600 text-white px-4 py-1.5 rounded-lg text-sm font-bold">View →</span>
+                    <span className="text-white px-4 py-1.5 rounded-lg text-sm font-bold" style={{background: theme.primary}}>View →</span>
                   </div>
                 </div>
               </div>
@@ -885,65 +1134,73 @@ export default function BKGRApp() {
         </div>
       </div>
 
-      {/* Price Compare - Clean */}
-      <div className="mx-4 mb-4 bg-green-600 rounded-2xl p-6 text-white">
+      {/* Price Compare */}
+      <div className="mx-4 mb-4 rounded-2xl p-6 text-white" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
         <h3 className="font-bold text-center mb-4 text-lg">💡 Why Choose Us?</h3>
-        <div className="bg-white/20 rounded-2xl p-5 flex items-center justify-around">
+        <div className="rounded-2xl p-5 flex items-center justify-around" style={{background: 'rgba(255,255,255,0.1)'}}>
           <div className="text-center">
             <p className="text-xs opacity-80 mb-1">Market Price</p>
             <p className="text-2xl font-bold line-through opacity-60">₹1,950</p>
           </div>
-          <div className="text-3xl font-bold opacity-50">VS</div>
+          <div className="text-3xl font-bold opacity-50">→</div>
           <div className="text-center">
             <p className="text-xs opacity-80 mb-1">Our Price</p>
             <p className="text-3xl font-bold">₹1,625</p>
-            <p className="text-yellow-300 text-sm font-bold mt-1">Save ₹325!</p>
+            <p className="text-sm font-bold mt-1" style={{color: theme.accent}}>Save ₹325!</p>
           </div>
         </div>
-        <p className="text-center text-green-200 text-sm mt-3">25kg Semi Polished Rice</p>
+        <p className="text-center text-sm mt-3" style={{color: theme.accentLight}}>25kg Semi Polished Rice</p>
       </div>
 
-      {/* Delivery Areas */}
+      {/* Delivery */}
       <div className="px-4 mb-4">
-        <h3 className="font-bold text-gray-800 mb-3 text-lg">🚚 Free Delivery Areas</h3>
+        <h3 className="font-bold mb-3 text-lg" style={{color: theme.text}}>🚚 Free Delivery Areas</h3>
         <div className="flex flex-wrap gap-2">
           {deliveryAreas.map(area => (
-            <span key={area} className="bg-white px-4 py-2 rounded-full text-sm text-gray-600 shadow-sm border border-gray-100 font-medium">{area}</span>
+            <span key={area} className="px-4 py-2 rounded-full text-sm shadow-sm font-medium"
+                  style={{background: theme.surface, color: theme.textSecondary, border: `1px solid ${theme.border}`}}>{area}</span>
           ))}
         </div>
       </div>
 
       {/* Contact */}
       <div className="flex gap-3 px-4 pb-4">
-        <a href="tel:+917993822600" className="flex-1 flex items-center justify-center gap-2 py-4 bg-white border-2 border-green-600 rounded-2xl text-green-600 font-bold shadow-sm">
+        <a href="tel:+917993822600" 
+           className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold shadow-lg"
+           style={{border: `2px solid ${theme.primary}`, color: theme.primary, background: theme.surface}}>
           📞 Call Us
         </a>
-        <a href="https://wa.me/917993822600" className="flex-1 flex items-center justify-center gap-2 py-4 bg-green-500 rounded-2xl text-white font-bold shadow-lg">
+        <a href="https://wa.me/917993822600" 
+           className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl text-white font-bold shadow-lg"
+           style={{background: '#25D366'}}>
           💬 WhatsApp
         </a>
       </div>
 
       {/* Floating Cart */}
       {getCartItemCount() > 0 && (
-        <div onClick={() => setShowCart(true)} className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md bg-green-600 rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50">
+        <div onClick={() => setShowCart(true)} 
+             className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
+             style={{background: theme.primary}}>
           <div>
             <span className="text-white font-bold">{getCartItemCount()} items</span>
-            <span className="block text-green-200 text-sm">Saving ₹{getCartSavings()}</span>
+            <span className="block text-sm" style={{color: theme.accentLight}}>Saving ₹{getCartSavings()}</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-white text-xl font-bold">₹{getCartTotal()}</span>
-            <span className="text-white font-bold bg-green-700 px-4 py-2 rounded-xl">View Cart →</span>
+            <span className="text-white font-bold px-4 py-2 rounded-xl" style={{background: theme.primaryLight}}>View Cart →</span>
           </div>
         </div>
       )}
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+        * { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
         @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
         .animate-loading { animation: loading 1.5s ease-in-out infinite; }
         @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fade-in 0.8s ease-out; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
       `}</style>
     </div>
   );
