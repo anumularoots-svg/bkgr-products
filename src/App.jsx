@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react';
 // ===========================================
 // 📸 PRODUCT IMAGES CONFIGURATION
 // ===========================================
-// All your actual product images from ImgBB
+// Only actual product images - no defaults
+
+// 🔴 IMPORTANT: Upload your logo to ImgBB and replace this URL
+const LOGO_URL = 'https://i.ibb.co/ymtC805y/logo.jpg'; // <-- Replace with your logo URL
 
 const PRODUCT_IMAGES = {
   // Rice Images
@@ -19,7 +22,7 @@ const PRODUCT_IMAGES = {
     split: 'https://i.ibb.co/jNtB0qz/Urad-Dal-Split.png',
     whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
-  // Pickle Images
+  // Pickle Images - Only products with actual images
   pickles: {
     category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
@@ -33,9 +36,8 @@ const PRODUCT_IMAGES = {
     mutton: 'https://i.ibb.co/1t8DMnq7/mutton.png',
     fish: 'https://i.ibb.co/MDczFFB5/fish.png',
     prawn: 'https://i.ibb.co/LhBG59n6/prawn.png',
-    default: 'https://i.ibb.co/B5vxvhvC/mixed.png',
   },
-  // Karam Powder Images
+  // Karam Powder Images - Only products with actual images
   karam: {
     category: 'https://i.ibb.co/rKdW0zXz/pappula.png',
     vepudu: 'https://i.ibb.co/0RRS4sf7/vepudu.png',
@@ -45,16 +47,10 @@ const PRODUCT_IMAGES = {
     karivepaku: 'https://i.ibb.co/Vp9nny5h/karivepaku.png',
     munagaku: 'https://i.ibb.co/hJQrdwsv/mungaku.png',
     gongura: 'https://i.ibb.co/LhzXN19X/gongura-podi.png',
-    default: 'https://i.ibb.co/rKdW0zXz/pappula.png',
   },
-  // Microgreens Images
-  microgreens: {
-    category: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop',
-    default: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=300&h=300&fit=crop',
-  }
 };
 
-// Complete Product Data with English Names
+// Complete Product Data - Only products with actual images
 const productsData = {
   rice: {
     title: "Premium BPT Sannalu Rice",
@@ -155,15 +151,9 @@ const productsData = {
         name: "Vegetable Pickles",
         icon: "🥬",
         items: [
-          { id: 'pickle-lemon', name: 'Lemon Pickle', description: 'Tangy lemon pickle with traditional spices', tag: 'CLASSIC', tagColor: '#FFEB3B', image: PRODUCT_IMAGES.pickles.lemon },
-          { id: 'pickle-gooseberry', name: 'Gooseberry Pickle', description: 'Healthy amla pickle rich in Vitamin C', tag: 'HEALTHY', tagColor: '#8BC34A', image: PRODUCT_IMAGES.pickles.default },
+          { id: 'pickle-lemon', name: 'Lemon Pickle', description: 'Tangy lemon pickle with traditional spices', tag: 'CLASSIC', tagColor: '#FFC107', image: PRODUCT_IMAGES.pickles.lemon },
           { id: 'pickle-tomato', name: 'Tomato Pickle', description: 'Tangy tomato pickle with garlic', tag: 'TANGY', tagColor: '#F44336', image: PRODUCT_IMAGES.pickles.tomato },
-          { id: 'pickle-ridgegourd', name: 'Ridge Gourd Pickle', description: 'Crispy ridge gourd in spicy oil', tag: 'CRUNCHY', tagColor: '#4CAF50', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-ivygourd', name: 'Ivy Gourd Pickle', description: 'Tender ivy gourd with mustard', tag: 'SPECIAL', tagColor: '#009688', image: PRODUCT_IMAGES.pickles.default },
           { id: 'pickle-gongura', name: 'Gongura Pickle', description: 'Tangy sorrel leaves pickle', tag: 'TELUGU SPECIAL', tagColor: '#4CAF50', image: PRODUCT_IMAGES.pickles.gongura },
-          { id: 'pickle-curryleaves', name: 'Curry Leaves Pickle', description: 'Aromatic curry leaves pickle', tag: 'AROMATIC', tagColor: '#2E7D32', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-radish', name: 'Radish Pickle', description: 'Crunchy radish in spicy marinade', tag: 'CRUNCHY', tagColor: '#E91E63', image: PRODUCT_IMAGES.pickles.default },
-          { id: 'pickle-bittergourd', name: 'Bitter Gourd Pickle', description: 'Healthy bitter gourd pickle', tag: 'HEALTHY', tagColor: '#689F38', image: PRODUCT_IMAGES.pickles.default },
           { id: 'pickle-brinjal', name: 'Brinjal Pickle', description: 'Roasted brinjal with spices', tag: 'SMOKY', tagColor: '#7B1FA2', image: PRODUCT_IMAGES.pickles.brinjal },
           { id: 'pickle-redchilli', name: 'Red Chilli Pickle', description: 'Spicy stuffed red chilli pickle', tag: 'SPICY', tagColor: '#D32F2F', image: PRODUCT_IMAGES.pickles.redchilli },
           { id: 'pickle-drumstick', name: 'Drumstick Pickle', description: 'Tender drumstick in tangy masala', tag: 'NUTRITIOUS', tagColor: '#558B2F', image: PRODUCT_IMAGES.pickles.drumstick },
@@ -211,36 +201,14 @@ const productsData = {
       { id: 'karam-karivepaku', name: 'Karivepaku Podi', description: 'Curry leaves powder rich in iron', tag: 'HEALTHY', tagColor: '#4CAF50', image: PRODUCT_IMAGES.karam.karivepaku },
       { id: 'karam-munagaku', name: 'Munagaku Podi', description: 'Moringa leaves powder', tag: 'SUPERFOOD', tagColor: '#8BC34A', image: PRODUCT_IMAGES.karam.munagaku },
       { id: 'karam-gongura', name: 'Gongura Karam', description: 'Tangy sorrel leaves powder', tag: 'TANGY', tagColor: '#689F38', image: PRODUCT_IMAGES.karam.gongura },
-      { id: 'karam-pudina', name: 'Pudina Karam', description: 'Fresh mint leaves powder', tag: 'REFRESHING', tagColor: '#00C853', image: PRODUCT_IMAGES.karam.default },
-      { id: 'karam-kothimeera', name: 'Kothimeera Karam', description: 'Coriander leaves powder', tag: 'AROMATIC', tagColor: '#76FF03', image: PRODUCT_IMAGES.karam.default },
     ],
     variants: [
       { size: '100 G', ourPrice: 65, marketPrice: 85 },
       { size: '250 G', ourPrice: 150, marketPrice: 195 },
       { size: '500 G', ourPrice: 280, marketPrice: 370 },
     ]
-  },
-  microgreens: {
-    title: "Micro Greens",
-    subtitle: "Fresh & nutritious, harvested on your order date",
-    description: "Farm fresh microgreens packed with nutrients",
-    image: PRODUCT_IMAGES.microgreens.category,
-    items: [
-      { id: 'micro-sunflower', name: 'Sunflower Microgreens', description: 'Nutty flavor, high in protein & vitamins', tag: 'SUPERFOOD', tagColor: '#FFC107', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-pea', name: 'Pea Shoots', description: 'Sweet & tender, rich in fiber', tag: 'SWEET', tagColor: '#4CAF50', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-radish', name: 'Radish Microgreens', description: 'Spicy kick, great for salads', tag: 'ZESTY', tagColor: '#E91E63', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-fenugreek', name: 'Fenugreek Microgreens', description: 'Traditional methi, aromatic & healthy', tag: 'TRADITIONAL', tagColor: '#795548', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-mustard', name: 'Mustard Microgreens', description: 'Peppery taste, rich in antioxidants', tag: 'SPICY', tagColor: '#FFEB3B', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-broccoli', name: 'Broccoli Microgreens', description: 'Mild flavor, packed with nutrients', tag: 'NUTRITIOUS', tagColor: '#8BC34A', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-amaranth', name: 'Amaranth Microgreens', description: 'Colorful & nutritious red leaves', tag: 'COLORFUL', tagColor: '#9C27B0', image: PRODUCT_IMAGES.microgreens.default },
-      { id: 'micro-wheatgrass', name: 'Wheatgrass', description: 'Detox superfood, rich in chlorophyll', tag: 'DETOX', tagColor: '#00E676', image: PRODUCT_IMAGES.microgreens.default },
-    ],
-    variants: [
-      { size: '50 G', ourPrice: 75, marketPrice: 110 },
-      { size: '100 G', ourPrice: 140, marketPrice: 200 },
-      { size: '200 G', ourPrice: 260, marketPrice: 380 },
-    ]
   }
+  // Microgreens REMOVED as requested
 };
 
 const deliveryAreas = [
@@ -250,13 +218,13 @@ const deliveryAreas = [
 ];
 
 // Product Image Component with fallback
-const ProductImage = ({ src, alt, className, fallbackIcon = '📦' }) => {
+const ProductImage = ({ src, alt, className }) => {
   const [error, setError] = useState(false);
   
   if (error || !src) {
     return (
-      <div className={`${className} bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center`}>
-        <span className="text-4xl">{fallbackIcon}</span>
+      <div className={`${className} bg-gray-100 flex items-center justify-center`}>
+        <span className="text-3xl">📦</span>
       </div>
     );
   }
@@ -265,7 +233,29 @@ const ProductImage = ({ src, alt, className, fallbackIcon = '📦' }) => {
     <img 
       src={src} 
       alt={alt} 
-      className={`${className} object-cover`}
+      className={`${className} object-contain`}
+      onError={() => setError(true)}
+    />
+  );
+};
+
+// Logo Component
+const Logo = ({ className }) => {
+  const [error, setError] = useState(false);
+  
+  if (error || !LOGO_URL || LOGO_URL.includes('XXXXXXX')) {
+    return (
+      <div className={`${className} bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg`}>
+        <span className="text-3xl">🌾</span>
+      </div>
+    );
+  }
+  
+  return (
+    <img 
+      src={LOGO_URL} 
+      alt="BKGR Logo" 
+      className={`${className} object-contain rounded-2xl shadow-lg`}
       onError={() => setError(true)}
     />
   );
@@ -318,20 +308,19 @@ export default function BKGRApp() {
   const getCartItemCount = () => cart.reduce((total, item) => total + item.quantity, 0);
   const getDiscount = (our, market) => Math.round(((market - our) / market) * 100);
 
-  // Splash Screen
+  // Splash Screen - Professional Design with Logo
   if (currentScreen === 'splash') {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-green-800 via-green-700 to-green-600 flex items-center justify-center font-sans">
+      <div className="min-h-screen bg-gradient-to-b from-green-700 via-green-600 to-green-500 flex items-center justify-center font-sans">
         <div className="text-center text-white animate-fade-in">
-          <div className="w-28 h-28 bg-amber-400 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
-            <span className="text-6xl">🌾</span>
-          </div>
-          <h1 className="text-2xl font-bold tracking-wide mb-2">Farm to Home • Pure Quality</h1>
-          <p className="text-sm font-medium opacity-90 mb-8 tracking-widest">BIYAM KRISHNA GARI PRODUCTS</p>
+          <Logo className="w-32 h-32 mx-auto mb-6" />
+          <h1 className="text-2xl font-bold tracking-wide mb-2">BIYAM KRISHNA GARI</h1>
+          <p className="text-lg font-medium opacity-90 mb-2">PRODUCTS</p>
+          <p className="text-sm opacity-80 mb-8">Pure. Honest. From Our Family to Yours.</p>
           <div className="w-48 h-1.5 bg-white/30 rounded-full mx-auto overflow-hidden">
             <div className="h-full w-1/3 bg-white rounded-full animate-loading"></div>
           </div>
-          <p className="text-xs mt-6 tracking-widest opacity-70">Direct from Farm • No Middlemen</p>
+          <p className="text-xs mt-6 tracking-widest opacity-70">Farm to Home • No Middlemen</p>
         </div>
       </div>
     );
@@ -340,14 +329,14 @@ export default function BKGRApp() {
   // Order Success
   if (orderPlaced) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-5 font-sans">
+      <div className="min-h-screen bg-white flex items-center justify-center p-5 font-sans">
         <div className="text-center max-w-sm">
-          <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-5xl shadow-xl">✓</div>
-          <h2 className="text-2xl font-bold text-green-800 mb-3">Order Placed Successfully!</h2>
+          <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-5xl shadow-xl">✓</div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-3">Order Placed Successfully!</h2>
           <p className="text-gray-600 mb-6">Your fresh products will be prepared and delivered soon.</p>
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4">
-            <p className="text-amber-800 font-bold">📅 Made Fresh For You</p>
-            <p className="text-amber-700 text-sm">Manufacturing starts from your order date</p>
+          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-4">
+            <p className="text-green-800 font-bold">📅 Made Fresh For You</p>
+            <p className="text-green-700 text-sm">Manufacturing starts from your order date</p>
           </div>
           <button onClick={() => { setOrderPlaced(false); setShowCheckout(false); setCart([]); setSelectedCategory(null); }} 
                   className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg">
@@ -362,23 +351,23 @@ export default function BKGRApp() {
   if (showCheckout) {
     return (
       <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center gap-4 border-b sticky top-0 z-50 shadow-sm">
+        <div className="bg-white p-4 flex items-center gap-4 border-b sticky top-0 z-50">
           <button onClick={() => setShowCheckout(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold flex-1">Checkout</h1>
+          <h1 className="text-lg font-bold flex-1 text-gray-800">Checkout</h1>
         </div>
         
         <div className="p-4 pb-32">
           {/* Order Summary */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm mb-4">
+          <div className="bg-white rounded-2xl p-5 shadow-sm mb-4 border border-gray-100">
             <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2 text-lg">📦 Order Summary</h3>
             {cart.map((item, idx) => (
               <div key={idx} className="flex items-center gap-3 py-3 border-b border-gray-100 last:border-0">
-                <ProductImage src={item.product.image} alt={item.product.name} className="w-14 h-14 rounded-xl" />
+                <ProductImage src={item.product.image} alt={item.product.name} className="w-14 h-14 rounded-xl bg-gray-50" />
                 <div className="flex-1">
                   <p className="font-semibold text-gray-800">{item.product.name}</p>
                   <p className="text-sm text-gray-500">{item.variant.size} × {item.quantity}</p>
                 </div>
-                <p className="font-bold text-lg">₹{item.variant.ourPrice * item.quantity}</p>
+                <p className="font-bold text-lg text-gray-800">₹{item.variant.ourPrice * item.quantity}</p>
               </div>
             ))}
             <div className="mt-4 pt-4 border-t border-gray-200 space-y-2">
@@ -390,31 +379,31 @@ export default function BKGRApp() {
           </div>
 
           {/* Delivery Form */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm mb-4">
+          <div className="bg-white rounded-2xl p-5 shadow-sm mb-4 border border-gray-100">
             <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2 text-lg">📍 Delivery Details</h3>
-            <input type="text" placeholder="Full Name *" className="w-full p-4 border border-gray-200 rounded-xl mb-3 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100" />
-            <input type="tel" placeholder="Phone Number *" className="w-full p-4 border border-gray-200 rounded-xl mb-3 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100" />
-            <select className="w-full p-4 border border-gray-200 rounded-xl mb-3 bg-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100">
+            <input type="text" placeholder="Full Name *" className="w-full p-4 border border-gray-200 rounded-xl mb-3 focus:border-green-500 focus:outline-none" />
+            <input type="tel" placeholder="Phone Number *" className="w-full p-4 border border-gray-200 rounded-xl mb-3 focus:border-green-500 focus:outline-none" />
+            <select className="w-full p-4 border border-gray-200 rounded-xl mb-3 bg-white focus:border-green-500 focus:outline-none">
               <option value="">Select Delivery Area *</option>
               {deliveryAreas.map(area => <option key={area} value={area}>{area}</option>)}
             </select>
-            <textarea placeholder="Full Address *" className="w-full p-4 border border-gray-200 rounded-xl resize-none focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100" rows={3}></textarea>
+            <textarea placeholder="Full Address *" className="w-full p-4 border border-gray-200 rounded-xl resize-none focus:border-green-500 focus:outline-none" rows={3}></textarea>
           </div>
 
           {/* Fresh Badge */}
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 mb-6 flex items-center gap-4">
-            <div className="w-14 h-14 bg-amber-400 rounded-xl flex items-center justify-center text-2xl">⏰</div>
+          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 flex items-center gap-4">
+            <div className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center text-white text-2xl">⏰</div>
             <div>
-              <p className="font-bold text-amber-800">Made Fresh On Order</p>
-              <p className="text-amber-700 text-sm">Manufacturing date = Your order date</p>
+              <p className="font-bold text-green-800">Made Fresh On Order</p>
+              <p className="text-green-700 text-sm">Manufacturing date = Your order date</p>
             </div>
           </div>
 
-          <button onClick={() => setOrderPlaced(true)} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg mb-3 hover:bg-green-700 transition-colors">
+          <button onClick={() => setOrderPlaced(true)} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg mb-3">
             Place Order • ₹{getCartTotal()}
           </button>
           <a href={`https://wa.me/917993822600?text=New Order:%0A${cart.map(i => `${i.product.name} - ${i.variant.size} x ${i.quantity}`).join('%0A')}%0ATotal: ₹${getCartTotal()}`} 
-             className="flex items-center justify-center gap-2 w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-600 transition-colors">
+             className="flex items-center justify-center gap-2 w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg">
             💬 Order via WhatsApp
           </a>
         </div>
@@ -426,9 +415,9 @@ export default function BKGRApp() {
   if (showCart) {
     return (
       <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center gap-4 border-b sticky top-0 z-50 shadow-sm">
+        <div className="bg-white p-4 flex items-center gap-4 border-b sticky top-0 z-50">
           <button onClick={() => setShowCart(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold flex-1">Your Cart ({getCartItemCount()})</h1>
+          <h1 className="text-lg font-bold flex-1 text-gray-800">Your Cart ({getCartItemCount()})</h1>
         </div>
         
         {cart.length === 0 ? (
@@ -445,14 +434,14 @@ export default function BKGRApp() {
         ) : (
           <div className="p-4 pb-44">
             {cart.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-4 mb-3 shadow-sm">
+              <div key={idx} className="bg-white rounded-2xl p-4 mb-3 shadow-sm border border-gray-100">
                 <div className="flex gap-4">
-                  <ProductImage src={item.product.image} alt={item.product.name} className="w-20 h-20 rounded-xl" />
+                  <ProductImage src={item.product.image} alt={item.product.name} className="w-20 h-20 rounded-xl bg-gray-50" />
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-800">{item.product.name}</h4>
                     <p className="text-sm text-gray-500 mb-2">{item.variant.size}</p>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-green-700 text-lg">₹{item.variant.ourPrice}</span>
+                      <span className="font-bold text-green-600 text-lg">₹{item.variant.ourPrice}</span>
                       <span className="text-sm text-gray-400 line-through">₹{item.variant.marketPrice}</span>
                       <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full font-bold">{getDiscount(item.variant.ourPrice, item.variant.marketPrice)}% OFF</span>
                     </div>
@@ -460,11 +449,11 @@ export default function BKGRApp() {
                 </div>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                   <div className="flex items-center bg-green-600 rounded-xl overflow-hidden">
-                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, -1)} className="w-10 h-10 text-white font-bold text-xl hover:bg-green-700">−</button>
+                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, -1)} className="w-10 h-10 text-white font-bold text-xl">−</button>
                     <span className="w-12 text-center text-white font-bold text-lg">{item.quantity}</span>
-                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, 1)} className="w-10 h-10 text-white font-bold text-xl hover:bg-green-700">+</button>
+                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, 1)} className="w-10 h-10 text-white font-bold text-xl">+</button>
                   </div>
-                  <p className="font-bold text-xl">₹{item.variant.ourPrice * item.quantity}</p>
+                  <p className="font-bold text-xl text-gray-800">₹{item.variant.ourPrice * item.quantity}</p>
                 </div>
               </div>
             ))}
@@ -481,7 +470,7 @@ export default function BKGRApp() {
 
         {cart.length > 0 && (
           <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 max-w-md mx-auto">
-            <button onClick={() => setShowCheckout(true)} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-green-700 transition-colors">
+            <button onClick={() => setShowCheckout(true)} className="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg">
               Proceed to Checkout • ₹{getCartTotal()}
             </button>
           </div>
@@ -498,15 +487,13 @@ export default function BKGRApp() {
         : productsData.pickles.defaultVariants)
       : selectedCategory === 'karam' 
         ? productsData.karam.variants
-        : selectedCategory === 'microgreens'
-          ? productsData.microgreens.variants
-          : selectedProduct.variants;
+        : selectedProduct.variants;
 
     return (
       <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white/90 backdrop-blur-sm p-4 flex items-center justify-between border-b sticky top-0 z-50">
+        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
           <button onClick={() => setSelectedProduct(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold">Product Details</h1>
+          <h1 className="text-lg font-bold text-gray-800">Product Details</h1>
           <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
             <span className="text-2xl">🛒</span>
             {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
@@ -514,25 +501,25 @@ export default function BKGRApp() {
         </div>
         
         {/* Product Image */}
-        <div className="bg-gradient-to-br from-amber-50 via-amber-100 to-orange-50 p-8 flex items-center justify-center relative">
-          <div className="absolute top-4 left-4 bg-blue-600 text-white text-sm px-3 py-1 rounded-full font-bold shadow-lg">
+        <div className="bg-white p-8 flex items-center justify-center relative">
+          <div className="absolute top-4 left-4 bg-green-600 text-white text-sm px-3 py-1 rounded-full font-bold">
             {getDiscount(variants[0].ourPrice, variants[0].marketPrice)}% OFF
           </div>
-          <div className="w-48 h-48 bg-white rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
+          <div className="w-48 h-48 bg-gray-50 rounded-3xl flex items-center justify-center overflow-hidden border border-gray-100">
             <ProductImage src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full" />
           </div>
         </div>
         
         {/* Product Info */}
-        <div className="bg-white -mt-6 rounded-t-[2rem] p-6 pb-36 shadow-lg">
+        <div className="bg-white p-6 pb-36 border-t border-gray-100">
           <div className="flex items-start justify-between mb-3">
             <h2 className="text-2xl font-bold text-gray-800 flex-1 pr-4">{selectedProduct.name}</h2>
-            <span className="px-3 py-1.5 rounded-full text-xs font-bold text-white shadow" style={{backgroundColor: selectedProduct.tagColor}}>{selectedProduct.tag}</span>
+            <span className="px-3 py-1.5 rounded-full text-xs font-bold text-white" style={{backgroundColor: selectedProduct.tagColor}}>{selectedProduct.tag}</span>
           </div>
           <p className="text-gray-600 mb-5 leading-relaxed">{selectedProduct.description}</p>
           
           {/* Fresh Badge */}
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-4 mb-6 flex items-center gap-4">
+          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 flex items-center gap-4">
             <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white text-xl">🌿</div>
             <div>
               <p className="font-bold text-green-800">Made Fresh On Order</p>
@@ -543,17 +530,17 @@ export default function BKGRApp() {
           <h3 className="font-bold text-gray-800 mb-4 text-lg">Select Size</h3>
           
           {variants.map((variant, idx) => (
-            <div key={idx} className="border-2 border-gray-100 rounded-2xl p-4 mb-3 flex items-center justify-between hover:border-green-500 transition-all cursor-pointer group">
+            <div key={idx} className="border-2 border-gray-100 rounded-2xl p-4 mb-3 flex items-center justify-between hover:border-green-500 transition-all cursor-pointer">
               <div>
                 <p className="font-bold text-gray-800 text-lg">{variant.size}</p>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-2xl font-bold text-green-700">₹{variant.ourPrice}</span>
+                  <span className="text-2xl font-bold text-green-600">₹{variant.ourPrice}</span>
                   <span className="text-gray-400 line-through">₹{variant.marketPrice}</span>
                   <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-bold">{getDiscount(variant.ourPrice, variant.marketPrice)}% OFF</span>
                 </div>
               </div>
               <button onClick={() => addToCart(selectedProduct, variant, selectedCategory)} 
-                      className="bg-green-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-700 transition-colors shadow-lg">
+                      className="bg-green-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg">
                 ADD
               </button>
             </div>
@@ -579,9 +566,9 @@ export default function BKGRApp() {
     
     return (
       <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50 shadow-sm">
+        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
           <button onClick={() => setSelectedSubcategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold">{subcat.icon} {subcat.name}</h1>
+          <h1 className="text-lg font-bold text-gray-800">{subcat.icon} {subcat.name}</h1>
           <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
             <span className="text-2xl">🛒</span>
             {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
@@ -594,12 +581,12 @@ export default function BKGRApp() {
               const variants = subcat.name === 'Non-Veg Pickles' ? productsData.pickles.nonVegVariants : productsData.pickles.defaultVariants;
               return (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                     className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                     className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
                   <div className="relative">
-                    <div className="bg-gradient-to-br from-amber-100 to-orange-100 h-36 flex items-center justify-center p-4">
+                    <div className="bg-gray-50 h-36 flex items-center justify-center p-4">
                       <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
                     </div>
-                    <span className="absolute top-2 left-2 bg-blue-600 text-white text-[11px] px-2 py-1 rounded-lg font-bold shadow">
+                    <span className="absolute top-2 left-2 bg-green-600 text-white text-[11px] px-2 py-1 rounded-lg font-bold">
                       {getDiscount(variants[0].ourPrice, variants[0].marketPrice)}% OFF
                     </span>
                   </div>
@@ -608,11 +595,11 @@ export default function BKGRApp() {
                     <p className="text-gray-500 text-xs mb-2">250g / 500g / 1kg</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-green-700">₹{variants[0].ourPrice}</span>
+                        <span className="font-bold text-green-600">₹{variants[0].ourPrice}</span>
                         <span className="text-gray-400 line-through text-xs ml-1">₹{variants[0].marketPrice}</span>
                       </div>
                       <button onClick={(e) => { e.stopPropagation(); addToCart(product, variants[0], 'pickles'); }} 
-                              className="border-2 border-green-600 text-green-600 px-3 py-1.5 rounded-lg text-sm font-bold hover:bg-green-600 hover:text-white transition-colors">
+                              className="border-2 border-green-600 text-green-600 px-3 py-1.5 rounded-lg text-sm font-bold">
                         ADD
                       </button>
                     </div>
@@ -644,9 +631,9 @@ export default function BKGRApp() {
     if (selectedCategory === 'pickles') {
       return (
         <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-          <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50 shadow-sm">
+          <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
             <button onClick={() => setSelectedCategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-            <h1 className="text-lg font-bold">🥒 Homemade Pickles</h1>
+            <h1 className="text-lg font-bold text-gray-800">🥒 Homemade Pickles</h1>
             <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
               <span className="text-2xl">🛒</span>
               {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
@@ -658,20 +645,20 @@ export default function BKGRApp() {
               <div key={idx} className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl">{subcat.icon}</div>
-                  <h3 className="text-lg font-bold text-green-800">{subcat.name}</h3>
+                  <h3 className="text-lg font-bold text-gray-800">{subcat.name}</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {subcat.items.slice(0, 4).map(product => {
                     const variants = subcat.name === 'Non-Veg Pickles' ? category.nonVegVariants : category.defaultVariants;
                     return (
                       <div key={product.id} onClick={() => { setSelectedSubcategory(subcat.name); setSelectedProduct(product); }} 
-                           className="bg-white rounded-xl p-3 shadow-sm hover:shadow-md transition-all cursor-pointer">
-                        <div className="bg-amber-50 w-full h-20 rounded-lg flex items-center justify-center mb-2 overflow-hidden">
+                           className="bg-white rounded-xl p-3 shadow-sm border border-gray-100 cursor-pointer">
+                        <div className="bg-gray-50 w-full h-20 rounded-lg flex items-center justify-center mb-2 overflow-hidden">
                           <ProductImage src={product.image} alt={product.name} className="w-16 h-16 rounded-lg" />
                         </div>
                         <h4 className="font-bold text-gray-800 text-sm truncate">{product.name}</h4>
                         <div className="flex items-center gap-1 mt-1">
-                          <span className="font-bold text-green-700 text-sm">₹{variants[0].ourPrice}</span>
+                          <span className="font-bold text-green-600 text-sm">₹{variants[0].ourPrice}</span>
                           <span className="text-gray-400 line-through text-xs">₹{variants[0].marketPrice}</span>
                         </div>
                       </div>
@@ -680,7 +667,7 @@ export default function BKGRApp() {
                 </div>
                 {subcat.items.length > 4 && (
                   <button onClick={() => setSelectedSubcategory(subcat.name)} 
-                          className="w-full mt-3 text-green-700 font-bold text-sm py-3 border-2 border-green-200 rounded-xl bg-green-50 hover:bg-green-100 transition-colors">
+                          className="w-full mt-3 text-green-600 font-bold text-sm py-3 border-2 border-green-200 rounded-xl bg-green-50">
                     View All {subcat.items.length} {subcat.name} →
                   </button>
                 )}
@@ -701,20 +688,20 @@ export default function BKGRApp() {
       );
     }
 
-    // Karam & Microgreens Grid
-    if (selectedCategory === 'karam' || selectedCategory === 'microgreens') {
+    // Karam Grid
+    if (selectedCategory === 'karam') {
       return (
         <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-          <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50 shadow-sm">
+          <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
             <button onClick={() => setSelectedCategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-            <h1 className="text-lg font-bold">{category.title}</h1>
+            <h1 className="text-lg font-bold text-gray-800">{category.title}</h1>
             <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
               <span className="text-2xl">🛒</span>
               {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
             </button>
           </div>
 
-          <div className="bg-gradient-to-r from-green-700 to-green-600 p-5">
+          <div className="bg-green-600 p-5">
             <p className="text-green-100 text-center">{category.subtitle}</p>
           </div>
 
@@ -722,12 +709,12 @@ export default function BKGRApp() {
             <div className="grid grid-cols-2 gap-4">
               {category.items.map(product => (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                     className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                     className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
                   <div className="relative">
-                    <div className="bg-gradient-to-br from-green-700 to-green-600 h-28 flex items-center justify-center">
+                    <div className="bg-gray-50 h-28 flex items-center justify-center">
                       <ProductImage src={product.image} alt={product.name} className="w-20 h-20 rounded-xl" />
                     </div>
-                    <span className="absolute top-2 left-2 bg-blue-600 text-white text-[11px] px-2 py-1 rounded-lg font-bold shadow">
+                    <span className="absolute top-2 left-2 bg-green-600 text-white text-[11px] px-2 py-1 rounded-lg font-bold">
                       {getDiscount(category.variants[0].ourPrice, category.variants[0].marketPrice)}% OFF
                     </span>
                   </div>
@@ -736,11 +723,11 @@ export default function BKGRApp() {
                     <p className="text-gray-500 text-xs mb-2">{category.variants.map(v => v.size).join(' / ')}</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-green-700">₹{category.variants[0].ourPrice}</span>
+                        <span className="font-bold text-green-600">₹{category.variants[0].ourPrice}</span>
                         <span className="text-gray-400 line-through text-xs ml-1">₹{category.variants[0].marketPrice}</span>
                       </div>
                       <button onClick={(e) => { e.stopPropagation(); addToCart(product, category.variants[0], selectedCategory); }} 
-                              className="border-2 border-green-600 text-green-600 px-3 py-1.5 rounded-lg text-sm font-bold hover:bg-green-600 hover:text-white transition-colors">
+                              className="border-2 border-green-600 text-green-600 px-3 py-1.5 rounded-lg text-sm font-bold">
                         ADD
                       </button>
                     </div>
@@ -766,16 +753,16 @@ export default function BKGRApp() {
     // Rice & Urad List View
     return (
       <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto">
-        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50 shadow-sm">
+        <div className="bg-white p-4 flex items-center justify-between border-b sticky top-0 z-50">
           <button onClick={() => setSelectedCategory(null)} className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-xl">←</button>
-          <h1 className="text-lg font-bold">{category.title}</h1>
+          <h1 className="text-lg font-bold text-gray-800">{category.title}</h1>
           <button onClick={() => setShowCart(true)} className="relative w-10 h-10 flex items-center justify-center">
             <span className="text-2xl">🛒</span>
             {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
           </button>
         </div>
 
-        <div className="bg-gradient-to-r from-green-700 to-green-600 p-6">
+        <div className="bg-green-600 p-6">
           <h2 className="text-white font-bold text-xl">{category.title}</h2>
           <p className="text-green-100">{category.subtitle}</p>
         </div>
@@ -783,11 +770,11 @@ export default function BKGRApp() {
         <div className="p-4 pb-28">
           {category.items.map(product => (
             <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                 className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4 hover:shadow-lg transition-all cursor-pointer">
+                 className="bg-white rounded-2xl overflow-hidden shadow-sm mb-4 border border-gray-100 cursor-pointer">
               <div className="flex">
-                <div className="w-32 bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center p-4 relative">
+                <div className="w-32 bg-gray-50 flex items-center justify-center p-4 relative">
                   <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
-                  <span className="absolute top-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-0.5 rounded-lg font-bold shadow">
+                  <span className="absolute top-2 left-2 bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-lg font-bold">
                     {getDiscount(product.variants[0].ourPrice, product.variants[0].marketPrice)}% OFF
                   </span>
                 </div>
@@ -800,11 +787,11 @@ export default function BKGRApp() {
                   <p className="text-gray-400 text-xs mb-3">{product.variants.map(v => v.size).join(' • ')}</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="font-bold text-green-700 text-xl">₹{product.variants[0].ourPrice}</span>
+                      <span className="font-bold text-green-600 text-xl">₹{product.variants[0].ourPrice}</span>
                       <span className="text-gray-400 line-through text-sm ml-2">₹{product.variants[0].marketPrice}</span>
                     </div>
                     <button onClick={(e) => { e.stopPropagation(); addToCart(product, product.variants[0], selectedCategory); }} 
-                            className="border-2 border-green-600 text-green-600 px-4 py-2 rounded-xl font-bold hover:bg-green-600 hover:text-white transition-colors">
+                            className="border-2 border-green-600 text-green-600 px-4 py-2 rounded-xl font-bold">
                       ADD
                     </button>
                   </div>
@@ -827,44 +814,40 @@ export default function BKGRApp() {
     );
   }
 
-  // Home Screen
+  // Home Screen - Professional Design
   return (
     <div className="min-h-screen bg-gray-50 font-sans max-w-md mx-auto pb-28">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-green-700 to-green-600 p-4 flex items-center justify-between">
+      {/* Header with Logo */}
+      <div className="bg-green-600 p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-14 h-14 bg-amber-400 rounded-2xl flex items-center justify-center shadow-lg">
-            <span className="text-3xl">🌾</span>
-          </div>
+          <Logo className="w-14 h-14" />
           <div className="text-white">
-            <h1 className="font-bold text-lg leading-tight">Farm to Home • Pure Quality</h1>
-            <p className="text-xs text-green-200 tracking-wider">BIYAM KRISHNA GARI PRODUCTS</p>
+            <h1 className="font-bold text-lg leading-tight">BIYAM KRISHNA GARI</h1>
+            <p className="text-xs text-green-200">Pure. Honest. From Our Family to Yours.</p>
           </div>
         </div>
         <button onClick={() => setShowCart(true)} className="relative w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
           <span className="text-2xl">🛒</span>
-          {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
+          {getCartItemCount() > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold">{getCartItemCount()}</span>}
         </button>
       </div>
 
-      {/* Hero Banner */}
+      {/* Hero Banner - Clean Design */}
       <div className="p-4">
-        <div className="bg-gradient-to-r from-amber-100 to-orange-100 rounded-3xl p-6 relative overflow-hidden shadow-lg">
-          <div className="absolute -right-8 -bottom-8 w-40 h-40 bg-amber-200/50 rounded-full"></div>
-          <div className="absolute right-4 bottom-4 text-7xl opacity-30">🌾</div>
-          <span className="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded-full font-bold shadow">🎉 FRESH PROMISE</span>
-          <h2 className="text-2xl font-bold text-green-800 mt-3">Made Fresh On Order</h2>
-          <p className="text-green-700 mb-4">Manufacturing date = Your order date</p>
-          <div className="flex flex-wrap gap-3 text-xs font-semibold">
-            <span className="bg-white/70 text-green-700 px-3 py-1.5 rounded-full">✓ No Middlemen</span>
-            <span className="bg-white/70 text-green-700 px-3 py-1.5 rounded-full">✓ Free Delivery</span>
-            <span className="bg-white/70 text-green-700 px-3 py-1.5 rounded-full">✓ Pure Quality</span>
+        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <span className="inline-block bg-green-100 text-green-700 text-xs px-4 py-1.5 rounded-full font-bold mb-3">🎉 FRESH PROMISE</span>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Made Fresh On Order</h2>
+          <p className="text-gray-600 mb-4">Manufacturing date = Your order date</p>
+          <div className="flex flex-wrap gap-2 text-xs font-semibold">
+            <span className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">✓ No Middlemen</span>
+            <span className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">✓ Free Delivery</span>
+            <span className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">✓ Pure Quality</span>
           </div>
         </div>
       </div>
 
       {/* USP Bar */}
-      <div className="flex justify-around py-5 bg-white mx-4 rounded-2xl shadow-sm">
+      <div className="flex justify-around py-5 bg-white mx-4 rounded-2xl shadow-sm border border-gray-100">
         {[{icon: '🌿', text: '100% Pure'}, {icon: '🚫', text: 'No Chemicals'}, {icon: '🚚', text: 'Free Delivery'}, {icon: '💰', text: 'Best Price'}].map((item, i) => (
           <div key={i} className="text-center">
             <span className="text-2xl block mb-1">{item.icon}</span>
@@ -873,7 +856,7 @@ export default function BKGRApp() {
         ))}
       </div>
 
-      {/* Categories */}
+      {/* Categories - Only 4 now (no microgreens) */}
       <div className="p-4">
         <h2 className="text-xl font-bold text-gray-800 mb-1">Shop by Category</h2>
         <p className="text-gray-500 text-sm mb-4">Fresh from our farm to your home</p>
@@ -881,15 +864,9 @@ export default function BKGRApp() {
         <div className="space-y-4">
           {Object.entries(productsData).map(([key, cat]) => (
             <div key={key} onClick={() => setSelectedCategory(key)} 
-                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                 className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
               <div className="flex items-center">
-                <div className={`w-28 h-28 flex items-center justify-center relative ${
-                  key === 'rice' ? 'bg-gradient-to-br from-amber-100 to-amber-50' : 
-                  key === 'urad' ? 'bg-gradient-to-br from-orange-100 to-orange-50' : 
-                  key === 'pickles' ? 'bg-gradient-to-br from-green-100 to-green-50' : 
-                  key === 'karam' ? 'bg-gradient-to-br from-red-100 to-red-50' : 
-                  'bg-gradient-to-br from-emerald-100 to-emerald-50'
-                }`}>
+                <div className="w-28 h-28 bg-gray-50 flex items-center justify-center">
                   <ProductImage src={cat.image} alt={cat.title} className="w-20 h-20 rounded-xl" />
                 </div>
                 <div className="flex-1 p-4">
@@ -908,10 +885,10 @@ export default function BKGRApp() {
         </div>
       </div>
 
-      {/* Price Compare */}
-      <div className="mx-4 mb-4 bg-gradient-to-r from-green-700 to-green-600 rounded-2xl p-6 text-white shadow-lg">
+      {/* Price Compare - Clean */}
+      <div className="mx-4 mb-4 bg-green-600 rounded-2xl p-6 text-white">
         <h3 className="font-bold text-center mb-4 text-lg">💡 Why Choose Us?</h3>
-        <div className="bg-white/20 rounded-2xl p-5 flex items-center justify-around backdrop-blur">
+        <div className="bg-white/20 rounded-2xl p-5 flex items-center justify-around">
           <div className="text-center">
             <p className="text-xs opacity-80 mb-1">Market Price</p>
             <p className="text-2xl font-bold line-through opacity-60">₹1,950</p>
@@ -920,7 +897,7 @@ export default function BKGRApp() {
           <div className="text-center">
             <p className="text-xs opacity-80 mb-1">Our Price</p>
             <p className="text-3xl font-bold">₹1,625</p>
-            <p className="text-amber-300 text-sm font-bold mt-1">Save ₹325!</p>
+            <p className="text-yellow-300 text-sm font-bold mt-1">Save ₹325!</p>
           </div>
         </div>
         <p className="text-center text-green-200 text-sm mt-3">25kg Semi Polished Rice</p>
@@ -931,17 +908,17 @@ export default function BKGRApp() {
         <h3 className="font-bold text-gray-800 mb-3 text-lg">🚚 Free Delivery Areas</h3>
         <div className="flex flex-wrap gap-2">
           {deliveryAreas.map(area => (
-            <span key={area} className="bg-white px-4 py-2 rounded-full text-sm text-gray-600 shadow-sm font-medium">{area}</span>
+            <span key={area} className="bg-white px-4 py-2 rounded-full text-sm text-gray-600 shadow-sm border border-gray-100 font-medium">{area}</span>
           ))}
         </div>
       </div>
 
       {/* Contact */}
       <div className="flex gap-3 px-4 pb-4">
-        <a href="tel:+917993822600" className="flex-1 flex items-center justify-center gap-2 py-4 bg-white border-2 border-green-600 rounded-2xl text-green-700 font-bold shadow-sm hover:bg-green-50 transition-colors">
+        <a href="tel:+917993822600" className="flex-1 flex items-center justify-center gap-2 py-4 bg-white border-2 border-green-600 rounded-2xl text-green-600 font-bold shadow-sm">
           📞 Call Us
         </a>
-        <a href="https://wa.me/917993822600" className="flex-1 flex items-center justify-center gap-2 py-4 bg-green-500 rounded-2xl text-white font-bold shadow-lg hover:bg-green-600 transition-colors">
+        <a href="https://wa.me/917993822600" className="flex-1 flex items-center justify-center gap-2 py-4 bg-green-500 rounded-2xl text-white font-bold shadow-lg">
           💬 WhatsApp
         </a>
       </div>
