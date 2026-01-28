@@ -10,9 +10,9 @@ const PRODUCT_IMAGES = {
   // Rice Images
   rice: {
     category: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
-    brown: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
-    semi: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
-    full: 'https://i.ibb.co/wFRGvPvQ/rice-bag.png',
+    brown: 'https://i.ibb.co/zDm822J/brow.png',
+    semi: 'https://i.ibb.co/JWx6g5fD/smibr.png',
+    full: 'https://i.ibb.co/RpW7Z8FZ/fullw.png',
   },
   // Urad Dal Images
   urad: {
@@ -22,9 +22,9 @@ const PRODUCT_IMAGES = {
   },
   // Pickle Images - Replace with your actual pickle jar photos
   pickles: {
-    category: 'https://images.unsplash.com/photo-1589135716294-6b11e3e76a44?w=400&h=400&fit=crop',
-    mango: 'https://images.unsplash.com/photo-1589135716294-6b11e3e76a44?w=300&h=300&fit=crop',
-    lemon: 'https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=300&h=300&fit=crop',
+    category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
+    mango: 'https://i.ibb.co/BVx09zvb/mango.png',
+    lemon: 'https://i.ibb.co/8nkpcBC2/lemon.png',
     chicken: 'https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=300&h=300&fit=crop',
     default: 'https://images.unsplash.com/photo-1589135716294-6b11e3e76a44?w=300&h=300&fit=crop',
   },
