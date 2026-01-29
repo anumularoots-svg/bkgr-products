@@ -148,17 +148,17 @@ const productsData = {
     image: PRODUCT_IMAGES.urad.category,
     items: [
       {
-        id: 'urad-whole',
-        name: 'Urad Whole Black',
+        id: 'urad-round',
+        name: 'Urad Round',
         description: 'Whole black urad dal with skin intact. Perfect for crispy medu vadas and dal makhani. High protein content, naturally grown without chemicals.',
         tag: 'FOR VADA',
         tagColor: '#78716C',
         image: PRODUCT_IMAGES.urad.whole,
         // Whole dal - less processing = lower price (₹125/kg)
         variants: [
-          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
-          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
-          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
+          { size: '1 KG', ourPrice: 145, marketPrice: 185 },
+          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
+          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
         ]
       },
       {
@@ -170,9 +170,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.split,
         // Split dal - more processing = higher price (₹145/kg)
         variants: [
-          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
-          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
-          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
+          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
+          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
+          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
         ]
       }
     ]
