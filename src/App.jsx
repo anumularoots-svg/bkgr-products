@@ -19,7 +19,7 @@ const PRODUCT_IMAGES = {
     whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
   pickles: {
-    category: 'https://i.ibb.co/B54brGHF/mixed.png',
+    category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
     lemon: 'https://i.ibb.co/8nkpcBC2/lemon.png',
     gongura: 'https://i.ibb.co/yFG8wSz1/gongura.png',
@@ -27,10 +27,10 @@ const PRODUCT_IMAGES = {
     brinjal: 'https://i.ibb.co/99XFpDSC/Brinjal.png',
     redchilli: 'https://i.ibb.co/RpFkNTJ3/redchilli.png',
     drumstick: 'https://i.ibb.co/HLDbsG3N/drumstick.png',
-    chicken: 'https://i.ibb.co/yn6LYRDX/chicken.png',
-    mutton: 'https://i.ibb.co/LXpxxrVS/mutton.png',
-    fish: 'https://i.ibb.co/B211Hrxw/fish.png',
-    prawn: 'https://i.ibb.co/pjm8MhfB/prawn.png',
+    chicken: 'https://i.ibb.co/jvwcsGmJ/chicken.png',
+    mutton: 'https://i.ibb.co/1t8DMnq7/mutton.png',
+    fish: 'https://i.ibb.co/MDczFFB5/fish.png',
+    prawn: 'https://i.ibb.co/LhBG59n6/prawn.png',
   },
   karam: {
     category: 'https://i.ibb.co/0p3gT5ZF/all-mix.png',
@@ -156,9 +156,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.whole,
         // Whole dal - less processing = lower price (₹125/kg)
         variants: [
-          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
-          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
-          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
+          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
+          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
+          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
         ]
       },
       {
@@ -170,9 +170,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.split,
         // Split dal - more processing = higher price (₹145/kg)
         variants: [
-          { size: '1 KG', ourPrice: 125, marketPrice: 150 },
-          { size: '2 KG', ourPrice: 245, marketPrice: 300 },
-          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
+          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
+          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
+          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
         ]
       }
     ]
@@ -180,7 +180,7 @@ const productsData = {
   pickles: {
     title: "Homemade Pickles",
     subtitle: "Authentic recipes from grandmother's kitchen",
-    description: "Traditional Telugu pickles made with pure ingredients",
+    description: "Traditional homemade pickles made with pure ingredients",
     image: PRODUCT_IMAGES.pickles.category,
     subcategories: [
       {
@@ -190,7 +190,7 @@ const productsData = {
           { 
             id: 'pickle-avakaya', 
             name: 'Avakaya', 
-            description: 'Traditional Andhra-style raw mango pickle made with hand-pounded spices, cold-pressed mustard oil & rock salt. Aged to perfection for authentic tangy-spicy taste. 100% homemade with pure quality ingredients.', 
+            description: 'Traditional raw mango pickle made with hand-pounded spices, cold-pressed mustard oil & rock salt. Aged to perfection for authentic tangy-spicy taste. 100% homemade with pure quality ingredients.', 
             tag: 'SIGNATURE', 
             tagColor: '#DC2626', 
             image: PRODUCT_IMAGES.pickles.mango 
@@ -228,8 +228,8 @@ const productsData = {
           { 
             id: 'pickle-gongura', 
             name: 'Gongura Pickle', 
-            description: 'Authentic Telugu gongura (sorrel leaves) pickle with garlic & green chilies. Distinctive sour taste, rich in iron & vitamins. A true Andhra delicacy, 100% pure & homemade.', 
-            tag: 'TELUGU SPECIAL', 
+            description: 'Authentic gongura (sorrel leaves) pickle with garlic & green chilies. Distinctive sour taste, rich in iron & vitamins. A true regional delicacy, 100% pure & homemade.', 
+            tag: 'REGIONAL SPECIAL', 
             tagColor: '#10B981', 
             image: PRODUCT_IMAGES.pickles.gongura 
           },
@@ -282,7 +282,7 @@ const productsData = {
           { 
             id: 'pickle-mutton', 
             name: 'Mutton Pickle', 
-            description: 'Premium goat meat pickle prepared with traditional Andhra spices. Tender pieces marinated for 48 hours, cooked to perfection in pure gingelly oil. Authentic homemade recipe.', 
+            description: 'Premium goat meat pickle prepared with traditional spices. Tender pieces marinated for 48 hours, cooked to perfection in pure gingelly oil. Authentic homemade recipe.', 
             tag: 'PREMIUM', 
             tagColor: '#9333EA', 
             image: PRODUCT_IMAGES.pickles.mutton,
@@ -339,7 +339,7 @@ const productsData = {
     ]
   },
   karam: {
-    title: "Karam Powders",
+    title: "Spice Powders",
     subtitle: "Freshly ground spice powders for flavorful meals",
     description: "Traditional spice powders made with premium ingredients",
     image: PRODUCT_IMAGES.karam.category,
@@ -355,7 +355,7 @@ const productsData = {
       { 
         id: 'karam-kandi', 
         name: 'Kandi Podi', 
-        description: 'Aromatic toor dal powder roasted with red chilies & cumin. Classic Andhra podi for ghee rice & idli. Made with hand-picked dal, no additives. Pure homemade quality.', 
+        description: 'Aromatic toor dal powder roasted with red chilies & cumin. Classic spice powder for ghee rice & idli. Made with hand-picked dal, no additives. Pure homemade quality.', 
         tag: 'CLASSIC', 
         tagColor: '#F59E0B', 
         image: PRODUCT_IMAGES.karam.pappula 
@@ -403,7 +403,7 @@ const productsData = {
       { 
         id: 'karam-gongura', 
         name: 'Gongura Karam', 
-        description: 'Tangy sorrel leaves powder with distinctive sour taste. Rich in iron & folic acid. Authentic Telugu recipe, perfect for rice & snacks. 100% homemade with pure ingredients.', 
+        description: 'Tangy sorrel leaves powder with distinctive sour taste. Rich in iron & folic acid. Authentic traditional recipe, perfect for rice & snacks. 100% homemade with pure ingredients.', 
         tag: 'TANGY', 
         tagColor: '#65A30D', 
         image: PRODUCT_IMAGES.karam.gongura 
@@ -932,7 +932,7 @@ export default function BKGRApp() {
             <button onClick={() => setSelectedCategory(null)} 
                     className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
                     style={{background: theme.background}}>←</button>
-            <h1 className="text-lg font-bold" style={{color: theme.text}}>🥒 Homemade Pickles</h1>
+            <h1 className="text-lg font-bold" style={{color: theme.text}}>Homemade Pickles</h1>
             <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
               <span className="text-2xl">🛒</span>
               {getCartItemCount() > 0 && (
@@ -1002,7 +1002,7 @@ export default function BKGRApp() {
             <button onClick={() => setSelectedCategory(null)} 
                     className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
                     style={{background: theme.background}}>←</button>
-            <h1 className="text-lg font-bold" style={{color: theme.text}}>🌶️ {category.title}</h1>
+            <h1 className="text-lg font-bold" style={{color: theme.text}}>{category.title}</h1>
             <button onClick={() => setShowCart(true)} className="relative w-11 h-11 flex items-center justify-center">
               <span className="text-2xl">🛒</span>
               {getCartItemCount() > 0 && (
@@ -1137,11 +1137,20 @@ export default function BKGRApp() {
     );
   }
 
+  // Category background colors for attractive product cards
+  const categoryColors = {
+    rice: { bg: '#FEF3C7', accent: '#F59E0B', light: '#FFFBEB' },
+    urad: { bg: '#E0E7FF', accent: '#6366F1', light: '#EEF2FF' },
+    pickles: { bg: '#FCE7F3', accent: '#EC4899', light: '#FDF2F8' },
+    karam: { bg: '#FFEDD5', accent: '#EA580C', light: '#FFF7ED' },
+  };
+
   // ===========================================
   // 🏠 HOME SCREEN
   // ===========================================
   return (
-    <div className="min-h-screen font-sans max-w-md mx-auto pb-28" style={{background: theme.background}}>
+    <div className="min-h-screen font-sans max-w-md mx-auto pb-28" style={{background: '#F8FAFC'}}>
+      {/* Header */}
       <div className="p-4 flex items-center justify-between" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
         <div className="flex items-center gap-3">
           <Logo className="w-14 h-14 border-2 border-white/20" />
@@ -1161,85 +1170,178 @@ export default function BKGRApp() {
         </button>
       </div>
 
+      {/* Hero Banner - Attractive Design */}
       <div className="p-4">
-        <div className="rounded-2xl p-6 shadow-lg relative overflow-hidden" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-          <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10" style={{background: theme.accent, transform: 'translate(30%, -30%)'}}></div>
-          <span className="inline-block text-xs px-4 py-1.5 rounded-full font-bold mb-3" style={{background: `${theme.accent}20`, color: '#92400E'}}>🎉 FRESH PROMISE</span>
-          <h2 className="text-2xl font-bold mb-2" style={{color: theme.text}}>Made Fresh On Order</h2>
-          <p className="mb-4" style={{color: theme.textSecondary}}>Manufacturing date = Your order date</p>
-          <div className="flex flex-wrap gap-2 text-xs font-semibold">
-            <span className="px-3 py-1.5 rounded-full" style={{background: theme.background, color: theme.text}}>✓ 100% Homemade</span>
-            <span className="px-3 py-1.5 rounded-full" style={{background: theme.background, color: theme.text}}>✓ Free Delivery</span>
-            <span className="px-3 py-1.5 rounded-full" style={{background: theme.background, color: theme.text}}>✓ Pure Quality</span>
+        <div className="rounded-3xl p-6 relative overflow-hidden" 
+             style={{background: 'linear-gradient(135deg, #065F46 0%, #047857 50%, #10B981 100%)'}}>
+          <div className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-20" 
+               style={{background: 'white', transform: 'translate(30%, -30%)'}}></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full opacity-10" 
+               style={{background: 'white', transform: 'translate(-30%, 30%)'}}></div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">🏆</span>
+              <span className="text-white/90 text-sm font-semibold">Premium Quality Promise</span>
+            </div>
+            
+            <h2 className="text-white text-2xl font-bold mb-2">Made With Love & Care</h2>
+            <h3 className="text-white text-xl font-bold mb-4">100% Pure Homemade Products</h3>
+            
+            <div className="space-y-2 mb-4">
+              <p className="text-white/90 text-sm flex items-center gap-2">
+                <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center text-xs">✓</span>
+                No Preservatives • No Chemicals
+              </p>
+              <p className="text-white/90 text-sm flex items-center gap-2">
+                <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center text-xs">✓</span>
+                Traditional Recipes • Fresh Ingredients
+              </p>
+              <p className="text-white/90 text-sm flex items-center gap-2">
+                <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center text-xs">✓</span>
+                Made Fresh On Order • Hygienic Packing
+              </p>
+            </div>
+            
+            <div className="flex gap-2 flex-wrap">
+              <span className="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full text-white text-xs font-semibold">
+                🏠 100% Homemade
+              </span>
+              <span className="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full text-white text-xs font-semibold">
+                🚚 Free Delivery
+              </span>
+              <span className="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full text-white text-xs font-semibold">
+                ⭐ Best Quality
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-around py-5 mx-4 rounded-2xl shadow-lg" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-        {[{icon: '🌿', text: '100% Pure'}, {icon: '🚫', text: 'No Chemicals'}, {icon: '🚚', text: 'Free Delivery'}, {icon: '💰', text: 'Best Price'}].map((item, i) => (
-          <div key={i} className="text-center">
-            <span className="text-2xl block mb-1">{item.icon}</span>
-            <p className="text-[11px] font-semibold" style={{color: theme.textSecondary}}>{item.text}</p>
+      {/* Quick Info Strip */}
+      <div className="mx-4 mb-4 p-3 rounded-2xl flex items-center justify-center gap-6" 
+           style={{background: 'linear-gradient(90deg, #FEF3C7, #FDE68A)'}}>
+        <div className="flex items-center gap-2">
+          <span className="text-xl">📅</span>
+          <div>
+            <p className="text-xs font-bold text-amber-800">Manufacturing Date</p>
+            <p className="text-[10px] text-amber-700">= Your Order Date</p>
           </div>
-        ))}
+        </div>
+        <div className="w-px h-8 bg-amber-400"></div>
+        <div className="flex items-center gap-2">
+          <span className="text-xl">🏪</span>
+          <div>
+            <p className="text-xs font-bold text-amber-800">Direct from Kitchen</p>
+            <p className="text-[10px] text-amber-700">No Middlemen</p>
+          </div>
+        </div>
       </div>
 
-      <div className="p-4">
-        <h2 className="text-xl font-bold mb-1" style={{color: theme.text}}>Shop by Category</h2>
-        <p className="text-sm mb-4" style={{color: theme.textSecondary}}>Fresh from our farm to your home</p>
+      {/* Shop by Category - Colorful Cards */}
+      <div className="px-4 mb-4">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-xl font-bold" style={{color: theme.text}}>Shop by Category</h2>
+            <p className="text-sm" style={{color: theme.textSecondary}}>Fresh from our farm to your home</p>
+          </div>
+          <span className="text-2xl">🛍️</span>
+        </div>
         
-        <div className="space-y-4">
-          {Object.entries(productsData).map(([key, cat]) => (
-            <div key={key} onClick={() => setSelectedCategory(key)} 
-                 className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
-                 style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-              <div className="flex items-center">
-                <div className="w-28 h-28 flex items-center justify-center" style={{background: theme.background}}>
-                  <ProductImage src={cat.image} alt={cat.title} className="w-20 h-20 rounded-xl" />
-                </div>
-                <div className="flex-1 p-4">
-                  <h3 className="font-bold text-lg" style={{color: theme.text}}>{cat.title}</h3>
-                  <p className="text-sm mb-2" style={{color: theme.textSecondary}}>{cat.subtitle}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold" style={{color: theme.success}}>
-                      {cat.items?.length || cat.subcategories?.reduce((a, s) => a + s.items.length, 0)} products
+        <div className="grid grid-cols-2 gap-3">
+          {Object.entries(productsData).map(([key, cat]) => {
+            const colors = categoryColors[key];
+            return (
+              <div key={key} onClick={() => setSelectedCategory(key)} 
+                   className="rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
+                   style={{background: colors.bg, boxShadow: '0 4px 15px rgba(0,0,0,0.08)'}}>
+                <div className="p-4 relative">
+                  <div className="absolute top-2 right-2 px-2 py-1 rounded-full text-[10px] font-bold text-white"
+                       style={{background: colors.accent}}>
+                    {cat.items?.length || cat.subcategories?.reduce((a, s) => a + s.items.length, 0)} items
+                  </div>
+                  <div className="w-20 h-20 mx-auto mb-3 rounded-2xl flex items-center justify-center"
+                       style={{background: colors.light}}>
+                    <ProductImage src={cat.image} alt={cat.title} className="w-16 h-16 rounded-xl" />
+                  </div>
+                  <h3 className="font-bold text-sm text-center mb-1" style={{color: theme.text}}>
+                    {key === 'rice' ? 'Premium Rice' : key === 'urad' ? 'Urad Dal' : key === 'pickles' ? 'Homemade Pickles' : 'Spice Powders'}
+                  </h3>
+                  <p className="text-[10px] text-center mb-2" style={{color: theme.textSecondary}}>
+                    {cat.subtitle.split(' ').slice(0, 4).join(' ')}
+                  </p>
+                  <div className="text-center">
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold text-white"
+                          style={{background: colors.accent}}>
+                      View All →
                     </span>
-                    <span className="text-white px-4 py-1.5 rounded-lg text-sm font-bold" style={{background: theme.primary}}>View →</span>
                   </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Why Choose Us - Price Comparison */}
+      <div className="mx-4 mb-4 rounded-2xl overflow-hidden" style={{boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}>
+        <div className="p-4 text-white text-center" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
+          <h3 className="font-bold text-lg">💡 Why Choose Us?</h3>
+          <p className="text-xs text-white/80">Compare & Save with BKGR Products</p>
+        </div>
+        <div className="p-4 bg-white">
+          <div className="flex items-center justify-around">
+            <div className="text-center">
+              <p className="text-xs text-gray-500 mb-1">Market Price</p>
+              <p className="text-2xl font-bold text-gray-400 line-through">₹1,875</p>
+            </div>
+            <div className="text-3xl">→</div>
+            <div className="text-center">
+              <p className="text-xs text-gray-500 mb-1">Our Price</p>
+              <p className="text-3xl font-bold" style={{color: theme.success}}>₹1,550</p>
+              <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-bold text-white bg-green-500">
+                Save ₹325!
+              </span>
+            </div>
+          </div>
+          <p className="text-center text-xs mt-3 text-gray-500">25kg Semi Polished Rice</p>
+        </div>
+      </div>
+
+      {/* Our Promise */}
+      <div className="mx-4 mb-4 p-4 rounded-2xl" style={{background: 'linear-gradient(135deg, #FDF2F8, #FCE7F3)'}}>
+        <h3 className="font-bold text-center mb-3" style={{color: '#9D174D'}}>🤝 Our Promise to You</h3>
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            {icon: '👩‍🍳', title: 'Homemade Style', desc: 'Traditional home recipes'},
+            {icon: '🌿', title: 'Pure Ingredients', desc: 'No artificial additives'},
+            {icon: '📦', title: 'Fresh Packing', desc: 'Hygienic & sealed'},
+            {icon: '💯', title: 'Quality Assured', desc: 'Checked before delivery'},
+          ].map((item, i) => (
+            <div key={i} className="bg-white rounded-xl p-3 text-center" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.05)'}}>
+              <span className="text-2xl block mb-1">{item.icon}</span>
+              <p className="font-bold text-xs" style={{color: theme.text}}>{item.title}</p>
+              <p className="text-[10px]" style={{color: theme.textSecondary}}>{item.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mx-4 mb-4 rounded-2xl p-6 text-white" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
-        <h3 className="font-bold text-center mb-4 text-lg">💡 Why Choose Us?</h3>
-        <div className="rounded-2xl p-5 flex items-center justify-around" style={{background: 'rgba(255,255,255,0.1)'}}>
-          <div className="text-center">
-            <p className="text-xs opacity-80 mb-1">Market Price</p>
-            <p className="text-2xl font-bold line-through opacity-60">₹1,875</p>
-          </div>
-          <div className="text-3xl font-bold opacity-50">→</div>
-          <div className="text-center">
-            <p className="text-xs opacity-80 mb-1">Our Price</p>
-            <p className="text-3xl font-bold">₹1,550</p>
-            <p className="text-sm font-bold mt-1" style={{color: theme.accent}}>Save ₹325!</p>
-          </div>
-        </div>
-        <p className="text-center text-sm mt-3" style={{color: theme.accentLight}}>25kg Semi Polished Rice</p>
-      </div>
-
+      {/* Delivery Areas */}
       <div className="px-4 mb-4">
-        <h3 className="font-bold mb-3 text-lg" style={{color: theme.text}}>🚚 Free Delivery Areas</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xl">🚚</span>
+          <h3 className="font-bold text-lg" style={{color: theme.text}}>Free Delivery Areas</h3>
+        </div>
         <div className="flex flex-wrap gap-2">
           {deliveryAreas.map(area => (
-            <span key={area} className="px-4 py-2 rounded-full text-sm shadow-sm font-medium"
-                  style={{background: theme.surface, color: theme.textSecondary, border: `1px solid ${theme.border}`}}>{area}</span>
+            <span key={area} className="px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{background: '#E0F2FE', color: '#0369A1'}}>{area}</span>
           ))}
         </div>
       </div>
 
+      {/* Contact Buttons */}
       <div className="flex gap-3 px-4 pb-4">
         <a href="tel:+917993822600" 
            className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold shadow-lg"
