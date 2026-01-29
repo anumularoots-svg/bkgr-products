@@ -156,9 +156,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.whole,
         // Whole dal - less processing = lower price (₹125/kg)
         variants: [
-          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
-          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
-          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
+          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
+          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
+          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
         ]
       },
       {
@@ -170,9 +170,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.split,
         // Split dal - more processing = higher price (₹145/kg)
         variants: [
-          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
-          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
-          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
+          { size: '1 KG', ourPrice: 125, marketPrice: 150 },
+          { size: '2 KG', ourPrice: 245, marketPrice: 300 },
+          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
         ]
       }
     ]
