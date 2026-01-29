@@ -19,7 +19,7 @@ const PRODUCT_IMAGES = {
     whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
   pickles: {
-    category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
+    category: 'https://i.ibb.co/B54brGHF/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
     lemon: 'https://i.ibb.co/8nkpcBC2/lemon.png',
     gongura: 'https://i.ibb.co/yFG8wSz1/gongura.png',
@@ -27,10 +27,10 @@ const PRODUCT_IMAGES = {
     brinjal: 'https://i.ibb.co/99XFpDSC/Brinjal.png',
     redchilli: 'https://i.ibb.co/RpFkNTJ3/redchilli.png',
     drumstick: 'https://i.ibb.co/HLDbsG3N/drumstick.png',
-    chicken: 'https://i.ibb.co/jvwcsGmJ/chicken.png',
-    mutton: 'https://i.ibb.co/1t8DMnq7/mutton.png',
-    fish: 'https://i.ibb.co/MDczFFB5/fish.png',
-    prawn: 'https://i.ibb.co/LhBG59n6/prawn.png',
+    chicken: 'https://i.ibb.co/yn6LYRDX/chicken.png',
+    mutton: 'https://i.ibb.co/LXpxxrVS/mutton.png',
+    fish: 'https://i.ibb.co/B211Hrxw/fish.png',
+    prawn: 'https://i.ibb.co/pjm8MhfB/prawn.png',
   },
   karam: {
     category: 'https://i.ibb.co/0p3gT5ZF/all-mix.png',
