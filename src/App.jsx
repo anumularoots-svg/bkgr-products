@@ -19,7 +19,7 @@ const PRODUCT_IMAGES = {
     whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
   pickles: {
-    category: 'https://i.ibb.co/B54brGHF/mixed.png',
+    category: 'https://i.ibb.co/B5vxvhvC/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
     lemon: 'https://i.ibb.co/8nkpcBC2/lemon.png',
     gongura: 'https://i.ibb.co/yFG8wSz1/gongura.png',
@@ -27,10 +27,10 @@ const PRODUCT_IMAGES = {
     brinjal: 'https://i.ibb.co/99XFpDSC/Brinjal.png',
     redchilli: 'https://i.ibb.co/RpFkNTJ3/redchilli.png',
     drumstick: 'https://i.ibb.co/HLDbsG3N/drumstick.png',
-    chicken: 'https://i.ibb.co/yn6LYRDX/chicken.png',
-    mutton: 'https://i.ibb.co/LXpxxrVS/mutton.png',
-    fish: 'https://i.ibb.co/B211Hrxw/fish.png',
-    prawn: 'https://i.ibb.co/pjm8MhfB/prawn.png',
+    chicken: 'https://i.ibb.co/jvwcsGmJ/chicken.png',
+    mutton: 'https://i.ibb.co/1t8DMnq7/mutton.png',
+    fish: 'https://i.ibb.co/MDczFFB5/fish.png',
+    prawn: 'https://i.ibb.co/LhBG59n6/prawn.png',
   },
   karam: {
     category: 'https://i.ibb.co/0p3gT5ZF/all-mix.png',
@@ -156,9 +156,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.whole,
         // Whole dal - less processing = lower price (₹125/kg)
         variants: [
-          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
-          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
-          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
+          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
+          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
+          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
         ]
       },
       {
@@ -170,9 +170,9 @@ const productsData = {
         image: PRODUCT_IMAGES.urad.split,
         // Split dal - more processing = higher price (₹145/kg)
         variants: [
-          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
-          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
-          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
+          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
+          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
+          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
         ]
       }
     ]
@@ -578,7 +578,7 @@ export default function BKGRApp() {
   // ===========================================
   if (orderPlaced) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 font-sans" style={{background: theme.background}}>
+      <div className="min-h-screen flex items-center justify-center p-6 font-sans" style={{background: '#F8FAFC'}}>
         <div className="text-center max-w-sm">
           <div className="w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-8 text-white text-5xl shadow-2xl"
                style={{background: `linear-gradient(135deg, ${theme.success}, ${theme.primaryLight})`}}>
@@ -607,7 +607,7 @@ export default function BKGRApp() {
   // ===========================================
   if (showCheckout) {
     return (
-      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
         <div className="p-4 flex items-center gap-4 border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
           <button onClick={() => setShowCheckout(false)} 
                   className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -618,16 +618,22 @@ export default function BKGRApp() {
         <div className="p-4 pb-32">
           <div className="rounded-2xl p-5 shadow-lg mb-4" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
             <h3 className="font-bold mb-4 flex items-center gap-2 text-lg" style={{color: theme.text}}>📦 Order Summary</h3>
-            {cart.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-3 py-3 border-b last:border-0" style={{borderColor: theme.border}}>
-                <ProductImage src={item.product.image} alt={item.product.name} className="w-14 h-14 rounded-xl" />
-                <div className="flex-1">
-                  <p className="font-semibold" style={{color: theme.text}}>{item.product.name}</p>
-                  <p className="text-sm" style={{color: theme.textSecondary}}>{item.variant.size} × {item.quantity}</p>
+            {cart.map((item, idx) => {
+              const itemColors = {
+                rice: '#FEF3C7', urad: '#E0E7FF', pickles: '#FCE7F3', karam: '#FFEDD5'
+              };
+              const bgColor = itemColors[item.category] || '#F8FAFC';
+              return (
+                <div key={idx} className="flex items-center gap-3 py-3 px-3 rounded-xl mb-2" style={{background: bgColor}}>
+                  <ProductImage src={item.product.image} alt={item.product.name} className="w-14 h-14 rounded-xl" />
+                  <div className="flex-1">
+                    <p className="font-semibold" style={{color: theme.text}}>{item.product.name}</p>
+                    <p className="text-sm" style={{color: theme.textSecondary}}>{item.variant.size} × {item.quantity}</p>
+                  </div>
+                  <p className="font-bold text-lg" style={{color: theme.success}}>₹{item.variant.ourPrice * item.quantity}</p>
                 </div>
-                <p className="font-bold text-lg" style={{color: theme.text}}>₹{item.variant.ourPrice * item.quantity}</p>
-              </div>
-            ))}
+              );
+            })}
             <div className="mt-4 pt-4 border-t space-y-2" style={{borderColor: theme.border}}>
               <div className="flex justify-between" style={{color: theme.textSecondary}}><span>Subtotal</span><span>₹{getCartTotal()}</span></div>
               <div className="flex justify-between font-semibold" style={{color: theme.success}}><span>You Save</span><span>₹{getCartSavings()}</span></div>
@@ -678,7 +684,7 @@ export default function BKGRApp() {
   // ===========================================
   if (showCart) {
     return (
-      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
         <div className="p-4 flex items-center gap-4 border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
           <button onClick={() => setShowCart(false)} 
                   className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -701,34 +707,40 @@ export default function BKGRApp() {
           </div>
         ) : (
           <div className="p-4 pb-44">
-            {cart.map((item, idx) => (
-              <div key={idx} className="rounded-2xl p-4 mb-3 shadow-lg" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-                <div className="flex gap-4">
-                  <ProductImage src={item.product.image} alt={item.product.name} className="w-20 h-20 rounded-xl" />
-                  <div className="flex-1">
-                    <h4 className="font-bold" style={{color: theme.text}}>{item.product.name}</h4>
-                    <p className="text-sm mb-2" style={{color: theme.textSecondary}}>{item.variant.size}</p>
-                    <div className="flex items-center gap-2">
-                      <span className="font-bold text-lg" style={{color: theme.success}}>₹{item.variant.ourPrice}</span>
-                      <span className="text-sm line-through" style={{color: theme.textMuted}}>₹{item.variant.marketPrice}</span>
-                      <span className="text-xs px-2 py-0.5 rounded-full font-bold text-white" style={{background: theme.success}}>
-                        {getDiscount(item.variant.ourPrice, item.variant.marketPrice)}% OFF
-                      </span>
+            {cart.map((item, idx) => {
+              const itemColors = {
+                rice: '#FEF3C7', urad: '#E0E7FF', pickles: '#FCE7F3', karam: '#FFEDD5'
+              };
+              const bgColor = itemColors[item.category] || '#F8FAFC';
+              return (
+                <div key={idx} className="rounded-2xl p-4 mb-3" style={{background: bgColor, boxShadow: '0 4px 15px rgba(0,0,0,0.08)'}}>
+                  <div className="flex gap-4">
+                    <ProductImage src={item.product.image} alt={item.product.name} className="w-20 h-20 rounded-xl" />
+                    <div className="flex-1">
+                      <h4 className="font-bold" style={{color: theme.text}}>{item.product.name}</h4>
+                      <p className="text-sm mb-2" style={{color: theme.textSecondary}}>{item.variant.size}</p>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-lg" style={{color: theme.success}}>₹{item.variant.ourPrice}</span>
+                        <span className="text-sm line-through" style={{color: theme.textMuted}}>₹{item.variant.marketPrice}</span>
+                        <span className="text-xs px-2 py-0.5 rounded-full font-bold text-white" style={{background: theme.success}}>
+                          {getDiscount(item.variant.ourPrice, item.variant.marketPrice)}% OFF
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex items-center justify-between mt-4 pt-4 border-t" style={{borderColor: theme.border}}>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{background: theme.primary}}>
-                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, -1)} 
-                            className="w-10 h-10 text-white font-bold text-xl">−</button>
-                    <span className="w-12 text-center text-white font-bold text-lg">{item.quantity}</span>
-                    <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, 1)} 
-                            className="w-10 h-10 text-white font-bold text-xl">+</button>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t" style={{borderColor: 'rgba(0,0,0,0.1)'}}>
+                    <div className="flex items-center rounded-xl overflow-hidden" style={{background: theme.primary}}>
+                      <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, -1)} 
+                              className="w-10 h-10 text-white font-bold text-xl">−</button>
+                      <span className="w-12 text-center text-white font-bold text-lg">{item.quantity}</span>
+                      <button onClick={() => updateCartQuantity(item.product.id, item.variant.size, 1)} 
+                              className="w-10 h-10 text-white font-bold text-xl">+</button>
+                    </div>
+                    <p className="font-bold text-xl" style={{color: theme.text}}>₹{item.variant.ourPrice * item.quantity}</p>
                   </div>
-                  <p className="font-bold text-xl" style={{color: theme.text}}>₹{item.variant.ourPrice * item.quantity}</p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
             
             <div className="rounded-2xl p-5 mt-4" style={{background: `linear-gradient(135deg, ${theme.accent}15, ${theme.accentLight}20)`, border: `2px solid ${theme.accent}40`}}>
               <div className="flex justify-between mb-2" style={{color: theme.textSecondary}}><span>Items ({getCartItemCount()})</span><span>₹{getCartTotal()}</span></div>
@@ -765,8 +777,16 @@ export default function BKGRApp() {
       variants = selectedProduct.variants;
     }
 
+    const detailColors = {
+      rice: { bg: '#FEF3C7', light: '#FFFBEB', accent: '#F59E0B' },
+      urad: { bg: '#E0E7FF', light: '#EEF2FF', accent: '#6366F1' },
+      pickles: { bg: '#FCE7F3', light: '#FDF2F8', accent: '#EC4899' },
+      karam: { bg: '#FFEDD5', light: '#FFF7ED', accent: '#EA580C' },
+    };
+    const colors = detailColors[selectedCategory] || detailColors.rice;
+
     return (
-      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
         <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
           <button onClick={() => setSelectedProduct(null)} 
                   className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -781,13 +801,13 @@ export default function BKGRApp() {
           </button>
         </div>
         
-        <div className="p-8 flex items-center justify-center relative" style={{background: theme.surface}}>
-          <div className="absolute top-4 left-4 text-white text-sm px-3 py-1.5 rounded-full font-bold" style={{background: theme.success}}>
+        <div className="p-8 flex items-center justify-center relative" style={{background: colors.bg}}>
+          <div className="absolute top-4 left-4 text-white text-sm px-3 py-1.5 rounded-full font-bold shadow-lg" style={{background: theme.success}}>
             {getDiscount(variants[0].ourPrice, variants[0].marketPrice)}% OFF
           </div>
-          <div className="w-48 h-48 rounded-3xl flex items-center justify-center overflow-hidden" 
-               style={{background: theme.background, border: `2px solid ${theme.border}`}}>
-            <ProductImage src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full" />
+          <div className="w-52 h-52 rounded-3xl flex items-center justify-center overflow-hidden" 
+               style={{background: colors.light, boxShadow: '0 8px 30px rgba(0,0,0,0.1)'}}>
+            <ProductImage src={selectedProduct.image} alt={selectedProduct.name} className="w-44 h-44" />
           </div>
         </div>
         
@@ -809,8 +829,8 @@ export default function BKGRApp() {
           <h3 className="font-bold mb-4 text-lg" style={{color: theme.text}}>Select Size</h3>
           
           {variants.map((variant, idx) => (
-            <div key={idx} className="rounded-2xl p-4 mb-3 flex items-center justify-between transition-all cursor-pointer hover:shadow-lg"
-                 style={{border: `2px solid ${theme.border}`, background: theme.surface}}>
+            <div key={idx} className="rounded-2xl p-4 mb-3 flex items-center justify-between transition-all cursor-pointer hover:scale-[1.01]"
+                 style={{background: colors.bg, boxShadow: '0 4px 15px rgba(0,0,0,0.06)'}}>
               <div>
                 <p className="font-bold text-lg" style={{color: theme.text}}>{variant.size}</p>
                 <div className="flex items-center gap-3 mt-1">
@@ -823,7 +843,7 @@ export default function BKGRApp() {
               </div>
               <button onClick={() => addToCart(selectedProduct, variant, selectedCategory)} 
                       className="text-white px-6 py-3 rounded-xl font-bold shadow-lg transition-all active:scale-95"
-                      style={{background: theme.primary}}>
+                      style={{background: colors.accent}}>
                 ADD
               </button>
             </div>
@@ -850,9 +870,10 @@ export default function BKGRApp() {
   // ===========================================
   if (selectedCategory === 'pickles' && selectedSubcategory) {
     const subcat = productsData.pickles.subcategories.find(s => s.name === selectedSubcategory);
+    const pickleColors = { bg: '#FCE7F3', light: '#FDF2F8', accent: '#EC4899' };
     
     return (
-      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
         <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
           <button onClick={() => setSelectedSubcategory(null)} 
                   className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -868,35 +889,33 @@ export default function BKGRApp() {
         </div>
 
         <div className="p-4 pb-28">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {subcat.items.map(product => {
               const variants = getPickleVariants(product);
               return (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                     className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
-                     style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-                  <div className="relative">
-                    <div className="h-36 flex items-center justify-center p-4" style={{background: theme.background}}>
-                      <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
-                    </div>
-                    <span className="absolute top-2 left-2 text-white text-[11px] px-2 py-1 rounded-lg font-bold" style={{background: theme.success}}>
+                     className="rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
+                     style={{background: pickleColors.bg, boxShadow: '0 4px 15px rgba(0,0,0,0.08)'}}>
+                  <div className="p-4 relative">
+                    <span className="absolute top-2 right-2 text-white text-[10px] px-2 py-1 rounded-full font-bold" 
+                          style={{background: theme.success}}>
                       {getDiscount(variants[0].ourPrice, variants[0].marketPrice)}% OFF
                     </span>
-                  </div>
-                  <div className="p-3">
-                    <h4 className="font-bold text-sm mb-1" style={{color: theme.text}}>{product.name}</h4>
-                    <p className="text-xs mb-2" style={{color: theme.textMuted}}>250g / 500g / 1kg</p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="font-bold" style={{color: theme.success}}>₹{variants[0].ourPrice}</span>
-                        <span className="line-through text-xs ml-1" style={{color: theme.textMuted}}>₹{variants[0].marketPrice}</span>
-                      </div>
-                      <button onClick={(e) => { e.stopPropagation(); addToCart(product, variants[0], 'pickles'); }} 
-                              className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all"
-                              style={{border: `2px solid ${theme.primary}`, color: theme.primary}}>
-                        ADD
-                      </button>
+                    <div className="w-24 h-24 mx-auto mb-3 rounded-2xl flex items-center justify-center"
+                         style={{background: pickleColors.light}}>
+                      <ProductImage src={product.image} alt={product.name} className="w-20 h-20 rounded-xl" />
                     </div>
+                    <h4 className="font-bold text-sm text-center mb-1" style={{color: theme.text}}>{product.name}</h4>
+                    <p className="text-[10px] text-center mb-2" style={{color: theme.textMuted}}>250g / 500g / 1kg</p>
+                    <div className="text-center mb-3">
+                      <span className="font-bold text-lg" style={{color: theme.success}}>₹{variants[0].ourPrice}</span>
+                      <span className="line-through text-xs ml-1" style={{color: theme.textMuted}}>₹{variants[0].marketPrice}</span>
+                    </div>
+                    <button onClick={(e) => { e.stopPropagation(); addToCart(product, variants[0], 'pickles'); }} 
+                            className="w-full py-2 rounded-xl text-sm font-bold text-white shadow-lg transition-all active:scale-95"
+                            style={{background: pickleColors.accent}}>
+                      ADD
+                    </button>
                   </div>
                 </div>
               );
@@ -926,8 +945,9 @@ export default function BKGRApp() {
     const category = productsData[selectedCategory];
     
     if (selectedCategory === 'pickles') {
+      const pickleColors = { bg: '#FCE7F3', light: '#FDF2F8', accent: '#EC4899' };
       return (
-        <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
           <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
             <button onClick={() => setSelectedCategory(null)} 
                     className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -944,20 +964,23 @@ export default function BKGRApp() {
 
           <div className="p-4 pb-28">
             {category.subcategories.map((subcat, idx) => (
-              <div key={idx} className="mb-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style={{background: `${theme.accent}20`}}>{subcat.icon}</div>
+              <div key={idx} className="mb-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" 
+                       style={{background: pickleColors.bg}}>{subcat.icon}</div>
                   <h3 className="text-lg font-bold" style={{color: theme.text}}>{subcat.name}</h3>
-                  <span className="text-sm ml-auto" style={{color: theme.textMuted}}>{subcat.items.length} items</span>
+                  <span className="text-sm ml-auto px-2 py-1 rounded-full" 
+                        style={{background: pickleColors.bg, color: pickleColors.accent}}>{subcat.items.length} items</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {subcat.items.slice(0, 4).map(product => {
                     const variants = getPickleVariants(product);
                     return (
                       <div key={product.id} onClick={() => { setSelectedSubcategory(subcat.name); setSelectedProduct(product); }} 
-                           className="rounded-xl p-3 shadow-lg cursor-pointer transition-all hover:shadow-xl"
-                           style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-                        <div className="w-full h-20 rounded-lg flex items-center justify-center mb-2 overflow-hidden" style={{background: theme.background}}>
+                           className="rounded-2xl p-3 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
+                           style={{background: pickleColors.bg, boxShadow: '0 3px 12px rgba(0,0,0,0.06)'}}>
+                        <div className="w-full h-20 rounded-xl flex items-center justify-center mb-2"
+                             style={{background: pickleColors.light}}>
                           <ProductImage src={product.image} alt={product.name} className="w-16 h-16 rounded-lg" />
                         </div>
                         <h4 className="font-bold text-sm truncate" style={{color: theme.text}}>{product.name}</h4>
@@ -971,8 +994,8 @@ export default function BKGRApp() {
                 </div>
                 {subcat.items.length > 4 && (
                   <button onClick={() => setSelectedSubcategory(subcat.name)} 
-                          className="w-full mt-3 font-bold text-sm py-3 rounded-xl transition-all"
-                          style={{color: theme.primary, border: `2px solid ${theme.primary}`, background: `${theme.primary}08`}}>
+                          className="w-full mt-3 font-bold text-sm py-3 rounded-xl transition-all text-white"
+                          style={{background: pickleColors.accent}}>
                     View All {subcat.items.length} {subcat.name} →
                   </button>
                 )}
@@ -996,8 +1019,9 @@ export default function BKGRApp() {
     }
 
     if (selectedCategory === 'karam') {
+      const karamColors = { bg: '#FFEDD5', light: '#FFF7ED', accent: '#EA580C' };
       return (
-        <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+        <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
           <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
             <button onClick={() => setSelectedCategory(null)} 
                     className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -1013,37 +1037,38 @@ export default function BKGRApp() {
           </div>
 
           <div className="p-5" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
+            <h2 className="text-white font-bold text-xl text-center">{category.title}</h2>
             <p className="text-center" style={{color: theme.accentLight}}>{category.subtitle}</p>
           </div>
 
           <div className="p-4 pb-28">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               {category.items.map(product => (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                     className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
-                     style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-                  <div className="relative">
-                    <div className="h-28 flex items-center justify-center" style={{background: theme.background}}>
-                      <ProductImage src={product.image} alt={product.name} className="w-20 h-20 rounded-xl" />
-                    </div>
-                    <span className="absolute top-2 left-2 text-white text-[11px] px-2 py-1 rounded-lg font-bold" style={{background: theme.success}}>
+                     className="rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
+                     style={{background: karamColors.bg, boxShadow: '0 4px 15px rgba(0,0,0,0.08)'}}>
+                  <div className="p-4 relative">
+                    <span className="absolute top-2 right-2 text-white text-[10px] px-2 py-1 rounded-full font-bold" 
+                          style={{background: theme.success}}>
                       {getDiscount(category.variants[0].ourPrice, category.variants[0].marketPrice)}% OFF
                     </span>
-                  </div>
-                  <div className="p-3">
-                    <h4 className="font-bold text-sm mb-1" style={{color: theme.text}}>{product.name}</h4>
-                    <p className="text-xs mb-2" style={{color: theme.textMuted}}>{category.variants.map(v => v.size).join(' / ')}</p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="font-bold" style={{color: theme.success}}>₹{category.variants[0].ourPrice}</span>
-                        <span className="line-through text-xs ml-1" style={{color: theme.textMuted}}>₹{category.variants[0].marketPrice}</span>
-                      </div>
-                      <button onClick={(e) => { e.stopPropagation(); addToCart(product, category.variants[0], selectedCategory); }} 
-                              className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all"
-                              style={{border: `2px solid ${theme.primary}`, color: theme.primary}}>
-                        ADD
-                      </button>
+                    <div className="w-20 h-20 mx-auto mb-3 rounded-2xl flex items-center justify-center"
+                         style={{background: karamColors.light}}>
+                      <ProductImage src={product.image} alt={product.name} className="w-16 h-16 rounded-xl" />
                     </div>
+                    <h4 className="font-bold text-sm text-center mb-1" style={{color: theme.text}}>{product.name}</h4>
+                    <p className="text-[10px] text-center mb-2" style={{color: theme.textMuted}}>
+                      {category.variants.map(v => v.size).join(' / ')}
+                    </p>
+                    <div className="text-center mb-3">
+                      <span className="font-bold text-lg" style={{color: theme.success}}>₹{category.variants[0].ourPrice}</span>
+                      <span className="line-through text-xs ml-1" style={{color: theme.textMuted}}>₹{category.variants[0].marketPrice}</span>
+                    </div>
+                    <button onClick={(e) => { e.stopPropagation(); addToCart(product, category.variants[0], selectedCategory); }} 
+                            className="w-full py-2 rounded-xl text-sm font-bold text-white shadow-lg transition-all active:scale-95"
+                            style={{background: karamColors.accent}}>
+                      ADD
+                    </button>
                   </div>
                 </div>
               ))}
@@ -1065,8 +1090,17 @@ export default function BKGRApp() {
       );
     }
 
+    // Product card colors for each category
+    const productCardColors = {
+      rice: { bg: '#FEF3C7', light: '#FFFBEB', accent: '#F59E0B' },
+      urad: { bg: '#E0E7FF', light: '#EEF2FF', accent: '#6366F1' },
+      pickles: { bg: '#FCE7F3', light: '#FDF2F8', accent: '#EC4899' },
+      karam: { bg: '#FFEDD5', light: '#FFF7ED', accent: '#EA580C' },
+    };
+    const cardColors = productCardColors[selectedCategory] || productCardColors.rice;
+
     return (
-      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
+      <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: '#F8FAFC'}}>
         <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
           <button onClick={() => setSelectedCategory(null)} 
                   className="w-11 h-11 flex items-center justify-center rounded-xl text-xl"
@@ -1081,45 +1115,50 @@ export default function BKGRApp() {
           </button>
         </div>
 
-        <div className="p-6" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
-          <h2 className="text-white font-bold text-xl">{category.title}</h2>
-          <p style={{color: theme.accentLight}}>{category.subtitle}</p>
+        <div className="p-5" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
+          <h2 className="text-white font-bold text-xl text-center">{category.title}</h2>
+          <p className="text-center" style={{color: theme.accentLight}}>{category.subtitle}</p>
         </div>
 
         <div className="p-4 pb-28">
-          {category.items.map(product => (
-            <div key={product.id} onClick={() => setSelectedProduct(product)} 
-                 className="rounded-2xl overflow-hidden shadow-lg mb-4 cursor-pointer transition-all hover:shadow-xl"
-                 style={{background: theme.surface, boxShadow: theme.cardShadow}}>
-              <div className="flex">
-                <div className="w-32 flex items-center justify-center p-4 relative" style={{background: theme.background}}>
-                  <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
-                  <span className="absolute top-2 left-2 text-white text-[10px] px-2 py-0.5 rounded-lg font-bold" style={{background: theme.success}}>
-                    {getDiscount(product.variants[0].ourPrice, product.variants[0].marketPrice)}% OFF
-                  </span>
-                </div>
-                <div className="flex-1 p-4">
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-bold text-lg" style={{color: theme.text}}>{product.name}</h4>
-                    <span className="text-[10px] px-2 py-1 rounded-full text-white font-bold" style={{backgroundColor: product.tagColor}}>{product.tag}</span>
+          <div className="space-y-4">
+            {category.items.map(product => (
+              <div key={product.id} onClick={() => setSelectedProduct(product)} 
+                   className="rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.01] active:scale-[0.99]"
+                   style={{background: cardColors.bg, boxShadow: '0 4px 15px rgba(0,0,0,0.08)'}}>
+                <div className="flex items-center p-4">
+                  <div className="w-28 h-28 rounded-2xl flex items-center justify-center relative mr-4"
+                       style={{background: cardColors.light}}>
+                    <ProductImage src={product.image} alt={product.name} className="w-24 h-24 rounded-xl" />
+                    <span className="absolute -top-2 -left-2 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg" 
+                          style={{background: theme.success}}>
+                      {getDiscount(product.variants[0].ourPrice, product.variants[0].marketPrice)}% OFF
+                    </span>
                   </div>
-                  <p className="text-sm mb-2 line-clamp-2" style={{color: theme.textSecondary}}>{product.description}</p>
-                  <p className="text-xs mb-3" style={{color: theme.textMuted}}>{product.variants.map(v => v.size).join(' • ')}</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="font-bold text-xl" style={{color: theme.success}}>₹{product.variants[0].ourPrice}</span>
-                      <span className="text-sm line-through ml-2" style={{color: theme.textMuted}}>₹{product.variants[0].marketPrice}</span>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-bold text-lg" style={{color: theme.text}}>{product.name}</h4>
+                      <span className="text-[10px] px-2 py-1 rounded-full text-white font-bold ml-2" 
+                            style={{backgroundColor: product.tagColor}}>{product.tag}</span>
                     </div>
-                    <button onClick={(e) => { e.stopPropagation(); addToCart(product, product.variants[0], selectedCategory); }} 
-                            className="px-4 py-2 rounded-xl font-bold transition-all"
-                            style={{border: `2px solid ${theme.primary}`, color: theme.primary}}>
-                      ADD
-                    </button>
+                    <p className="text-xs mb-2 line-clamp-2" style={{color: theme.textSecondary}}>{product.description}</p>
+                    <p className="text-xs mb-3" style={{color: theme.textMuted}}>{product.variants.map(v => v.size).join(' • ')}</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="font-bold text-xl" style={{color: theme.success}}>₹{product.variants[0].ourPrice}</span>
+                        <span className="text-sm line-through ml-2" style={{color: theme.textMuted}}>₹{product.variants[0].marketPrice}</span>
+                      </div>
+                      <button onClick={(e) => { e.stopPropagation(); addToCart(product, product.variants[0], selectedCategory); }} 
+                              className="px-5 py-2 rounded-xl font-bold text-white shadow-lg transition-all active:scale-95"
+                              style={{background: cardColors.accent}}>
+                        ADD
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {getCartItemCount() > 0 && (
