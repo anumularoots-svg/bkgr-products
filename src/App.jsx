@@ -45,8 +45,50 @@ const PRODUCT_IMAGES = {
 };
 
 // ===========================================
-// 📦 PRODUCT DATA WITH PROFESSIONAL DESCRIPTIONS
+// 📦 HYDERABAD MARKET BASED PRICING - REALISTIC COST CALCULATION
 // ===========================================
+// 
+// 🐔 CHICKEN PICKLE (1kg) - Market Rate: ₹260/kg
+// ├── Chicken 1.3kg (bone removal, wastage) × ₹260 = ₹338
+// ├── Gingelly Oil 250ml (₹400/L) = ₹100
+// ├── Spices (mirchi, fenugreek, mustard) = ₹80
+// ├── Gas (1.5 hours cooking) = ₹30
+// ├── Glass Bottle + Lid = ₹40
+// └── Labor = ₹50
+// TOTAL COST = ₹638 → OUR PRICE = ₹780 (22% margin)
+// MARKET PRICE = ₹950
+//
+// 🐐 MUTTON PICKLE (1kg) - Market Rate: ₹900/kg  
+// ├── Mutton 1.2kg (bones, wastage) × ₹900 = ₹1080
+// ├── Gingelly Oil 250ml = ₹100
+// ├── Spices = ₹80
+// ├── Gas (2+ hours slow cooking) = ₹40
+// ├── Glass Bottle + Lid = ₹40
+// └── Labor = ₹60
+// TOTAL COST = ₹1400 → OUR PRICE = ₹1700 (21% margin)
+// MARKET PRICE = ₹2100
+//
+// 🐟 FISH PICKLE (1kg) - Market Rate: ₹180/kg
+// ├── Fish 1.5kg (head, bones, scales removal) × ₹180 = ₹270
+// ├── Gingelly Oil 250ml = ₹100
+// ├── Spices + Tamarind = ₹70
+// ├── Gas = ₹25
+// ├── Glass Bottle + Lid = ₹40
+// └── Labor = ₹40
+// TOTAL COST = ₹545 → OUR PRICE = ₹680 (25% margin)
+// MARKET PRICE = ₹850
+//
+// 🦐 PRAWN PICKLE (1kg) - Market Rate: ₹500/kg
+// ├── Prawns 1.4kg (shell, head removal) × ₹500 = ₹700
+// ├── Gingelly Oil 250ml = ₹100
+// ├── Spices = ₹70
+// ├── Gas = ₹30
+// ├── Glass Bottle + Lid = ₹40
+// └── Labor = ₹50
+// TOTAL COST = ₹990 → OUR PRICE = ₹1200 (21% margin)
+// MARKET PRICE = ₹1500
+//
+// Note: Pure homemade quality with no compromise on ingredients!
 
 const productsData = {
   rice: {
@@ -62,10 +104,11 @@ const productsData = {
         tag: 'HEALTHY',
         tagColor: '#059669',
         image: PRODUCT_IMAGES.rice.brown,
+        // Brown rice - least processing = lowest price (₹58/kg)
         variants: [
-          { size: '5 KG', ourPrice: 375, marketPrice: 450 },
-          { size: '25 KG', ourPrice: 1750, marketPrice: 2100 },
-          { size: '50 KG', ourPrice: 3400, marketPrice: 4000 },
+          { size: '5 KG', ourPrice: 290, marketPrice: 350 },
+          { size: '25 KG', ourPrice: 1450, marketPrice: 1750 },
+          { size: '50 KG', ourPrice: 2900, marketPrice: 3500 },
         ]
       },
       {
@@ -75,10 +118,11 @@ const productsData = {
         tag: 'BESTSELLER',
         tagColor: '#D97706',
         image: PRODUCT_IMAGES.rice.semi,
+        // Semi polish - medium processing (₹62/kg)
         variants: [
-          { size: '5 KG', ourPrice: 350, marketPrice: 420 },
-          { size: '25 KG', ourPrice: 1625, marketPrice: 1950 },
-          { size: '50 KG', ourPrice: 3150, marketPrice: 3800 },
+          { size: '5 KG', ourPrice: 310, marketPrice: 375 },
+          { size: '25 KG', ourPrice: 1550, marketPrice: 1875 },
+          { size: '50 KG', ourPrice: 3100, marketPrice: 3750 },
         ]
       },
       {
@@ -88,10 +132,11 @@ const productsData = {
         tag: 'PREMIUM',
         tagColor: '#7C3AED',
         image: PRODUCT_IMAGES.rice.full,
+        // Full polish - most processing = highest price (₹68/kg)
         variants: [
-          { size: '5 KG', ourPrice: 400, marketPrice: 480 },
-          { size: '25 KG', ourPrice: 1875, marketPrice: 2250 },
-          { size: '50 KG', ourPrice: 3650, marketPrice: 4400 },
+          { size: '5 KG', ourPrice: 340, marketPrice: 410 },
+          { size: '25 KG', ourPrice: 1700, marketPrice: 2050 },
+          { size: '50 KG', ourPrice: 3400, marketPrice: 4100 },
         ]
       }
     ]
@@ -103,29 +148,31 @@ const productsData = {
     image: PRODUCT_IMAGES.urad.category,
     items: [
       {
-        id: 'urad-split',
-        name: 'Urad Dal Split',
-        description: 'Premium quality split urad dal, hand-sorted for uniform size. Makes the softest idlis and crispiest dosas. Stone-ground fresh for authentic South Indian taste.',
-        tag: 'IDLI & DOSA',
-        tagColor: '#2563EB',
-        image: PRODUCT_IMAGES.urad.split,
-        variants: [
-          { size: '1 KG', ourPrice: 180, marketPrice: 220 },
-          { size: '2 KG', ourPrice: 350, marketPrice: 430 },
-          { size: '5 KG', ourPrice: 850, marketPrice: 1050 },
-        ]
-      },
-      {
         id: 'urad-whole',
         name: 'Urad Whole Black',
         description: 'Whole black urad dal with skin intact. Perfect for crispy medu vadas and dal makhani. High protein content, naturally grown without chemicals.',
         tag: 'FOR VADA',
         tagColor: '#78716C',
         image: PRODUCT_IMAGES.urad.whole,
+        // Whole dal - less processing = lower price (₹125/kg)
         variants: [
-          { size: '1 KG', ourPrice: 165, marketPrice: 200 },
-          { size: '2 KG', ourPrice: 320, marketPrice: 390 },
-          { size: '5 KG', ourPrice: 780, marketPrice: 950 },
+          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
+          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
+          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
+        ]
+      },
+      {
+        id: 'urad-split',
+        name: 'Urad Dal Split',
+        description: 'Premium quality split urad dal, hand-sorted for uniform size. Makes the softest idlis and crispiest dosas. Stone-ground fresh for authentic South Indian taste.',
+        tag: 'IDLI & DOSA',
+        tagColor: '#2563EB',
+        image: PRODUCT_IMAGES.urad.split,
+        // Split dal - more processing = higher price (₹145/kg)
+        variants: [
+          { size: '1 KG', ourPrice: 145, marketPrice: 180 },
+          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
+          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
         ]
       }
     ]
@@ -222,7 +269,15 @@ const productsData = {
             description: 'Tender boneless chicken pieces cooked in aromatic spices & preserved in pure gingelly oil. Made with fresh farm chicken, slow-cooked for rich flavor. 100% homemade quality.', 
             tag: 'BESTSELLER', 
             tagColor: '#EC4899', 
-            image: PRODUCT_IMAGES.pickles.chicken 
+            image: PRODUCT_IMAGES.pickles.chicken,
+            // CHICKEN: Market ₹260/kg
+            // 1.3kg chicken (wastage)=₹338 + Gingelly Oil ₹100 + Spices ₹80 + Gas ₹30 + Bottle ₹40 + Labor ₹50 = ₹638 cost
+            // Selling: ₹780/kg (22% margin) - Pure homemade quality
+            variants: [
+              { size: '250 G', ourPrice: 220, marketPrice: 280 },
+              { size: '500 G', ourPrice: 420, marketPrice: 520 },
+              { size: '1 KG', ourPrice: 780, marketPrice: 950 },
+            ]
           },
           { 
             id: 'pickle-mutton', 
@@ -230,7 +285,15 @@ const productsData = {
             description: 'Premium goat meat pickle prepared with traditional Andhra spices. Tender pieces marinated for 48 hours, cooked to perfection in pure gingelly oil. Authentic homemade recipe.', 
             tag: 'PREMIUM', 
             tagColor: '#9333EA', 
-            image: PRODUCT_IMAGES.pickles.mutton 
+            image: PRODUCT_IMAGES.pickles.mutton,
+            // MUTTON: Market ₹900/kg
+            // 1.2kg mutton (bones/wastage)=₹1080 + Gingelly Oil ₹100 + Spices ₹80 + Gas ₹40 + Bottle ₹40 + Labor ₹60 = ₹1400 cost
+            // Selling: ₹1700/kg (21% margin) - Premium homemade quality
+            variants: [
+              { size: '250 G', ourPrice: 480, marketPrice: 580 },
+              { size: '500 G', ourPrice: 900, marketPrice: 1100 },
+              { size: '1 KG', ourPrice: 1700, marketPrice: 2100 },
+            ]
           },
           { 
             id: 'pickle-fish', 
@@ -238,7 +301,15 @@ const productsData = {
             description: 'Fresh river fish marinated in tangy tamarind & spicy masala. Boneless pieces fried golden, preserved in aromatic gingelly oil. Coastal recipe, pure homemade quality.', 
             tag: 'SEAFOOD', 
             tagColor: '#0891B2', 
-            image: PRODUCT_IMAGES.pickles.fish 
+            image: PRODUCT_IMAGES.pickles.fish,
+            // FISH: Market ₹180/kg
+            // 1.5kg fish (head/bones/scales removal)=₹270 + Gingelly Oil ₹100 + Spices ₹70 + Gas ₹25 + Bottle ₹40 + Labor ₹40 = ₹545 cost
+            // Selling: ₹680/kg (25% margin) - Pure homemade quality
+            variants: [
+              { size: '250 G', ourPrice: 200, marketPrice: 250 },
+              { size: '500 G', ourPrice: 380, marketPrice: 460 },
+              { size: '1 KG', ourPrice: 680, marketPrice: 850 },
+            ]
           },
           { 
             id: 'pickle-prawn', 
@@ -246,20 +317,25 @@ const productsData = {
             description: 'Fresh prawns cleaned & cooked with aromatic spices in traditional style. Crunchy texture with bold spicy flavor. Made with premium quality prawns, 100% homemade.', 
             tag: 'PREMIUM', 
             tagColor: '#EA580C', 
-            image: PRODUCT_IMAGES.pickles.prawn 
+            image: PRODUCT_IMAGES.pickles.prawn,
+            // PRAWN: Market ₹500/kg
+            // 1.4kg prawns (shell/head removal)=₹700 + Gingelly Oil ₹100 + Spices ₹70 + Gas ₹30 + Bottle ₹40 + Labor ₹50 = ₹990 cost
+            // Selling: ₹1200/kg (21% margin) - Premium homemade quality
+            variants: [
+              { size: '250 G', ourPrice: 350, marketPrice: 420 },
+              { size: '500 G', ourPrice: 650, marketPrice: 780 },
+              { size: '1 KG', ourPrice: 1200, marketPrice: 1500 },
+            ]
           },
         ]
       }
     ],
+    // VEG PICKLES: Mango/Vegetables + Oil + Spices = ~₹180 cost for 1kg
+    // Selling: ₹280/kg (55% margin - vegetables are cheaper)
     defaultVariants: [
-      { size: '250 G', ourPrice: 150, marketPrice: 190 },
-      { size: '500 G', ourPrice: 280, marketPrice: 360 },
-      { size: '1 KG', ourPrice: 520, marketPrice: 680 },
-    ],
-    nonVegVariants: [
-      { size: '250 G', ourPrice: 220, marketPrice: 280 },
-      { size: '500 G', ourPrice: 420, marketPrice: 540 },
-      { size: '1 KG', ourPrice: 800, marketPrice: 1020 },
+      { size: '250 G', ourPrice: 90, marketPrice: 115 },
+      { size: '500 G', ourPrice: 160, marketPrice: 200 },
+      { size: '1 KG', ourPrice: 280, marketPrice: 350 },
     ]
   },
   karam: {
@@ -333,10 +409,11 @@ const productsData = {
         image: PRODUCT_IMAGES.karam.gongura 
       },
     ],
+    // Karam powders - dal/spices + grinding + labor
     variants: [
-      { size: '100 G', ourPrice: 65, marketPrice: 85 },
-      { size: '250 G', ourPrice: 150, marketPrice: 195 },
-      { size: '500 G', ourPrice: 280, marketPrice: 370 },
+      { size: '100 G', ourPrice: 55, marketPrice: 70 },
+      { size: '250 G', ourPrice: 130, marketPrice: 165 },
+      { size: '500 G', ourPrice: 250, marketPrice: 320 },
     ]
   }
 };
@@ -351,13 +428,13 @@ const deliveryAreas = [
 // 🎨 PREMIUM COLOR THEME
 // ===========================================
 const theme = {
-  primary: '#1B4332',      // Deep Forest Green
-  primaryLight: '#2D6A4F', // Medium Forest Green
-  primaryDark: '#081C15',  // Dark Forest
-  accent: '#D4A853',       // Golden Yellow
-  accentLight: '#E9C46A',  // Light Gold
-  success: '#40916C',      // Fresh Green
-  background: '#FEFDFB',   // Warm White
+  primary: '#1B4332',
+  primaryLight: '#2D6A4F',
+  primaryDark: '#081C15',
+  accent: '#D4A853',
+  accentLight: '#E9C46A',
+  success: '#40916C',
+  background: '#FEFDFB',
   surface: '#FFFFFF',
   text: '#1A1A1A',
   textSecondary: '#5C5C5C',
@@ -457,6 +534,14 @@ export default function BKGRApp() {
   const getCartItemCount = () => cart.reduce((total, item) => total + item.quantity, 0);
   const getDiscount = (our, market) => Math.round(((market - our) / market) * 100);
 
+  // Helper to get variants for pickles (non-veg have individual pricing)
+  const getPickleVariants = (product) => {
+    if (product.variants) {
+      return product.variants;
+    }
+    return productsData.pickles.defaultVariants;
+  };
+
   // ===========================================
   // 🌟 SPLASH SCREEN
   // ===========================================
@@ -467,7 +552,7 @@ export default function BKGRApp() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-40 h-40 border-2 border-white/30 rounded-full"></div>
           <div className="absolute bottom-32 right-8 w-56 h-56 border border-white/20 rounded-full"></div>
-          <div className="absolute top-1/3 right-1/4 w-28 h-28 border border-white/15 rounded-full"></div>
+          <div class="absolute top-1/3 right-1/4 w-28 h-28 border border-white/15 rounded-full"></div>
         </div>
         
         <div className="text-center text-white z-10 animate-fade-in px-8">
@@ -671,13 +756,14 @@ export default function BKGRApp() {
   // 📦 PRODUCT DETAIL
   // ===========================================
   if (selectedProduct) {
-    const variants = selectedCategory === 'pickles' 
-      ? (['chicken', 'mutton', 'fish', 'prawn'].some(m => selectedProduct.id.includes(m)) 
-        ? productsData.pickles.nonVegVariants 
-        : productsData.pickles.defaultVariants)
-      : selectedCategory === 'karam' 
-        ? productsData.karam.variants
-        : selectedProduct.variants;
+    let variants;
+    if (selectedCategory === 'pickles') {
+      variants = getPickleVariants(selectedProduct);
+    } else if (selectedCategory === 'karam') {
+      variants = productsData.karam.variants;
+    } else {
+      variants = selectedProduct.variants;
+    }
 
     return (
       <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
@@ -784,7 +870,7 @@ export default function BKGRApp() {
         <div className="p-4 pb-28">
           <div className="grid grid-cols-2 gap-4">
             {subcat.items.map(product => {
-              const variants = subcat.name === 'Non-Veg Pickles' ? productsData.pickles.nonVegVariants : productsData.pickles.defaultVariants;
+              const variants = getPickleVariants(product);
               return (
                 <div key={product.id} onClick={() => setSelectedProduct(product)} 
                      className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all hover:shadow-xl"
@@ -839,7 +925,6 @@ export default function BKGRApp() {
   if (selectedCategory) {
     const category = productsData[selectedCategory];
     
-    // Pickles
     if (selectedCategory === 'pickles') {
       return (
         <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
@@ -867,7 +952,7 @@ export default function BKGRApp() {
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {subcat.items.slice(0, 4).map(product => {
-                    const variants = subcat.name === 'Non-Veg Pickles' ? category.nonVegVariants : category.defaultVariants;
+                    const variants = getPickleVariants(product);
                     return (
                       <div key={product.id} onClick={() => { setSelectedSubcategory(subcat.name); setSelectedProduct(product); }} 
                            className="rounded-xl p-3 shadow-lg cursor-pointer transition-all hover:shadow-xl"
@@ -910,7 +995,6 @@ export default function BKGRApp() {
       );
     }
 
-    // Karam
     if (selectedCategory === 'karam') {
       return (
         <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
@@ -981,7 +1065,6 @@ export default function BKGRApp() {
       );
     }
 
-    // Rice & Urad
     return (
       <div className="min-h-screen font-sans max-w-md mx-auto" style={{background: theme.background}}>
         <div className="p-4 flex items-center justify-between border-b sticky top-0 z-50" style={{background: theme.surface, borderColor: theme.border}}>
@@ -1059,7 +1142,6 @@ export default function BKGRApp() {
   // ===========================================
   return (
     <div className="min-h-screen font-sans max-w-md mx-auto pb-28" style={{background: theme.background}}>
-      {/* Header */}
       <div className="p-4 flex items-center justify-between" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
         <div className="flex items-center gap-3">
           <Logo className="w-14 h-14 border-2 border-white/20" />
@@ -1079,7 +1161,6 @@ export default function BKGRApp() {
         </button>
       </div>
 
-      {/* Hero */}
       <div className="p-4">
         <div className="rounded-2xl p-6 shadow-lg relative overflow-hidden" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
           <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10" style={{background: theme.accent, transform: 'translate(30%, -30%)'}}></div>
@@ -1094,7 +1175,6 @@ export default function BKGRApp() {
         </div>
       </div>
 
-      {/* USP */}
       <div className="flex justify-around py-5 mx-4 rounded-2xl shadow-lg" style={{background: theme.surface, boxShadow: theme.cardShadow}}>
         {[{icon: '🌿', text: '100% Pure'}, {icon: '🚫', text: 'No Chemicals'}, {icon: '🚚', text: 'Free Delivery'}, {icon: '💰', text: 'Best Price'}].map((item, i) => (
           <div key={i} className="text-center">
@@ -1104,7 +1184,6 @@ export default function BKGRApp() {
         ))}
       </div>
 
-      {/* Categories */}
       <div className="p-4">
         <h2 className="text-xl font-bold mb-1" style={{color: theme.text}}>Shop by Category</h2>
         <p className="text-sm mb-4" style={{color: theme.textSecondary}}>Fresh from our farm to your home</p>
@@ -1134,25 +1213,23 @@ export default function BKGRApp() {
         </div>
       </div>
 
-      {/* Price Compare */}
       <div className="mx-4 mb-4 rounded-2xl p-6 text-white" style={{background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryLight})`}}>
         <h3 className="font-bold text-center mb-4 text-lg">💡 Why Choose Us?</h3>
         <div className="rounded-2xl p-5 flex items-center justify-around" style={{background: 'rgba(255,255,255,0.1)'}}>
           <div className="text-center">
             <p className="text-xs opacity-80 mb-1">Market Price</p>
-            <p className="text-2xl font-bold line-through opacity-60">₹1,950</p>
+            <p className="text-2xl font-bold line-through opacity-60">₹1,875</p>
           </div>
           <div className="text-3xl font-bold opacity-50">→</div>
           <div className="text-center">
             <p className="text-xs opacity-80 mb-1">Our Price</p>
-            <p className="text-3xl font-bold">₹1,625</p>
+            <p className="text-3xl font-bold">₹1,550</p>
             <p className="text-sm font-bold mt-1" style={{color: theme.accent}}>Save ₹325!</p>
           </div>
         </div>
         <p className="text-center text-sm mt-3" style={{color: theme.accentLight}}>25kg Semi Polished Rice</p>
       </div>
 
-      {/* Delivery */}
       <div className="px-4 mb-4">
         <h3 className="font-bold mb-3 text-lg" style={{color: theme.text}}>🚚 Free Delivery Areas</h3>
         <div className="flex flex-wrap gap-2">
@@ -1163,7 +1240,6 @@ export default function BKGRApp() {
         </div>
       </div>
 
-      {/* Contact */}
       <div className="flex gap-3 px-4 pb-4">
         <a href="tel:+917993822600" 
            className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold shadow-lg"
@@ -1177,7 +1253,6 @@ export default function BKGRApp() {
         </a>
       </div>
 
-      {/* Floating Cart */}
       {getCartItemCount() > 0 && (
         <div onClick={() => setShowCart(true)} 
              className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-2xl p-4 flex justify-between items-center shadow-2xl cursor-pointer z-50"
