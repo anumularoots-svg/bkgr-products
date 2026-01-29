@@ -16,7 +16,7 @@ const PRODUCT_IMAGES = {
   urad: {
     category: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
     split: 'https://i.ibb.co/jNtB0qz/Urad-Dal-Split.png',
-    whole: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
+    round: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
   pickles: {
     category: 'https://i.ibb.co/yn6LYRDX/chicken.png',
@@ -29,7 +29,7 @@ const PRODUCT_IMAGES = {
     drumstick: 'https://i.ibb.co/HLDbsG3N/drumstick.png',
     chicken: 'https://i.ibb.co/yn6LYRDX/chicken.png',
     mutton: 'https://i.ibb.co/LXpxxrVS/mutton.png',
-    fish: 'https://i.ibb.co/pjm8MhfB/prawn.png',
+    fish: 'https://i.ibb.co/B211Hrxw/fish.png',
     prawn: 'https://i.ibb.co/pjm8MhfB/prawn.png',
   },
   karam: {
@@ -47,48 +47,6 @@ const PRODUCT_IMAGES = {
 // ===========================================
 // 📦 HYDERABAD MARKET BASED PRICING - REALISTIC COST CALCULATION
 // ===========================================
-// 
-// 🐔 CHICKEN PICKLE (1kg) - Market Rate: ₹260/kg
-// ├── Chicken 1.3kg (bone removal, wastage) × ₹260 = ₹338
-// ├── Gingelly Oil 250ml (₹400/L) = ₹100
-// ├── Spices (mirchi, fenugreek, mustard) = ₹80
-// ├── Gas (1.5 hours cooking) = ₹30
-// ├── Glass Bottle + Lid = ₹40
-// └── Labor = ₹50
-// TOTAL COST = ₹638 → OUR PRICE = ₹780 (22% margin)
-// MARKET PRICE = ₹950
-//
-// 🐐 MUTTON PICKLE (1kg) - Market Rate: ₹900/kg  
-// ├── Mutton 1.2kg (bones, wastage) × ₹900 = ₹1080
-// ├── Gingelly Oil 250ml = ₹100
-// ├── Spices = ₹80
-// ├── Gas (2+ hours slow cooking) = ₹40
-// ├── Glass Bottle + Lid = ₹40
-// └── Labor = ₹60
-// TOTAL COST = ₹1400 → OUR PRICE = ₹1700 (21% margin)
-// MARKET PRICE = ₹2100
-//
-// 🐟 FISH PICKLE (1kg) - Market Rate: ₹180/kg
-// ├── Fish 1.5kg (head, bones, scales removal) × ₹180 = ₹270
-// ├── Gingelly Oil 250ml = ₹100
-// ├── Spices + Tamarind = ₹70
-// ├── Gas = ₹25
-// ├── Glass Bottle + Lid = ₹40
-// └── Labor = ₹40
-// TOTAL COST = ₹545 → OUR PRICE = ₹680 (25% margin)
-// MARKET PRICE = ₹850
-//
-// 🦐 PRAWN PICKLE (1kg) - Market Rate: ₹500/kg
-// ├── Prawns 1.4kg (shell, head removal) × ₹500 = ₹700
-// ├── Gingelly Oil 250ml = ₹100
-// ├── Spices = ₹70
-// ├── Gas = ₹30
-// ├── Glass Bottle + Lid = ₹40
-// └── Labor = ₹50
-// TOTAL COST = ₹990 → OUR PRICE = ₹1200 (21% margin)
-// MARKET PRICE = ₹1500
-//
-// Note: Pure homemade quality with no compromise on ingredients!
 
 const productsData = {
   rice: {
@@ -104,7 +62,6 @@ const productsData = {
         tag: 'HEALTHY',
         tagColor: '#059669',
         image: PRODUCT_IMAGES.rice.brown,
-        // Brown rice - least processing = lowest price (₹58/kg)
         variants: [
           { size: '5 KG', ourPrice: 290, marketPrice: 350 },
           { size: '25 KG', ourPrice: 1450, marketPrice: 1750 },
@@ -118,7 +75,6 @@ const productsData = {
         tag: 'BESTSELLER',
         tagColor: '#D97706',
         image: PRODUCT_IMAGES.rice.semi,
-        // Semi polish - medium processing (₹62/kg)
         variants: [
           { size: '5 KG', ourPrice: 310, marketPrice: 375 },
           { size: '25 KG', ourPrice: 1550, marketPrice: 1875 },
@@ -132,7 +88,6 @@ const productsData = {
         tag: 'PREMIUM',
         tagColor: '#7C3AED',
         image: PRODUCT_IMAGES.rice.full,
-        // Full polish - most processing = highest price (₹68/kg)
         variants: [
           { size: '5 KG', ourPrice: 340, marketPrice: 410 },
           { size: '25 KG', ourPrice: 1700, marketPrice: 2050 },
@@ -150,11 +105,11 @@ const productsData = {
       {
         id: 'urad-round',
         name: 'Urad Round',
-        description: 'Whole black urad dal with skin intact. Perfect for crispy medu vadas and dal makhani. High protein content, naturally grown without chemicals.',
+        description: 'Whole round urad dal with skin intact. Perfect for crispy medu vadas and dal makhani. High protein content, naturally grown without chemicals.',
         tag: 'FOR VADA',
         tagColor: '#78716C',
-        image: PRODUCT_IMAGES.urad.whole,
-        // Whole dal - less processing = lower price (₹125/kg)
+        image: PRODUCT_IMAGES.urad.round,
+        // Round urad - premium quality = higher price (₹145/kg)
         variants: [
           { size: '1 KG', ourPrice: 145, marketPrice: 185 },
           { size: '2 KG', ourPrice: 285, marketPrice: 355 },
@@ -168,7 +123,7 @@ const productsData = {
         tag: 'IDLI & DOSA',
         tagColor: '#2563EB',
         image: PRODUCT_IMAGES.urad.split,
-        // Split dal - more processing = higher price (₹145/kg)
+        // Split dal - standard price (₹125/kg)
         variants: [
           { size: '1 KG', ourPrice: 125, marketPrice: 155 },
           { size: '2 KG', ourPrice: 245, marketPrice: 305 },
@@ -270,9 +225,7 @@ const productsData = {
             tag: 'BESTSELLER', 
             tagColor: '#EC4899', 
             image: PRODUCT_IMAGES.pickles.chicken,
-            // CHICKEN: Market ₹260/kg
-            // 1.3kg chicken (wastage)=₹338 + Gingelly Oil ₹100 + Spices ₹80 + Gas ₹30 + Bottle ₹40 + Labor ₹50 = ₹638 cost
-            // Selling: ₹780/kg (22% margin) - Pure homemade quality
+            // CHICKEN: ₹780/kg
             variants: [
               { size: '250 G', ourPrice: 220, marketPrice: 280 },
               { size: '500 G', ourPrice: 420, marketPrice: 520 },
@@ -286,9 +239,7 @@ const productsData = {
             tag: 'PREMIUM', 
             tagColor: '#9333EA', 
             image: PRODUCT_IMAGES.pickles.mutton,
-            // MUTTON: Market ₹900/kg
-            // 1.2kg mutton (bones/wastage)=₹1080 + Gingelly Oil ₹100 + Spices ₹80 + Gas ₹40 + Bottle ₹40 + Labor ₹60 = ₹1400 cost
-            // Selling: ₹1700/kg (21% margin) - Premium homemade quality
+            // MUTTON: ₹1700/kg
             variants: [
               { size: '250 G', ourPrice: 480, marketPrice: 580 },
               { size: '500 G', ourPrice: 900, marketPrice: 1100 },
@@ -302,9 +253,7 @@ const productsData = {
             tag: 'SEAFOOD', 
             tagColor: '#0891B2', 
             image: PRODUCT_IMAGES.pickles.fish,
-            // FISH: Market ₹180/kg
-            // 1.5kg fish (head/bones/scales removal)=₹270 + Gingelly Oil ₹100 + Spices ₹70 + Gas ₹25 + Bottle ₹40 + Labor ₹40 = ₹545 cost
-            // Selling: ₹680/kg (25% margin) - Pure homemade quality
+            // FISH: ₹680/kg
             variants: [
               { size: '250 G', ourPrice: 200, marketPrice: 250 },
               { size: '500 G', ourPrice: 380, marketPrice: 460 },
@@ -318,9 +267,7 @@ const productsData = {
             tag: 'PREMIUM', 
             tagColor: '#EA580C', 
             image: PRODUCT_IMAGES.pickles.prawn,
-            // PRAWN: Market ₹500/kg
-            // 1.4kg prawns (shell/head removal)=₹700 + Gingelly Oil ₹100 + Spices ₹70 + Gas ₹30 + Bottle ₹40 + Labor ₹50 = ₹990 cost
-            // Selling: ₹1200/kg (21% margin) - Premium homemade quality
+            // PRAWN: ₹1200/kg
             variants: [
               { size: '250 G', ourPrice: 350, marketPrice: 420 },
               { size: '500 G', ourPrice: 650, marketPrice: 780 },
@@ -330,8 +277,7 @@ const productsData = {
         ]
       }
     ],
-    // VEG PICKLES: Mango/Vegetables + Oil + Spices = ~₹180 cost for 1kg
-    // Selling: ₹280/kg (55% margin - vegetables are cheaper)
+    // VEG PICKLES default pricing
     defaultVariants: [
       { size: '250 G', ourPrice: 90, marketPrice: 115 },
       { size: '500 G', ourPrice: 160, marketPrice: 200 },
@@ -409,7 +355,6 @@ const productsData = {
         image: PRODUCT_IMAGES.karam.gongura 
       },
     ],
-    // Karam powders - dal/spices + grinding + labor
     variants: [
       { size: '100 G', ourPrice: 55, marketPrice: 70 },
       { size: '250 G', ourPrice: 130, marketPrice: 165 },
@@ -552,7 +497,7 @@ export default function BKGRApp() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-40 h-40 border-2 border-white/30 rounded-full"></div>
           <div className="absolute bottom-32 right-8 w-56 h-56 border border-white/20 rounded-full"></div>
-          <div class="absolute top-1/3 right-1/4 w-28 h-28 border border-white/15 rounded-full"></div>
+          <div className="absolute top-1/3 right-1/4 w-28 h-28 border border-white/15 rounded-full"></div>
         </div>
         
         <div className="text-center text-white z-10 animate-fade-in px-8">
