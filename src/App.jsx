@@ -45,7 +45,10 @@ const PRODUCT_IMAGES = {
 };
 
 // ===========================================
-// 📦 HYDERABAD MARKET BASED PRICING - REALISTIC COST CALCULATION
+// 📦 HYDERABAD MARKET BASED PRICING - JANUARY 2025
+// ===========================================
+// REALISTIC COST CALCULATION WITH PROFIT MARGINS
+// Based on: Raw material costs + Labor + Gingelly Oil + Packaging + Profit
 // ===========================================
 
 const productsData = {
@@ -109,7 +112,6 @@ const productsData = {
         tag: 'FOR VADA',
         tagColor: '#78716C',
         image: PRODUCT_IMAGES.urad.round,
-        // Round urad - premium quality = higher price (₹145/kg)
         variants: [
           { size: '1 KG', ourPrice: 145, marketPrice: 185 },
           { size: '2 KG', ourPrice: 285, marketPrice: 355 },
@@ -123,7 +125,6 @@ const productsData = {
         tag: 'IDLI & DOSA',
         tagColor: '#2563EB',
         image: PRODUCT_IMAGES.urad.split,
-        // Split dal - standard price (₹125/kg)
         variants: [
           { size: '1 KG', ourPrice: 125, marketPrice: 155 },
           { size: '2 KG', ourPrice: 245, marketPrice: 305 },
@@ -135,7 +136,7 @@ const productsData = {
   pickles: {
     title: "Homemade Pickles",
     subtitle: "Authentic recipes from grandmother's kitchen",
-    description: "Traditional homemade pickles made with pure ingredients",
+    description: "Traditional homemade pickles made with pure gingelly oil",
     image: PRODUCT_IMAGES.pickles.category,
     subcategories: [
       {
@@ -145,7 +146,7 @@ const productsData = {
           { 
             id: 'pickle-avakaya', 
             name: 'Avakaya', 
-            description: 'Traditional raw mango pickle made with hand-pounded spices, cold-pressed mustard oil & rock salt. Aged to perfection for authentic tangy-spicy taste. 100% homemade with pure quality ingredients.', 
+            description: 'Traditional raw mango pickle made with hand-pounded spices, pure gingelly oil & rock salt. Aged to perfection for authentic tangy-spicy taste. 100% homemade with pure quality ingredients.', 
             tag: 'SIGNATURE', 
             tagColor: '#DC2626', 
             image: PRODUCT_IMAGES.pickles.mango 
@@ -167,7 +168,7 @@ const productsData = {
           { 
             id: 'pickle-lemon', 
             name: 'Lemon Pickle', 
-            description: 'Fresh lemons marinated in aromatic spices & cold-pressed oil. Sun-dried for 15 days to develop rich tangy flavor. Natural immunity booster with Vitamin C. Pure homemade quality.', 
+            description: 'Fresh lemons marinated in aromatic spices & pure gingelly oil. Sun-dried for 15 days to develop rich tangy flavor. Natural immunity booster with Vitamin C. Pure homemade quality.', 
             tag: 'CLASSIC', 
             tagColor: '#FBBF24', 
             image: PRODUCT_IMAGES.pickles.lemon 
@@ -199,7 +200,7 @@ const productsData = {
           { 
             id: 'pickle-redchilli', 
             name: 'Red Chilli Pickle', 
-            description: 'Large red chilies stuffed with aromatic spice mix & preserved in mustard oil. Bold, fiery taste for spice lovers. Handmade with premium Guntur chilies, pure quality guaranteed.', 
+            description: 'Large red chilies stuffed with aromatic spice mix & preserved in pure gingelly oil. Bold, fiery taste for spice lovers. Handmade with premium Guntur chilies, pure quality guaranteed.', 
             tag: 'EXTRA SPICY', 
             tagColor: '#B91C1C', 
             image: PRODUCT_IMAGES.pickles.redchilli 
@@ -225,11 +226,12 @@ const productsData = {
             tag: 'BESTSELLER', 
             tagColor: '#EC4899', 
             image: PRODUCT_IMAGES.pickles.chicken,
-            // CHICKEN: ₹780/kg
+            // CHICKEN PICKLE - Hyderabad Market Rate: ₹1,200-1,500/kg
+            // Our Cost: Chicken ₹280/kg + 40% wastage + Gingelly Oil ₹400/L + Spices + Labor
             variants: [
-              { size: '250 G', ourPrice: 220, marketPrice: 280 },
-              { size: '500 G', ourPrice: 420, marketPrice: 520 },
-              { size: '1 KG', ourPrice: 780, marketPrice: 950 },
+              { size: '250 G', ourPrice: 280, marketPrice: 350 },
+              { size: '500 G', ourPrice: 520, marketPrice: 650 },
+              { size: '1 KG', ourPrice: 980, marketPrice: 1250 },
             ]
           },
           { 
@@ -239,11 +241,12 @@ const productsData = {
             tag: 'PREMIUM', 
             tagColor: '#9333EA', 
             image: PRODUCT_IMAGES.pickles.mutton,
-            // MUTTON: ₹1700/kg
+            // MUTTON PICKLE - Hyderabad Market Rate: ₹2,000-2,800/kg
+            // Our Cost: Mutton ₹750/kg + 50% bone wastage + Gingelly Oil + Spices + Labor
             variants: [
-              { size: '250 G', ourPrice: 480, marketPrice: 580 },
-              { size: '500 G', ourPrice: 900, marketPrice: 1100 },
-              { size: '1 KG', ourPrice: 1700, marketPrice: 2100 },
+              { size: '250 G', ourPrice: 550, marketPrice: 680 },
+              { size: '500 G', ourPrice: 1050, marketPrice: 1300 },
+              { size: '1 KG', ourPrice: 1980, marketPrice: 2500 },
             ]
           },
           { 
@@ -253,11 +256,12 @@ const productsData = {
             tag: 'SEAFOOD', 
             tagColor: '#0891B2', 
             image: PRODUCT_IMAGES.pickles.fish,
-            // FISH: ₹680/kg
+            // FISH PICKLE - Hyderabad Market Rate: ₹900-1,100/kg
+            // Our Cost: Fish ₹250/kg + 35% cleaning wastage + Gingelly Oil + Spices + Labor
             variants: [
-              { size: '250 G', ourPrice: 200, marketPrice: 250 },
-              { size: '500 G', ourPrice: 380, marketPrice: 460 },
-              { size: '1 KG', ourPrice: 680, marketPrice: 850 },
+              { size: '250 G', ourPrice: 240, marketPrice: 300 },
+              { size: '500 G', ourPrice: 450, marketPrice: 560 },
+              { size: '1 KG', ourPrice: 850, marketPrice: 1050 },
             ]
           },
           { 
@@ -267,21 +271,24 @@ const productsData = {
             tag: 'PREMIUM', 
             tagColor: '#EA580C', 
             image: PRODUCT_IMAGES.pickles.prawn,
-            // PRAWN: ₹1200/kg
+            // PRAWN PICKLE - Hyderabad Market Rate: ₹1,500-1,800/kg
+            // Our Cost: Prawns ₹500/kg + 45% shell/head wastage + Gingelly Oil + Spices + Labor
             variants: [
-              { size: '250 G', ourPrice: 350, marketPrice: 420 },
-              { size: '500 G', ourPrice: 650, marketPrice: 780 },
-              { size: '1 KG', ourPrice: 1200, marketPrice: 1500 },
+              { size: '250 G', ourPrice: 380, marketPrice: 480 },
+              { size: '500 G', ourPrice: 720, marketPrice: 900 },
+              { size: '1 KG', ourPrice: 1380, marketPrice: 1700 },
             ]
           },
         ]
       }
     ],
-    // VEG PICKLES default pricing
+    // VEG PICKLES - UPDATED REALISTIC PRICING
+    // Hyderabad Market Rate for Homemade Veg Pickles with Gingelly Oil: ₹500-700/kg
+    // Our Cost: Raw Materials + Pure Gingelly Oil (₹400/L) + Spices + Labor + Packaging
     defaultVariants: [
-      { size: '250 G', ourPrice: 90, marketPrice: 115 },
-      { size: '500 G', ourPrice: 160, marketPrice: 200 },
-      { size: '1 KG', ourPrice: 280, marketPrice: 350 },
+      { size: '250 G', ourPrice: 150, marketPrice: 190 },
+      { size: '500 G', ourPrice: 280, marketPrice: 350 },
+      { size: '1 KG', ourPrice: 520, marketPrice: 650 },
     ]
   },
   karam: {
@@ -355,10 +362,13 @@ const productsData = {
         image: PRODUCT_IMAGES.karam.gongura 
       },
     ],
+    // KARAM PODI - UPDATED REALISTIC PRICING
+    // Hyderabad Market Rate: ₹700-900/kg for homemade quality
+    // Our Cost: Premium Dals + Guntur Chilies + Oil + Labor + Packaging
     variants: [
-      { size: '100 G', ourPrice: 55, marketPrice: 70 },
-      { size: '250 G', ourPrice: 130, marketPrice: 165 },
-      { size: '500 G', ourPrice: 250, marketPrice: 320 },
+      { size: '100 G', ourPrice: 85, marketPrice: 110 },
+      { size: '250 G', ourPrice: 195, marketPrice: 250 },
+      { size: '500 G', ourPrice: 370, marketPrice: 470 },
     ]
   }
 };
@@ -512,7 +522,7 @@ export default function BKGRApp() {
             <div className="h-full w-1/3 rounded-full animate-loading" style={{background: `linear-gradient(90deg, ${theme.accent}, ${theme.accentLight})`}}></div>
           </div>
           
-          <p className="text-xs mt-10 tracking-widest opacity-60">100% Homemade • No Preservatives • Pure Ingredients</p>
+          <p className="text-xs mt-10 tracking-widest opacity-60">100% Homemade • No Preservatives • Pure Gingelly Oil</p>
         </div>
       </div>
     );
@@ -1175,7 +1185,7 @@ export default function BKGRApp() {
             <div className="space-y-2 mb-4">
               <p className="text-white/90 text-sm flex items-center gap-2">
                 <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center text-xs">✓</span>
-                No Preservatives • No Chemicals
+                Pure Gingelly Oil • No Preservatives
               </p>
               <p className="text-white/90 text-sm flex items-center gap-2">
                 <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center text-xs">✓</span>
@@ -1277,18 +1287,18 @@ export default function BKGRApp() {
           <div className="flex items-center justify-around">
             <div className="text-center">
               <p className="text-xs text-gray-500 mb-1">Market Price</p>
-              <p className="text-2xl font-bold text-gray-400 line-through">₹1,875</p>
+              <p className="text-2xl font-bold text-gray-400 line-through">₹650</p>
             </div>
             <div className="text-3xl">→</div>
             <div className="text-center">
               <p className="text-xs text-gray-500 mb-1">Our Price</p>
-              <p className="text-3xl font-bold" style={{color: theme.success}}>₹1,550</p>
+              <p className="text-3xl font-bold" style={{color: theme.success}}>₹520</p>
               <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-bold text-white bg-green-500">
-                Save ₹325!
+                Save ₹130!
               </span>
             </div>
           </div>
-          <p className="text-center text-xs mt-3 text-gray-500">25kg Semi Polished Rice</p>
+          <p className="text-center text-xs mt-3 text-gray-500">1kg Avakaya Pickle (Pure Gingelly Oil)</p>
         </div>
       </div>
 
@@ -1298,7 +1308,7 @@ export default function BKGRApp() {
         <div className="grid grid-cols-2 gap-3">
           {[
             {icon: '👩‍🍳', title: 'Homemade Style', desc: 'Traditional home recipes'},
-            {icon: '🌿', title: 'Pure Ingredients', desc: 'No artificial additives'},
+            {icon: '🌿', title: 'Pure Gingelly Oil', desc: 'No refined oils'},
             {icon: '📦', title: 'Fresh Packing', desc: 'Hygienic & sealed'},
             {icon: '💯', title: 'Quality Assured', desc: 'Checked before delivery'},
           ].map((item, i) => (
