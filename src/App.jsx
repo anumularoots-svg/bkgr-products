@@ -113,9 +113,9 @@ const productsData = {
         tagColor: '#78716C',
         image: PRODUCT_IMAGES.urad.round,
         variants: [
-          { size: '1 KG', ourPrice: 145, marketPrice: 185 },
-          { size: '2 KG', ourPrice: 285, marketPrice: 355 },
-          { size: '5 KG', ourPrice: 700, marketPrice: 880 },
+          { size: '1 KG', ourPrice: 125, marketPrice: 185 },
+          { size: '2 KG', ourPrice: 220, marketPrice: 355 },
+          { size: '5 KG', ourPrice: 650, marketPrice: 880 },
         ]
       },
       {
@@ -126,9 +126,9 @@ const productsData = {
         tagColor: '#2563EB',
         image: PRODUCT_IMAGES.urad.split,
         variants: [
-          { size: '1 KG', ourPrice: 125, marketPrice: 155 },
-          { size: '2 KG', ourPrice: 245, marketPrice: 305 },
-          { size: '5 KG', ourPrice: 600, marketPrice: 750 },
+          { size: '1 KG', ourPrice: 110, marketPrice: 155 },
+          { size: '2 KG', ourPrice: 220, marketPrice: 305 },
+          { size: '5 KG', ourPrice: 550, marketPrice: 750 },
         ]
       }
     ]
@@ -149,7 +149,13 @@ const productsData = {
             description: 'Traditional raw mango pickle made with hand-pounded spices, pure gingelly oil & rock salt. Aged to perfection for authentic tangy-spicy taste. 100% homemade with pure quality ingredients.', 
             tag: 'SIGNATURE', 
             tagColor: '#DC2626', 
-            image: PRODUCT_IMAGES.pickles.mango 
+            image: PRODUCT_IMAGES.pickles.mango,
+            // MANGO PICKLES - Premium Pricing
+            variants: [
+              { size: '250 G', ourPrice: 180, marketPrice: 225 },
+              { size: '500 G', ourPrice: 350, marketPrice: 440 },
+              { size: '1 KG', ourPrice: 650, marketPrice: 810 },
+            ]
           },
           { 
             id: 'pickle-magaya', 
@@ -157,7 +163,13 @@ const productsData = {
             description: 'Sweet and tangy tender mango pickle prepared with jaggery, tamarind & aromatic spices. A delightful blend of traditional flavors, handcrafted in small batches for premium quality.', 
             tag: 'SWEET & TANGY', 
             tagColor: '#F59E0B', 
-            image: PRODUCT_IMAGES.pickles.mango 
+            image: PRODUCT_IMAGES.pickles.mango,
+            // MANGO PICKLES - Premium Pricing
+            variants: [
+              { size: '250 G', ourPrice: 180, marketPrice: 225 },
+              { size: '500 G', ourPrice: 350, marketPrice: 440 },
+              { size: '1 KG', ourPrice: 650, marketPrice: 810 },
+            ]
           },
         ]
       },
@@ -171,7 +183,13 @@ const productsData = {
             description: 'Fresh lemons marinated in aromatic spices & pure gingelly oil. Sun-dried for 15 days to develop rich tangy flavor. Natural immunity booster with Vitamin C. Pure homemade quality.', 
             tag: 'CLASSIC', 
             tagColor: '#FBBF24', 
-            image: PRODUCT_IMAGES.pickles.lemon 
+            image: PRODUCT_IMAGES.pickles.lemon,
+            // LEMON & GONGURA PICKLE - Pricing
+            variants: [
+              { size: '250 G', ourPrice: 170, marketPrice: 215 },
+              { size: '500 G', ourPrice: 330, marketPrice: 415 },
+              { size: '1 KG', ourPrice: 600, marketPrice: 750 },
+            ]
           },
           { 
             id: 'pickle-tomato', 
@@ -179,7 +197,13 @@ const productsData = {
             description: 'Ripe tomatoes cooked with garlic, red chilies & traditional spices. Sweet, tangy & mildly spicy. Made fresh without preservatives, perfect for all ages. Homemade with love.', 
             tag: 'TANGY', 
             tagColor: '#EF4444', 
-            image: PRODUCT_IMAGES.pickles.tomato 
+            image: PRODUCT_IMAGES.pickles.tomato,
+            // TOMATO, BRINJAL, RED CHILLI, DRUMSTICK PICKLE - Pricing
+            variants: [
+              { size: '250 G', ourPrice: 160, marketPrice: 200 },
+              { size: '500 G', ourPrice: 300, marketPrice: 375 },
+              { size: '1 KG', ourPrice: 550, marketPrice: 690 },
+            ]
           },
           { 
             id: 'pickle-gongura', 
@@ -187,7 +211,13 @@ const productsData = {
             description: 'Authentic gongura (sorrel leaves) pickle with garlic & green chilies. Distinctive sour taste, rich in iron & vitamins. A true regional delicacy, 100% pure & homemade.', 
             tag: 'REGIONAL SPECIAL', 
             tagColor: '#10B981', 
-            image: PRODUCT_IMAGES.pickles.gongura 
+            image: PRODUCT_IMAGES.pickles.gongura,
+            // LEMON & GONGURA PICKLE - Pricing
+            variants: [
+              { size: '250 G', ourPrice: 170, marketPrice: 215 },
+              { size: '500 G', ourPrice: 330, marketPrice: 415 },
+              { size: '1 KG', ourPrice: 600, marketPrice: 750 },
+            ]
           },
           { 
             id: 'pickle-brinjal', 
@@ -195,7 +225,13 @@ const productsData = {
             description: 'Tender brinjals roasted over wood fire, mixed with aromatic spices & sesame. Smoky flavor with homemade masala. A village-style recipe passed down generations.', 
             tag: 'SMOKY', 
             tagColor: '#8B5CF6', 
-            image: PRODUCT_IMAGES.pickles.brinjal 
+            image: PRODUCT_IMAGES.pickles.brinjal,
+            // TOMATO, BRINJAL, RED CHILLI, DRUMSTICK PICKLE - Pricing
+            variants: [
+              { size: '250 G', ourPrice: 160, marketPrice: 200 },
+              { size: '500 G', ourPrice: 300, marketPrice: 375 },
+              { size: '1 KG', ourPrice: 550, marketPrice: 690 },
+            ]
           },
           { 
             id: 'pickle-redchilli', 
@@ -203,7 +239,13 @@ const productsData = {
             description: 'Large red chilies stuffed with aromatic spice mix & preserved in pure gingelly oil. Bold, fiery taste for spice lovers. Handmade with premium Guntur chilies, pure quality guaranteed.', 
             tag: 'EXTRA SPICY', 
             tagColor: '#B91C1C', 
-            image: PRODUCT_IMAGES.pickles.redchilli 
+            image: PRODUCT_IMAGES.pickles.redchilli,
+            // TOMATO, BRINJAL, RED CHILLI, DRUMSTICK PICKLE - Pricing
+            variants: [
+              { size: '250 G', ourPrice: 160, marketPrice: 200 },
+              { size: '500 G', ourPrice: 300, marketPrice: 375 },
+              { size: '1 KG', ourPrice: 550, marketPrice: 690 },
+            ]
           },
           { 
             id: 'pickle-drumstick', 
@@ -211,7 +253,13 @@ const productsData = {
             description: 'Fresh tender drumsticks marinated in tangy tamarind masala. Rich in calcium & nutrients. Traditional village recipe with no artificial ingredients. Pure homemade goodness.', 
             tag: 'NUTRITIOUS', 
             tagColor: '#65A30D', 
-            image: PRODUCT_IMAGES.pickles.drumstick 
+            image: PRODUCT_IMAGES.pickles.drumstick,
+            // TOMATO, BRINJAL, RED CHILLI, DRUMSTICK PICKLE - Pricing
+            variants: [
+              { size: '250 G', ourPrice: 160, marketPrice: 200 },
+              { size: '500 G', ourPrice: 300, marketPrice: 375 },
+              { size: '1 KG', ourPrice: 550, marketPrice: 690 },
+            ]
           },
         ]
       },
@@ -282,13 +330,11 @@ const productsData = {
         ]
       }
     ],
-    // VEG PICKLES - UPDATED REALISTIC PRICING
-    // Hyderabad Market Rate for Homemade Veg Pickles with Gingelly Oil: ₹500-700/kg
-    // Our Cost: Raw Materials + Pure Gingelly Oil (₹400/L) + Spices + Labor + Packaging
+    // Default variants no longer needed as all pickles have individual pricing
     defaultVariants: [
-      { size: '250 G', ourPrice: 150, marketPrice: 190 },
-      { size: '500 G', ourPrice: 280, marketPrice: 350 },
-      { size: '1 KG', ourPrice: 520, marketPrice: 650 },
+      { size: '250 G', ourPrice: 160, marketPrice: 200 },
+      { size: '500 G', ourPrice: 300, marketPrice: 375 },
+      { size: '1 KG', ourPrice: 550, marketPrice: 690 },
     ]
   },
   karam: {
@@ -489,7 +535,7 @@ export default function BKGRApp() {
   const getCartItemCount = () => cart.reduce((total, item) => total + item.quantity, 0);
   const getDiscount = (our, market) => Math.round(((market - our) / market) * 100);
 
-  // Helper to get variants for pickles (non-veg have individual pricing)
+  // Helper to get variants for pickles (all pickles now have individual pricing)
   const getPickleVariants = (product) => {
     if (product.variants) {
       return product.variants;
@@ -1287,14 +1333,14 @@ export default function BKGRApp() {
           <div className="flex items-center justify-around">
             <div className="text-center">
               <p className="text-xs text-gray-500 mb-1">Market Price</p>
-              <p className="text-2xl font-bold text-gray-400 line-through">₹650</p>
+              <p className="text-2xl font-bold text-gray-400 line-through">₹810</p>
             </div>
             <div className="text-3xl">→</div>
             <div className="text-center">
               <p className="text-xs text-gray-500 mb-1">Our Price</p>
-              <p className="text-3xl font-bold" style={{color: theme.success}}>₹520</p>
+              <p className="text-3xl font-bold" style={{color: theme.success}}>₹650</p>
               <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-bold text-white bg-green-500">
-                Save ₹130!
+                Save ₹160!
               </span>
             </div>
           </div>
