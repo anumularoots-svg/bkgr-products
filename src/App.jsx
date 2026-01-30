@@ -19,7 +19,7 @@ const PRODUCT_IMAGES = {
     round: 'https://i.ibb.co/qLhm6r9x/urad-bag.png',
   },
   pickles: {
-    category: 'https://i.ibb.co/yn6LYRDX/chicken.png',
+    category: 'https://i.ibb.co/B54brGHF/mixed.png',
     mango: 'https://i.ibb.co/BVx09zvb/mango.png',
     lemon: 'https://i.ibb.co/8nkpcBC2/lemon.png',
     gongura: 'https://i.ibb.co/yFG8wSz1/gongura.png',
